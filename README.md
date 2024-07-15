@@ -1,6 +1,6 @@
 ## Hi there 👋
 <p align="center">
-  <img width="128" align="center" src="2.gif">
+  <img  align="center" src="2.gif">
 </p>
 <!--
 **NV-Phong/NV-Phong** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
