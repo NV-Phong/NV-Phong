@@ -2,6 +2,9 @@
 <p align="center">
   <img align="center" src="Day-By-Day.gif">
 </p>
+<p align="center">
+  <img align="center" src="Cover.svg">
+</p>
 <!--
 **NV-Phong/NV-Phong** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
