@@ -1,3 +1,4 @@
+![Day by Day](./Graphics/NV-Phong.png)
 ## Hi there 👋
 ### I'm NV-Phong
 
