@@ -1,4 +1,4 @@
-![Day by Day](./Graphics/NV-Phong.png)
+![Day by Day](./Graphics/NV-Phong[Orange].png)
 ## Hi there 👋
 ### I'm NV-Phong
 
@@ -35,4 +35,4 @@
 - [Facebook](https://www.facebook.com/phong03032003)
 - [Figma](https://www.figma.com/@phong03032003)
 
-![Day by Day](./Graphics/NV-Phong.png)
+![Day by Day](./Graphics/NV-Phong[Green].png)
