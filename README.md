@@ -8,6 +8,7 @@
 - 💬 Ask me about everything
 - 📫 How to reach me: you can connect with me on
 	> [Pinterest](https://www.pinterest.com/pog_03)
+	>or
 	> [Facebook](https://www.facebook.com/phong03032003)
 - 😄 Pronouns: He/Him
 - ⚡ Fun fact: I like to play VSCode
