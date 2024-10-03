@@ -34,8 +34,4 @@
 - [Facebook](https://www.facebook.com/phong03032003)
 - [Figma](https://www.figma.com/@phong03032003)
 
-<form>
-  <label for="fname">Let me know what you think about me:</label><br>
-  <input type="text" id="fname" name="fname" placeholder="  What you think" style="border-radius:10px; height:30px"><br>
-  <input type="submit" value="Submit" style="border-radius:7px; width:100px; height:30px; background:pink">
-</form>
+![Day by Day](./Graphics/NV-Phong.png)
