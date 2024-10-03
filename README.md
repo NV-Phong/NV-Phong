@@ -8,7 +8,7 @@
 - 💬 Ask me about everything
 - 📫 How to reach me: you can connect with me on
 	> [Pinterest](https://www.pinterest.com/pog_03)
-	>or
+	> or
 	> [Facebook](https://www.facebook.com/phong03032003)
 - 😄 Pronouns: He/Him
 - ⚡ Fun fact: I like to play VSCode
@@ -33,3 +33,9 @@
 - [Pinterest](https://www.pinterest.com/pog_03)
 - [Facebook](https://www.facebook.com/phong03032003)
 - [Figma](https://www.figma.com/@phong03032003)
+
+<form>
+  <label for="fname">Let me know what you think about me:</label><br>
+  <input type="text" id="fname" name="fname" placeholder="  What you think" style="border-radius:10px; height:30px"><br>
+  <input type="submit" value="Submit" style="border-radius:7px; width:100px; height:30px; background:pink">
+</form>
