@@ -1,9 +1,8 @@
 ![Day by Day](./Graphics/NV-Phong[Orange].png)
-## Hi there 👋
-### I'm NV-Phong
 
 ![Day by Day](./Graphics/Day-By-Day.gif)
-
+## Hi there 👋
+### I'm NV-Phong
 - 🔭 I’m currently working on a Full-Stack web application using React and Node.js
 - 🌱 I’m currently learning NextJS
 - 💬 Ask me about everything
