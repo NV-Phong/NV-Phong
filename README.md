@@ -25,9 +25,9 @@
 - [JWT Authentication](https://github.com/NV-Phong/JWT-Authentication): Support [C#] .NET Core and [Java] SpringBoot 
 - [HealthCare](https://github.com/NV-Phong/JWT-Authentication): An Application build on NestJS + Flutter 
 
-![NV-Phong](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=radical)
+![NV-Phong](https://github-readme-stats.vercel.app/api?username=NV-Phong&show_icons=true&theme=radical)
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=yourusername&layout=compact&theme=radical)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=NV-Phong&layout=compact&theme=radical)
 
 ### 🔗 Connect with me
 - [Pinterest](https://www.pinterest.com/pog_03)
