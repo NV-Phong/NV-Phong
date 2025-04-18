@@ -55,7 +55,7 @@ const StickyNote = ({ text, date, timeAgo, initialX, initialY, rotation, zIndex,
 
   const handleRegisterClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    router.push("/auth");
+    router.push("/beta");
   };
 
   const getAnimationVariants = () => {

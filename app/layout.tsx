@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { MusicPlayer } from "@/components/ui-engineer/music-player";
 
 export const metadata: Metadata = {
    title: "NV-Phong",
@@ -29,6 +30,7 @@ export default function RootLayout({
                themes={["light", "dark", "pastel-pink"]}
             >
                {children}
+               <MusicPlayer />
             </ThemeProvider>
             <Analytics />
             <SpeedInsights />
