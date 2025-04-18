@@ -1,68 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import StickyNote from "./sticky-note";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import StickyNote from "@/components/ui-engineer/sticky-note";
+import { Button } from "@/components/ui/button";
 
-const StickyNotes = () => {
+const NotFound = () => {
    const router = useRouter();
    const [notes, setNotes] = useState([
       {
          id: 1,
-         date: "Jun 12",
+         date: "404 • NOT FOUND",
          timeAgo: "1 month ago",
-         x: 100,
+         x: 600,
          y: 200,
-         rotation: -5,
+         rotation: -3,
          zIndex: 0,
-         text: "Hôm nay tôi bắt đầu học React và Next.js. Tôi thấy rất thú vị với những khái niệm mới như Server Components và App Router. Hy vọng sẽ sớm làm chủ được framework này.",
-      },
-      {
-         id: 2,
-         date: "Today",
-         timeAgo: "just now",
-         x: 200,
-         y: 350,
-         rotation: 3,
-         zIndex: 1,
-         text: "Cần hoàn thành dự án portfolio trong tuần này. Tasks:\n- Thiết kế UI/UX\n- Implement các components\n- Tối ưu performance\n- Deploy lên Vercel",
-      },
-      {
-         id: 3,
-         date: "Jun 15",
-         timeAgo: "2 weeks ago",
-         x: 1070,
-         y: 200,
-         rotation: -2,
-         zIndex: 2,
-         text: "Đã học được cách sử dụng Framer Motion để tạo animations. Thư viện này rất powerful và dễ sử dụng. Có thể áp dụng vào nhiều dự án trong tương lai.",
-      },
-      {
-         id: 4,
-         date: "Curriculum Vitae",
-         timeAgo: "1 week ago",
-         x: 1200,
-         y: 300,
-         rotation: 4,
-         zIndex: 3,
          text: (
             <div className="flex flex-col h-full">
                <p className="overflow-y-auto">
-                  Click here to create your account and unlock a world of
-                  possibilities where your wildest dreams can take flight. Join
-                  us today to embark on a journey of self-discovery, creativity,
-                  and endless inspiration—unleash the full potential of your
-                  imagination and turn your aspirations into reality!
+                  Sorry, but we don&apos;t have this page 😭😭😭
                </p>
                <div className="mt-auto">
                   <Button
-                     onClick={() => router.push("/beta")}
+                     onClick={() => router.push("/")}
                      className="w-full mt-4 px-4 py-2 bg-[#FF9999] text-white hover:bg-[#ff8080] transition-colors duration-200"
                      variant="default"
                   >
-                     View CV
+                     Go Back Home
                   </Button>
                </div>
             </div>
@@ -124,4 +90,4 @@ const StickyNotes = () => {
    );
 };
 
-export default StickyNotes;
+export default NotFound;

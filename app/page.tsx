@@ -5,7 +5,6 @@ import StickyNotes from "@/components/ui-engineer/sticky-notes";
 import { Spotlight } from "@/components/aceternity/spotlight-new";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import GradientBackground from "@/components/ui-engineer/gradient-background";
 
 export default function Home() {
    const { resolvedTheme } = useTheme();
@@ -18,7 +17,6 @@ export default function Home() {
    return (
       <div className="relative min-h-screen">
          <Spotlight />
-         <GradientBackground />
          <div className="relative z-10 flex items-center justify-center min-h-screen">
             <div className="fixed top-4 right-4 z-50">
             </div>
@@ -28,7 +26,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center justify-center">
                <div className="mb-9 max-w-7xl mx-auto w-full pt-20 md:pt-0 text-center">
-                  <h1 className="h-40 text-xl md:text-3xl font-bold text-neutral-800">
+                  <h1 className="h-40 text-xl md:text-3xl font-bold text-neutral-600">
                      Hi there! I&apos;m
                      <GradualSpacing
                         className="font-display text-center text-5xl font-bold -tracking-widest text-neutral-900 md:text-7xl md:leading-[5rem]"

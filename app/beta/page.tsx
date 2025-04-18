@@ -20,7 +20,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center justify-center">
                <div className="mb-9 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-0 text-center">
-                  <h1 className="h-40 text-xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-400 to-neutral-900 bg-opacity-50">
+                  <h1 className="h-40 text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-400 to-neutral-900 bg-opacity-50">
                      Hi there! I&apos;m
                      <GradualSpacing
                         className="font-display text-center text-4xl font-bold -tracking-widest  text-black dark:text-white md:text-7xl md:leading-[5rem]"

@@ -8,6 +8,7 @@ const GradientBackground = () => {
   // Danh sách các đường dẫn không muốn hiển thị gradient
   const excludePaths = [
     '/themes',
+    'beta'
     // Thêm các đường dẫn khác vào đây
   ];
 

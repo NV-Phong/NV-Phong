@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { MusicPlayer } from "@/components/ui-engineer/music-player";
+import GradientBackground from "@/components/ui-engineer/gradient-background";
 
 export const metadata: Metadata = {
    title: "NV-Phong",
@@ -31,6 +32,7 @@ export default function RootLayout({
             >
                {children}
                <MusicPlayer />
+               <GradientBackground />
             </ThemeProvider>
             <Analytics />
             <SpeedInsights />
