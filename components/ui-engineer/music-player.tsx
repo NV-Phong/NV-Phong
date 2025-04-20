@@ -10,11 +10,13 @@ import {
    Maximize2,
    Repeat,
    Shuffle,
+   Church,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { ModeToggle } from "../layout/mode-toggle";
+import { SmoothCursor } from "../magicui/smooth-cursor";
 
 export function MusicPlayer() {
    const [isPlaying, setIsPlaying] = useState(false);
@@ -23,6 +25,7 @@ export function MusicPlayer() {
    const [isCollapsed, setIsCollapsed] = useState(true);
    const [isRepeat, setIsRepeat] = useState(false);
    const [isShuffle, setIsShuffle] = useState(false);
+   const [isCursorEnabled, setIsCursorEnabled] = useState(true);
    const audioRef = useRef<HTMLAudioElement>(null);
 
    const tracks = useMemo(() => [
@@ -145,104 +148,115 @@ export function MusicPlayer() {
    );
 
    return (
-      <Card
-         className={`w-full ${isCollapsed ? "max-w-xs" : "max-w-md"} mx-auto fixed bottom-4 right-4 p-3 bg-background z-50`}
-      >
-         <CardContent className="p-4">
-            {isCollapsed ? (
-               <CollapsedView />
-            ) : (
-               <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                     <div className="flex flex-col">
-                        <h2 className="text-lg font-bold truncate">
-                           {tracks[currentTrack].title}
-                        </h2>
-                        <p className="text-sm text-muted-foreground truncate">
-                           {tracks[currentTrack].artist}
-                        </p>
+      <>
+         {isCursorEnabled && <SmoothCursor />}
+         <Card
+            className={`w-full ${isCollapsed ? "max-w-xs" : "max-w-md"} mx-auto fixed bottom-4 right-4 p-3 bg-background z-50`}
+         >
+            <CardContent className="p-4">
+               {isCollapsed ? (
+                  <CollapsedView />
+               ) : (
+                  <div className="space-y-4">
+                     <div className="flex justify-between items-center">
+                        <div className="flex flex-col">
+                           <h2 className="text-lg font-bold truncate">
+                              {tracks[currentTrack].title}
+                           </h2>
+                           <p className="text-sm text-muted-foreground truncate">
+                              {tracks[currentTrack].artist}
+                           </p>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                           <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={() => setIsCursorEnabled(!isCursorEnabled)}
+                              className={isCursorEnabled ? "bg-primary text-primary-foreground" : ""}
+                           >
+                              <Church className="h-3 w-3" />
+                           </Button>
+                           <ModeToggle />
+                           <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={toggleCollapse}
+                           >
+                              <Minimize2 className="h-3 w-3" />
+                           </Button>
+                        </div>
                      </div>
+
                      <div className="flex items-center space-x-2">
-                        <ModeToggle />
+                        <span className="text-xs text-muted-foreground">
+                           {audioRef.current && formatTime(audioRef.current.currentTime)}
+                        </span>
+                        <Slider
+                           value={[progress]}
+                           max={100}
+                           step={1}
+                           className="flex-grow w-full"
+                           onValueChange={handleProgressChange}
+                        />
+                        <span className="text-xs text-muted-foreground">
+                           {audioRef.current && formatTime(audioRef.current.duration)}
+                        </span>
+                     </div>
+                     <div className="flex justify-center items-center space-x-2">
                         <Button
                            variant="outline"
                            size="icon"
-                           onClick={toggleCollapse}
+                           onClick={toggleShuffle}
+                           className={isShuffle ? "bg-primary text-primary-foreground" : ""}
                         >
-                           <Minimize2 className="h-3 w-3" />
+                           <Shuffle className="h-3 w-3" />
+                        </Button>
+                        <Button
+                           variant="outline"
+                           size="icon"
+                           onClick={() => skipTrack(false)}
+                        >
+                           <SkipBack className="h-3 w-3" />
+                        </Button>
+                        <Button
+                           className="bg-primary text-primary-foreground"
+                           variant="outline"
+                           size="icon"
+                           onClick={() => setIsPlaying(!isPlaying)}
+                        >
+                           {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                        </Button>
+                        <Button
+                           variant="outline"
+                           size="icon"
+                           onClick={() => skipTrack(true)}
+                        >
+                           <SkipForward className="h-3 w-3" />
+                        </Button>
+                        <Button
+                           variant="outline"
+                           size="icon"
+                           onClick={toggleRepeat}
+                           className={isRepeat ? "bg-primary text-primary-foreground" : ""}
+                        >
+                           <Repeat className="h-3 w-3" />
                         </Button>
                      </div>
                   </div>
-
-                  <div className="flex items-center space-x-2">
-                     <span className="text-xs text-muted-foreground">
-                        {audioRef.current && formatTime(audioRef.current.currentTime)}
-                     </span>
-                     <Slider
-                        value={[progress]}
-                        max={100}
-                        step={1}
-                        className="flex-grow w-full"
-                        onValueChange={handleProgressChange}
-                     />
-                     <span className="text-xs text-muted-foreground">
-                        {audioRef.current && formatTime(audioRef.current.duration)}
-                     </span>
-                  </div>
-                  <div className="flex justify-center items-center space-x-2">
-                     <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={toggleShuffle}
-                        className={isShuffle ? "bg-primary text-primary-foreground" : ""}
-                     >
-                        <Shuffle className="h-3 w-3" />
-                     </Button>
-                     <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => skipTrack(false)}
-                     >
-                        <SkipBack className="h-3 w-3" />
-                     </Button>
-                     <Button
-                        className="bg-primary text-primary-foreground"
-                        variant="outline"
-                        size="icon"
-                        onClick={() => setIsPlaying(!isPlaying)}
-                     >
-                        {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                     </Button>
-                     <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={() => skipTrack(true)}
-                     >
-                        <SkipForward className="h-3 w-3" />
-                     </Button>
-                     <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={toggleRepeat}
-                        className={isRepeat ? "bg-primary text-primary-foreground" : ""}
-                     >
-                        <Repeat className="h-3 w-3" />
-                     </Button>
-                  </div>
-               </div>
-            )}
-         </CardContent>
-         <audio
-            ref={audioRef}
-            src={tracks[currentTrack].src}
-            onEnded={() => {
-               if (isRepeat) {
-                  audioRef.current?.play();
-               } else {
-                  skipTrack(true);
-               }
-            }}
-         />
-      </Card>
+               )}
+            </CardContent>
+            <audio
+               ref={audioRef}
+               src={tracks[currentTrack].src}
+               onEnded={() => {
+                  if (isRepeat) {
+                     audioRef.current?.play();
+                  } else {
+                     skipTrack(true);
+                  }
+               }}
+            />
+         </Card>
+      </>
    );
 }
