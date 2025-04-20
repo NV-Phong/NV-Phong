@@ -10,13 +10,13 @@ import {
    Maximize2,
    Repeat,
    Shuffle,
-   Church,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { ModeToggle } from "../layout/mode-toggle";
 import { SmoothCursor } from "../magicui/smooth-cursor";
+import Icon from "./Icon";
 
 export function MusicPlayer() {
    const [isPlaying, setIsPlaying] = useState(false);
@@ -174,7 +174,7 @@ export function MusicPlayer() {
                               onClick={() => setIsCursorEnabled(!isCursorEnabled)}
                               className={isCursorEnabled ? "bg-primary text-primary-foreground" : ""}
                            >
-                              <Church className="h-3 w-3" />
+                              <Icon name="cursor-magic-selection-02-solid-standard" size={20}/>
                            </Button>
                            <ModeToggle />
                            <Button
