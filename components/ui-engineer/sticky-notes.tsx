@@ -85,7 +85,7 @@ const StickyNotes = () => {
    };
 
    return (
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden hidden md:block">
          {notes.map((note, index) => (
             <motion.div
                key={note.id}

@@ -164,7 +164,7 @@ export function MusicPlayer() {
          <Card
             className={`w-full ${
                isCollapsed ? "max-w-xs" : "max-w-md"
-            } mx-auto fixed bottom-4 right-4 p-3 bg-background z-50`}
+            } mx-auto fixed bottom-4 right-4 p-3 bg-background z-50 hidden md:block`}
          >
             <CardContent className="p-4">
                {isCollapsed ? (
