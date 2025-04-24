@@ -41,7 +41,7 @@ const StickyNotes = () => {
       },
       {
          id: 4,
-         date: "CV",
+         date: "Curriculum Vitae",
          timeAgo: "1 week ago",
          x: 1200,
          y: 300,

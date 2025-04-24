@@ -25,7 +25,7 @@ export function MusicPlayer() {
    const [isCollapsed, setIsCollapsed] = useState(true);
    const [isRepeat, setIsRepeat] = useState(false);
    const [isShuffle, setIsShuffle] = useState(false);
-   const [isCursorEnabled, setIsCursorEnabled] = useState(true);
+   const [isCursorEnabled, setIsCursorEnabled] = useState(false);
    const audioRef = useRef<HTMLAudioElement>(null);
 
    const tracks = useMemo(() => [

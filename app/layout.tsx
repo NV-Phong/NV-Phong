@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { MusicPlayer } from "@/components/ui-engineer/music-player";
 import GradientBackground from "@/components/ui-engineer/gradient-background";
+import { MagicUIDock } from "@/components/layout/magicui-dock";
 
 export const metadata: Metadata = {
    title: "NV-Phong",
@@ -31,6 +32,7 @@ export default function RootLayout({
                themes={["light", "dark", "pastel-pink"]}
             >
                {children}
+               <MagicUIDock />
                <MusicPlayer />
                <GradientBackground />
             </ThemeProvider>
