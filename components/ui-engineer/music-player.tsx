@@ -2,21 +2,19 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import {
-   Play,
-   Pause,
-   SkipBack,
-   SkipForward,
    Minimize2,
    Maximize2,
    Repeat,
    Shuffle,
+   SkipBack,
+   SkipForward,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { ModeToggle } from "../layout/mode-toggle";
 import { SmoothCursor } from "../magicui/smooth-cursor";
 import Icon from "./Icon";
+import { Button } from "../ui/button";
 
 export function MusicPlayer() {
    const [isPlaying, setIsPlaying] = useState(false);
@@ -28,28 +26,31 @@ export function MusicPlayer() {
    const [isCursorEnabled, setIsCursorEnabled] = useState(false);
    const audioRef = useRef<HTMLAudioElement>(null);
 
-   const tracks = useMemo(() => [
-      {
-         title: "Jenny",
-         artist: "Goodmorning Pancake",
-         src: "music/Jenny.mp3",
-      },
-      {
-         title: "Flowers For a Girl",
-         artist: "Aomori",
-         src: "music/Flowers For a Girl.mp3",
-      },
-      {
-         title: "Past Lives",
-         artist: "sapientdream ",
-         src: "music/Past Lives.mp3",
-      },
-      {
-         title: "Fall Rain",
-         artist: "July ",
-         src: "music/Fall Rain.mp3",
-      },
-   ], []);
+   const tracks = useMemo(
+      () => [
+         {
+            title: "Jenny",
+            artist: "Goodmorning Pancake",
+            src: "music/Jenny.mp3",
+         },
+         {
+            title: "Flowers For a Girl",
+            artist: "Aomori",
+            src: "music/Flowers For a Girl.mp3",
+         },
+         {
+            title: "Past Lives",
+            artist: "sapientdream ",
+            src: "music/Past Lives.mp3",
+         },
+         {
+            title: "Fall Rain",
+            artist: "July ",
+            src: "music/Fall Rain.mp3",
+         },
+      ],
+      []
+   );
 
    useEffect(() => {
       const audio = audioRef.current;
@@ -128,15 +129,25 @@ export function MusicPlayer() {
                </p>
             </div>
             <Button
-               className="bg-primary text-primary-foreground"
+               className="bg-(--selection) text-primary-foreground"
                variant="outline"
                size="icon"
                onClick={() => setIsPlaying(!isPlaying)}
             >
                {isPlaying ? (
-                  <Pause className="h-3 w-3" />
+                  <Icon
+                     styles="solid"
+                     color="white"
+                     name="pause-solid-rounded"
+                     className="dark:invert hover:invert"
+                  />
                ) : (
-                  <Play className="h-3 w-3" />
+                  <Icon
+                     styles="solid"
+                     color="white"
+                     name="play-solid-rounded"
+                     className="dark:invert hover:invert"
+                  />
                )}
             </Button>
             <Button variant="outline" size="icon" onClick={toggleCollapse}>
@@ -151,7 +162,9 @@ export function MusicPlayer() {
       <>
          {isCursorEnabled && <SmoothCursor />}
          <Card
-            className={`w-full ${isCollapsed ? "max-w-xs" : "max-w-md"} mx-auto fixed bottom-4 right-4 p-3 bg-background z-50`}
+            className={`w-full ${
+               isCollapsed ? "max-w-xs" : "max-w-md"
+            } mx-auto fixed bottom-4 right-4 p-3 bg-background z-50`}
          >
             <CardContent className="p-4">
                {isCollapsed ? (
@@ -171,10 +184,19 @@ export function MusicPlayer() {
                            <Button
                               variant="outline"
                               size="icon"
-                              onClick={() => setIsCursorEnabled(!isCursorEnabled)}
-                              className={isCursorEnabled ? "bg-primary text-primary-foreground" : ""}
+                              onClick={() =>
+                                 setIsCursorEnabled(!isCursorEnabled)
+                              }
+                              className={
+                                 isCursorEnabled
+                                    ? "bg-primary text-primary-foreground"
+                                    : ""
+                              }
                            >
-                              <Icon name="cursor-magic-selection-02-solid-standard" size={20}/>
+                              <Icon
+                                 name="cursor-magic-selection-02-solid-standard"
+                                 size={20}
+                              />
                            </Button>
                            <ModeToggle />
                            <Button
@@ -189,7 +211,8 @@ export function MusicPlayer() {
 
                      <div className="flex items-center space-x-2">
                         <span className="text-xs text-muted-foreground">
-                           {audioRef.current && formatTime(audioRef.current.currentTime)}
+                           {audioRef.current &&
+                              formatTime(audioRef.current.currentTime)}
                         </span>
                         <Slider
                            value={[progress]}
@@ -199,7 +222,8 @@ export function MusicPlayer() {
                            onValueChange={handleProgressChange}
                         />
                         <span className="text-xs text-muted-foreground">
-                           {audioRef.current && formatTime(audioRef.current.duration)}
+                           {audioRef.current &&
+                              formatTime(audioRef.current.duration)}
                         </span>
                      </div>
                      <div className="flex justify-center items-center space-x-2">
@@ -207,7 +231,11 @@ export function MusicPlayer() {
                            variant="outline"
                            size="icon"
                            onClick={toggleShuffle}
-                           className={isShuffle ? "bg-primary text-primary-foreground" : ""}
+                           className={
+                              isShuffle
+                                 ? "bg-primary text-primary-foreground"
+                                 : ""
+                           }
                         >
                            <Shuffle className="h-3 w-3" />
                         </Button>
@@ -219,12 +247,26 @@ export function MusicPlayer() {
                            <SkipBack className="h-3 w-3" />
                         </Button>
                         <Button
-                           className="bg-primary text-primary-foreground"
+                           className="bg-(--selection) text-primary-foreground"
                            variant="outline"
                            size="icon"
                            onClick={() => setIsPlaying(!isPlaying)}
                         >
-                           {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                           {isPlaying ? (
+                              <Icon
+                                 styles="solid"
+                                 color="white"
+                                 name="pause-solid-rounded"
+                                 className="dark:invert hover:invert"
+                              />
+                           ) : (
+                              <Icon
+                                 styles="solid"
+                                 color="white"
+                                 name="play-solid-rounded"
+                                 className="dark:invert hover:invert"
+                              />
+                           )}
                         </Button>
                         <Button
                            variant="outline"
@@ -237,7 +279,11 @@ export function MusicPlayer() {
                            variant="outline"
                            size="icon"
                            onClick={toggleRepeat}
-                           className={isRepeat ? "bg-primary text-primary-foreground" : ""}
+                           className={
+                              isRepeat
+                                 ? "bg-primary text-primary-foreground"
+                                 : ""
+                           }
                         >
                            <Repeat className="h-3 w-3" />
                         </Button>

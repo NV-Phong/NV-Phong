@@ -17,7 +17,6 @@ export default function Home() {
       <div className="">
          <div className="flex items-center justify-center z-0 h-screen w-full rounded-md bg-background antialiased bg-grid-white/[0.02] relative overflow-hidden">
             <Spotlight />
-
             <div className="flex flex-col items-center justify-center">
                <div className="mb-9 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-0 text-center">
                   <h1 className="h-40 text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-400 to-neutral-900 bg-opacity-50">

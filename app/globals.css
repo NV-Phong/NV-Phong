@@ -84,6 +84,7 @@ body {
    --sidebar-border: oklch(0.928 0.006 264.531);
    --sidebar-ring: oklch(0.707 0.022 261.325);
    --selection: oklch(0.83 0.1354 129.16);
+   --icon:oklch(0.51 0 0);
 }
 
 .dark {
@@ -118,7 +119,8 @@ body {
    --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
    --sidebar-border: oklch(1 0 0 / 10%);
    --sidebar-ring: oklch(0.551 0.027 264.364);
-   --selection: oklch(0.83 0.1354 129.16);
+   --selection: oklch(0.928 0.006 264.531);
+   --icon:oklch(0.95 0 0);
 }
 
 .pastel-pink {
@@ -162,7 +164,8 @@ body {
    --sidebar-border: oklch(0.928 0.006 264.531);
    --sidebar-ring: oklch(0.707 0.022 261.325);
    --selection: oklch(0.79 0.1226 20.19);
-   --icon:oklch(0.51 0 0);
+   --icon:oklch(0.5 0 0);
+   /* --icon:oklch(0.79 0.1226 20.19); */
 }
 
 @layer base {
@@ -180,12 +183,12 @@ body {
 }
 
 .dark ::selection {
-   background-color: var(--primary);
+   background-color: var(--selection);
    color: var(--primary-foreground);
 }
 
 .pastel-pink ::selection {
-   background-color: var(--primary);
+   background-color: var(--selection);
    color: var(--primary-foreground);
 }
 
