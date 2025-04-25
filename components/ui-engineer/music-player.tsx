@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   Minimize2,
   Maximize2,
@@ -15,6 +15,8 @@ import { ModeToggle } from "../layout/mode-toggle";
 import { SmoothCursor } from "../magicui/smooth-cursor";
 import Icon from "./Icon";
 import { Button } from "../ui/button";
+import Musics from "@/data/musics.json";
+import { Song } from "@/types/song";
 
 export function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,31 +28,7 @@ export function MusicPlayer() {
   const [isCursorEnabled, setIsCursorEnabled] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const tracks = useMemo(
-    () => [
-      {
-        title: "Jenny",
-        artist: "Goodmorning Pancake",
-        src: "music/Jenny.mp3",
-      },
-      {
-        title: "Flowers For a Girl",
-        artist: "Aomori",
-        src: "music/Flowers For a Girl.mp3",
-      },
-      {
-        title: "Past Lives",
-        artist: "sapientdream ",
-        src: "music/Past Lives.mp3",
-      },
-      {
-        title: "Fall Rain",
-        artist: "July ",
-        src: "music/Fall Rain.mp3",
-      },
-    ],
-    [],
-  );
+  const tracks: Song[] = Musics;
 
   useEffect(() => {
     const audio = audioRef.current;
