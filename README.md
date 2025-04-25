@@ -6,15 +6,15 @@
 
 ### I'm NV-Phong
 
-- 🔭 I’m currently working on a Full-Stack web application using React and Node.js
-- 🌱 I’m currently learning NextJS
-- 💬 Ask me about everything
-- 📫 How to reach me: you can connect with me on
-  > [Pinterest](https://www.pinterest.com/pog_03)
-  > or
-  > [Facebook](https://www.facebook.com/phong03032003)
-- 😄 Pronouns: He/Him
-- ⚡ Fun fact: I like to play VSCode
+-  🔭 I’m currently working on a Full-Stack web application using React and Node.js
+-  🌱 I’m currently learning NextJS
+-  💬 Ask me about everything
+-  📫 How to reach me: you can connect with me on
+   > [Pinterest](https://www.pinterest.com/pog_03)
+   > or
+   > [Facebook](https://www.facebook.com/phong03032003)
+-  😄 Pronouns: He/Him
+-  ⚡ Fun fact: I like to play VSCode
 
 ### 🛠️ Technologies and Tools
 
@@ -25,9 +25,9 @@
 
 ### 📂 Featured Projects
 
-- [Task Manager](https://github.com/NV-Phong/TM-Beta): A todolist website
-- [JWT Authentication](https://github.com/NV-Phong/JWT-Authentication): Support [C#] .NET Core and [Java] SpringBoot
-- [HealthCare](https://github.com/NV-Phong/JWT-Authentication): An Application build on NestJS + Flutter
+-  [Task Manager](https://github.com/NV-Phong/TM-Beta): A todolist website
+-  [JWT Authentication](https://github.com/NV-Phong/JWT-Authentication): Support [C#] .NET Core and [Java] SpringBoot
+-  [HealthCare](https://github.com/NV-Phong/JWT-Authentication): An Application build on NestJS + Flutter
 
 ![NV-Phong](https://github-readme-stats.vercel.app/api?username=NV-Phong&show_icons=true&theme=radical)
 
@@ -35,8 +35,8 @@
 
 ### 🔗 Connect with me
 
-- [Pinterest](https://www.pinterest.com/pog_03)
-- [Facebook](https://www.facebook.com/phong03032003)
-- [Figma](https://www.figma.com/@phong03032003)
+-  [Pinterest](https://www.pinterest.com/pog_03)
+-  [Facebook](https://www.facebook.com/phong03032003)
+-  [Figma](https://www.figma.com/@phong03032003)
 
 ![Day by Day](./public/graphics/NV-Phong[Green].png)
