@@ -1,42 +1,42 @@
-![Day by Day](./public/graphics/NV-Phong[Orange].png)
-
 ![Day by Day](./public/graphics/Day-By-Day.gif)
 
-## Hi there 👋
+## HI THERE 👋
 
-### I'm NV-Phong
+### I'M NV-PHONG
 
--  🔭 I’m currently working on a Full-Stack web application using React and Node.js
--  🌱 I’m currently learning NextJS
--  💬 Ask me about everything
--  📫 How to reach me: you can connect with me on
-   > [Pinterest](https://www.pinterest.com/pog_03)
-   > or
-   > [Facebook](https://www.facebook.com/phong03032003)
--  😄 Pronouns: He/Him
--  ⚡ Fun fact: I like to play VSCode
+I'm on a journey to become a Full-Stack developer.With my knowledge of UI/UX design. I enjoy solving
+Front-End problems and creating the best user experience for users.
+I also spend time learning new technologies and best practices to become a better engineer.
+I like to learn about process automation or applying AI to improve work productivity.
 
-### 🛠️ Technologies and Tools
+<div align="center">
+  <a href="https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only">
+    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api?username=NV-Phong&show_icons=true&theme=default#gh-light-mode-only" />
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=NV-Phong&layout=compact&langs_count=8&&theme=default#gh-light-mode-only" /> 
+  </a>
+  <a href="https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only">
+    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api?username=NV-Phong&border_color=4F4F4F&show_icons=true&theme=onedark#gh-dark-mode-only" />
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=NV-Phong&border_color=4F4F4F&layout=compact&langs_count=8&theme=onedark#gh-dark-mode-only" />
+  </a>
+</div>
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
-![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+<!-- ### TECH • STACK
+![React](./public/graphics/react-stroke-rounded.svg)
+![JavaScript](./public/graphics/java-script-solid-rounded.svg)
+![NestJS](./public/graphics/nestjs.svg)
+![NextJS](./public/graphics/icons8-nextjs.svg) -->
 
-### 📂 Featured Projects
-
--  [Task Manager](https://github.com/NV-Phong/TM-Beta): A todolist website
--  [JWT Authentication](https://github.com/NV-Phong/JWT-Authentication): Support [C#] .NET Core and [Java] SpringBoot
--  [HealthCare](https://github.com/NV-Phong/JWT-Authentication): An Application build on NestJS + Flutter
-
-![NV-Phong](https://github-readme-stats.vercel.app/api?username=NV-Phong&show_icons=true&theme=radical)
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=NV-Phong&layout=compact&theme=radical)
-
-### 🔗 Connect with me
-
--  [Pinterest](https://www.pinterest.com/pog_03)
--  [Facebook](https://www.facebook.com/phong03032003)
--  [Figma](https://www.figma.com/@phong03032003)
-
-![Day by Day](./public/graphics/NV-Phong[Green].png)
+### TECH • STACK
+|                       **React**                      |                         **JavaScript**                         |                **NestJS**               |                   **NextJS**                   |
+| :--------------------------------------------------: | :------------------------------------------------------------: | :-------------------------------------: | :--------------------------------------------: |
+| ![React](./public/graphics/react-stroke-rounded.svg) | ![JavaScript](./public/graphics/java-script-solid-rounded.svg) | ![NestJS](./public/graphics/nestjs.svg) | ![NextJS](./public/graphics/icons8-nextjs.svg) |
