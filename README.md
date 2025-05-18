@@ -1,4 +1,4 @@
-![Day by Day](./public/graphics/Day-By-Day.gif)
+![Day by Day](./public/graphics/Day-by-Day.gif)
 
 ## HI THERE 👋
 
@@ -32,7 +32,7 @@ I like to learn about process automation or applying AI to improve work producti
 </div>
 &nbsp; -->
 <p align="center">
-  <img src="https://repobeats.axiom.co/api/embed/e16675cee69e8529e528fd3194e077594b03fd5a.svg" />
+  <img src="https://repobeats.axiom.co/api/embed/2f7cf7ed1423dca2cf8e054456b8b7be5e813a1e.svg" />
 </p>
 
 ### TECH • STACK
@@ -80,4 +80,3 @@ I like to learn about process automation or applying AI to improve work producti
     <td align="center"><img src="./public/graphics/tech-stack/icons8-aws.svg" alt="AWS" width="24"/></td> -->
   </tr>
 </table>
-
