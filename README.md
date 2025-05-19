@@ -1,11 +1,11 @@
 <picture>
   <source
-    srcset="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=dark"
-    media="(prefers-color-scheme: dark)"
-  />
-  <source
     srcset="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+  />
+  <source
+    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Dark.gif?raw=true"
+    media="(prefers-color-scheme: dark)"
   />
   <img src="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true" />
 </picture>
