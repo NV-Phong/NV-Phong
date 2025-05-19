@@ -1,4 +1,14 @@
-![Day by Day](./public/graphics/Day-by-Day.gif)
+<picture>
+  <source
+    srcset="https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=dark"
+    media="(prefers-color-scheme: dark)"
+  />
+  <source
+    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true"
+    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+  />
+  <img src="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true" />
+</picture>
 
 ## HI THERE 👋
 
@@ -9,7 +19,8 @@ Front-End problems and creating the best user experience for users.
 I also spend time learning new technologies and best practices to become a better engineer.
 I like to learn about process automation or applying AI to improve work productivity.
 
-### ACTIVITY 
+### ACTIVITY
+
 <!-- <div align="center">
   <a href="https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only">
     <img height="200" align="center" src="https://github-readme-stats.vercel.app/api?username=NV-Phong&show_icons=true&theme=default#gh-light-mode-only" />
@@ -18,7 +29,7 @@ I like to learn about process automation or applying AI to improve work producti
     &nbsp;
     &nbsp;
     &nbsp;
-    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=NV-Phong&layout=compact&langs_count=8&&theme=default#gh-light-mode-only" /> 
+    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=NV-Phong&layout=compact&langs_count=8&&theme=default#gh-light-mode-only" />
   </a>
   <a href="https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only">
     <img height="200" align="center" src="https://github-readme-stats.vercel.app/api?username=NV-Phong&border_color=4F4F4F&show_icons=true&theme=onedark#gh-dark-mode-only" />
@@ -36,6 +47,7 @@ I like to learn about process automation or applying AI to improve work producti
 </p>
 
 ### TECH • STACK
+
 <table cellpadding="10" cellspacing="0" align="center">
   <tr>
     <td colspan="5" align="center"><strong>LANGUAGE</strong></td>
