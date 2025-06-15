@@ -8,7 +8,7 @@ const GradientBackground = () => {
    const excludePaths = ["/themes", "/beta", "/ui-engineer", "/experience"];
 
    const shouldShowGradient = !excludePaths.some((path) =>
-      pathname.startsWith(path),
+      pathname.startsWith(path)
    );
 
    if (!shouldShowGradient) {
