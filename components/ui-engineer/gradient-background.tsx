@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 const GradientBackground = () => {
    const pathname = usePathname();
 
-   const excludePaths = ["/themes", "/beta", "/ui-engineer", "/experience"];
+   const excludePaths = ["/themes", "/beta", "/ui-engineer", "/experience", "/"];
 
    const shouldShowGradient = !excludePaths.some((path) =>
       pathname.startsWith(path)

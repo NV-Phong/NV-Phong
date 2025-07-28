@@ -38,8 +38,7 @@ export default function Home() {
                      behind backend systems and I find joy in connecting the
                      two. Beyond the stack, I&apos;m also exploring how AI and
                      automation can streamline development and enhance the way
-                     we build and use software. Here are my core technical
-                     skills:
+                     we build and use software.
                   </p>
                </div>
             </div>

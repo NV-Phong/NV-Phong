@@ -8,14 +8,15 @@ import GradientBackground from "@/components/ui-engineer/gradient-background";
 import { MagicUIDock } from "@/components/layout/magicui-dock";
 import { Spotlight } from "@/components/aceternity/spotlight-new";
 import { Tomorrow } from "next/font/google";
+import { ContributionGraphProvider } from "@/context/cg-context";
 
 const tomorrow = Tomorrow({
-   subsets: ['latin'],
-   variable: '--font-tomorrow',
-   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-   style: ['normal', 'italic'],
-   display: 'swap',
- });
+   subsets: ["latin"],
+   variable: "--font-tomorrow",
+   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+   style: ["normal", "italic"],
+   display: "swap",
+});
 
 export const metadata: Metadata = {
    title: "NV-Phong",
@@ -41,11 +42,13 @@ export default function RootLayout({
                disableTransitionOnChange
                themes={["light", "dark", "pastel-pink"]}
             >
-               <Spotlight />
-               {children}
-               <MagicUIDock />
-               <MusicPlayer />
-               <GradientBackground />
+               <ContributionGraphProvider>
+                  <Spotlight />
+                  {children}
+                  <MagicUIDock />
+                  <MusicPlayer />
+                  <GradientBackground />
+               </ContributionGraphProvider>
             </ThemeProvider>
             <Analytics />
             <SpeedInsights />
