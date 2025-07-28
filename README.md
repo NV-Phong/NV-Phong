@@ -14,10 +14,7 @@
 
 ### I'M NV-PHONG
 
-I'm on a journey to become a Full-Stack developer.With my knowledge of UI/UX design. I enjoy solving
-Front-End problems and creating the best user experience for users.
-I also spend time learning new technologies and best practices to become a better engineer.
-I like to learn about process automation or applying AI to improve work productivity.
+I'm on a journey to become a software engineer who builds thoughtful, scalable digital experiences. I’m drawn to both the elegance of user interfaces and the logic behind backend systems and I find joy in connecting the two. Beyond the stack, I’m also exploring how AI and automation can streamline development and enhance the way we build and use software.
 
 ### ACTIVITY
 
@@ -43,7 +40,7 @@ I like to learn about process automation or applying AI to improve work producti
 </div>
 &nbsp; -->
 <p align="center">
-  <img src="https://repobeats.axiom.co/api/embed/2f7cf7ed1423dca2cf8e054456b8b7be5e813a1e.svg" />
+  <img src="https://repobeats.axiom.co/api/embed/e16675cee69e8529e528fd3194e077594b03fd5a.svg" />
 </p>
 
 ### TECH • STACK

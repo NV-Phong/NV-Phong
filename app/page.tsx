@@ -32,13 +32,14 @@ export default function Home() {
                      <br />
                   </h1>
                   <p className="font-normal text-base text-neutral-700 max-w-3xl mx-auto">
-                     I&apos;m on a journey to become a Full-Stack developer.
-                     With my knowledge of UI/UX design. I enjoy solving
-                     Front-End problems and creating the best user experience
-                     for users. I also spend time learning new technologies and
-                     best practices to become a better engineer. I like to learn
-                     about process automation or applying AI to improve work
-                     productivity.
+                     I&apos;m on a journey to become a software engineer who
+                     builds thoughtful, scalable digital experiences. I&apos;m drawn
+                     to both the elegance of user interfaces and the logic
+                     behind backend systems and I find joy in connecting the
+                     two. Beyond the stack, I&apos;m also exploring how AI and
+                     automation can streamline development and enhance the way
+                     we build and use software. Here are my core technical
+                     skills:
                   </p>
                </div>
             </div>
