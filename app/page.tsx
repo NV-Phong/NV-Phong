@@ -18,7 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React, { useState } from "react";
 
 export default function Home() {
-   const [currentTab, setCurrentTab] = useState("calendar");
+   const [currentTab, setCurrentTab] = useState("overview");
 
    return (
       <div className="pt-20">
@@ -46,14 +46,18 @@ export default function Home() {
                <Tabs defaultValue={currentTab} onValueChange={setCurrentTab}>
                   <div className="flex justify-center">
                      <TabsList className="bg-primary/15 border border-primary/20">
+                        <TabsTrigger value="overview" className="text-primary">
+                           Overview
+                        </TabsTrigger>
                         <TabsTrigger value="calendar" className="text-primary">
                            Calendar
                         </TabsTrigger>
-                        <TabsTrigger value="graph" className="text-primary">
-                           Graph
-                        </TabsTrigger>
                      </TabsList>
                   </div>
+                  
+                  <TabsContent value="overview" className="flex justify-center">
+                     <ContributionGraph />
+                  </TabsContent>
 
                   <TabsContent value="calendar" className="flex justify-center">
                      <Card className="w-xl">
@@ -90,9 +94,6 @@ export default function Home() {
                      </Card>
                   </TabsContent>
 
-                  <TabsContent value="graph" className="flex justify-center">
-                     <ContributionGraph />
-                  </TabsContent>
                </Tabs>
             </div>
          </div>
