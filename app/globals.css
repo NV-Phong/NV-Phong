@@ -82,15 +82,16 @@ body {
 :root {
    --radius: 0.75rem;
    --background: oklch(1 0 0);
-   --foreground: oklch(0.13 0.028 261.692);
-   --card: oklch(1 0 0);
+   --foreground: oklch(39.418% 0.00004 271.152);
+   /* --card: oklch(1 0 0); */
+   --card: oklch(99.071% 0.02089 127.559);;
    --card-foreground: oklch(0.13 0.028 261.692);
    --popover: oklch(1 0 0);
    --popover-foreground: oklch(0.13 0.028 261.692);
    /* --primary: oklch(0.21 0.034 264.665); */
    --primary: oklch(0.83 0.1354 129.16);
    --primary-foreground: oklch(0.985 0.002 247.839);
-   --primary-foreground-darker: oklch(0.6921 0.1354 129.16);
+   --primary-foreground-darker: oklch(56.093% 0.09821 129.522);
    --secondary: oklch(0.967 0.003 264.542);
    --secondary-foreground: oklch(0.21 0.034 264.665);
    --muted: oklch(0.967 0.003 264.542);
@@ -116,6 +117,13 @@ body {
    --sidebar-ring: oklch(0.707 0.022 261.325);
    --selection: oklch(0.83 0.1354 129.16);
    --icon: oklch(0.51 0 0);
+
+   --pastel-1: oklch(98.668% 0.03058 127.14);
+   --pastel-2: oklch(94.632% 0.15443 124.376);
+   --pastel-3: oklch(0.83 0.1354 129.16);
+   --pastel-4: oklch(85.783% 0.11842 124.696);
+   --pastel-5: oklch(75.78% 0.10381 137.017);
+   --pastel-6: oklch(84.778% 0.16411 128.346);
 }
 
 .dark {
@@ -155,21 +163,29 @@ body {
    --sidebar-ring: oklch(0.551 0.027 264.364);
    --selection: oklch(0.928 0.006 264.531);
    --icon: oklch(0.95 0 0);
+
+   --pastel-1: oklch(0% 0 0);
+   --pastel-2: oklch(23.503% 0.00003 271.152);
+   --pastel-3: oklch(51.028% 0.00006 271.152);
+   --pastel-4: oklch(38.666% 0.00004 271.152);
+   --pastel-5: oklch(23.075% 0.00003 271.152);
+   --pastel-6: oklch(37.53% 0.00004 271.152);
 }
 
 .pastel-pink {
    --radius: 0.7rem;
    --background: oklch(1 0 0);
    /* --background: oklch(0.99 0.0142 84.58); */
-   --foreground: oklch(0.13 0.028 261.692);
-   --card: oklch(1 0 0);
+   --foreground: oklch(39.418% 0.00004 271.152);
+   /* --card: oklch(1 0 0); */
+   --card: oklch(0.9862 0.0142 84.58);
    --card-foreground: oklch(0.13 0.028 261.692);
    --popover: oklch(1 0 0);
    --popover-foreground: oklch(0.13 0.028 261.692);
    /* --primary: oklch(0.21 0.034 264.665); */
    --primary: oklch(0.79 0.1226 20.19);
    --primary-foreground: oklch(0.985 0.002 247.839);
-   --primary-foreground-darker: oklch(0.6043 0.1226 20.19);
+   --primary-foreground-darker: oklch(51.536% 0.10299 20.466);
    --secondary: oklch(0.967 0.003 264.542);
    --secondary-foreground: oklch(0.21 0.034 264.665);
    --muted: oklch(0.967 0.003 264.542);
@@ -201,7 +217,33 @@ body {
    --selection: oklch(0.79 0.1226 20.19);
    --icon: oklch(0.5 0 0);
    /* --icon:oklch(0.79 0.1226 20.19); */
+
+   --pastel-1: oklch(0.9747 0.0192 72.58);
+   --pastel-2: oklch(0.7216 0.1903 50.15);
+   --pastel-3: oklch(0.7116 0.1812 22.84);
+   --pastel-4: oklch(0.8241 0.1288 64.69);
+   --pastel-5: oklch(0.789 0.1357 50.47);
+   --pastel-6: oklch(0.7216 0.1903 50.15);
 }
+
+.bg-pastel-1 {
+   background-color: var(--pastel-1);
+ }
+ .bg-pastel-2 {
+   background-color: var(--pastel-2);
+ }
+ .bg-pastel-3 {
+   background-color: var(--pastel-3);
+ }
+ .bg-pastel-4 {
+   background-color: var(--pastel-4);
+ }
+ .bg-pastel-5 {
+   background-color: var(--pastel-5);
+ }
+ .bg-pastel-6 {
+   background-color: var(--pastel-6);
+ }
 
 @layer base {
    * {
@@ -271,66 +313,65 @@ body {
    animation: animation-path;
    animation-iteration-count: infinite;
    animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
- }
- 
- .cpu-line-1 {
+}
+
+.cpu-line-1 {
    offset-path: path("M 10 20 h 79.5 q 5 0 5 5 v 30");
    animation-duration: 5s;
    animation-delay: 1s;
- }
- 
- .cpu-line-2 {
+}
+
+.cpu-line-2 {
    offset-path: path("M 180 10 h -69.7 q -5 0 -5 5 v 40");
    animation-delay: 6s;
    animation-duration: 2s;
- }
- 
- .cpu-line-3 {
+}
+
+.cpu-line-3 {
    offset-path: path("M 130 20 v 21.8 q 0 5 -5 5 h -25");
    animation-delay: 4s;
    animation-duration: 6s;
- }
- 
- .cpu-line-4 {
+}
+
+.cpu-line-4 {
    offset-path: path("M 170 80 v -21.8 q 0 -5 -5 -5 h -65");
    animation-delay: 3s;
    animation-duration: 3s;
- }
- 
- .cpu-line-5 {
+}
+
+.cpu-line-5 {
    offset-path: path(
-     "M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -35"
+      "M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -35"
    );
    animation-delay: 9s;
    animation-duration: 4s;
- }
- 
- .cpu-line-6 {
+}
+
+.cpu-line-6 {
    offset-path: path("M 94.8 95 v -46");
    animation-delay: 3s;
    animation-duration: 7s;
- }
- 
- .cpu-line-7 {
+}
+
+.cpu-line-7 {
    offset-path: path(
-     "M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 28"
+      "M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 28"
    );
    animation-delay: 4s;
    animation-duration: 4s;
- }
- 
- .cpu-line-8 {
+}
+
+.cpu-line-8 {
    offset-path: path("M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 35");
    animation-delay: 3s;
    animation-duration: 3s;
- }
- 
- @keyframes animation-path {
+}
+
+@keyframes animation-path {
    0% {
-     offset-distance: 0%;
+      offset-distance: 0%;
    }
    100% {
-     offset-distance: 100%;
+      offset-distance: 100%;
    }
- }
- 
+}

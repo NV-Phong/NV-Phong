@@ -31,7 +31,7 @@ const StickyNotes = () => {
       },
       {
          id: 3,
-         date: "Jun 15",
+         date: "Avatar",
          timeAgo: "2 weeks ago",
          x: 1070,
          y: 200,
@@ -41,7 +41,7 @@ const StickyNotes = () => {
       },
       {
          id: 4,
-         date: "Resume",
+         date: "About Me",
          timeAgo: "1 week ago",
          x: 1200,
          y: 300,
@@ -49,17 +49,19 @@ const StickyNotes = () => {
          zIndex: 3,
          text: (
             <div className="flex flex-col h-full">
-               <p className="overflow-y-auto">
-                  Click here to create your account and unlock a world of
-                  possibilities where your wildest dreams can take flight. Join
-                  us today to embark on a journey of self-discovery, creativity,
-                  and endless inspiration—unleash the full potential of your
-                  imagination and turn your aspirations into reality!
+               <p className="overflow-y-auto !scroll-bar-thin">
+                  I&apos;m on a journey to become a software engineer who
+                  builds thoughtful, scalable digital experiences. I&apos;m
+                  drawn to both the elegance of user interfaces and the logic
+                  behind backend systems and I find joy in connecting the
+                  two. Beyond the stack, I&apos;m also exploring how AI and
+                  automation can streamline development and enhance the way
+                  we build and use software.
                </p>
                <div className="mt-auto">
                   <Button
                      onClick={() => router.push("/resume")}
-                     className="w-full mt-4 px-4 py-2 bg-[#FF9999] text-white hover:bg-[#ff8080] transition-colors duration-200"
+                     className="w-full mt-4 px-4 py-2 bg-primary transition-colors duration-200"
                      variant="default"
                   >
                      View Resume
