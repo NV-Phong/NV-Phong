@@ -7,6 +7,15 @@ import { MusicPlayer } from "@/components/ui-engineer/music-player";
 import GradientBackground from "@/components/ui-engineer/gradient-background";
 import { MagicUIDock } from "@/components/layout/magicui-dock";
 import { Spotlight } from "@/components/aceternity/spotlight-new";
+import { Tomorrow } from "next/font/google";
+
+const tomorrow = Tomorrow({
+   subsets: ['latin'],
+   variable: '--font-tomorrow',
+   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+   style: ['normal', 'italic'],
+   display: 'swap',
+ });
 
 export const metadata: Metadata = {
    title: "NV-Phong",
@@ -21,7 +30,7 @@ export default function RootLayout({
    return (
       <html
          lang="en"
-         className="scrollbar-hide selection:bg"
+         className={`${tomorrow.variable} antialiased scrollbar-hide selection:bg`}
          suppressHydrationWarning
       >
          <body>

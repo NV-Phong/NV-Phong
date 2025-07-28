@@ -11,6 +11,7 @@ body {
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+   --font-tomorrow: var(--font-tomorrow);
    --color-background: var(--background);
    --color-foreground: var(--foreground);
    --font-sans: var(--font-geist-sans);
