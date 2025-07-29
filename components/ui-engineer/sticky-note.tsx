@@ -1,11 +1,13 @@
 "use client";
 
+import type React from "react";
+
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface StickyNoteProps {
-   text?: ReactNode; // Changed from string to ReactNode
+   text?: ReactNode;
    date?: string;
    timeAgo?: string;
    initialX: number;
@@ -36,6 +38,12 @@ const StickyNote = ({
    const x = useMotionValue(initialX);
    const y = useMotionValue(initialY);
 
+   // Cập nhật vị trí khi initialX, initialY thay đổi
+   useEffect(() => {
+      x.set(initialX);
+      y.set(initialY);
+   }, [initialX, initialY, x, y]);
+
    // Tăng stiffness và damping để giảm hiệu ứng đàn hồi
    const springConfig = { damping: 50, stiffness: 800 };
    const scaleMotion = useSpring(1, springConfig);
@@ -55,10 +63,11 @@ const StickyNote = ({
          }
       };
 
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-         document.removeEventListener("mousedown", handleClickOutside);
-      };
+      if (isExpanded) {
+         document.addEventListener("mousedown", handleClickOutside);
+         return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
+      }
    }, [isExpanded]);
 
    const handleExpandClick = (e: React.MouseEvent) => {
@@ -185,9 +194,10 @@ const StickyNote = ({
             setIsDragging(true);
             onDragStart?.();
          }}
-         onDragEnd={(event, info) => {
+         onDragEnd={() => {
             setIsDragging(false);
-            onDragEnd?.(info.point.x, info.point.y);
+            // Sử dụng motion values thực tế thay vì info.point
+            onDragEnd?.(x.get(), y.get());
          }}
          whileHover={{
             scale: isDragging ? 1.02 : isExpanded ? 1.2 : 1.01,
