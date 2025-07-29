@@ -1,20 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import type React from "react";
+
+import { useState, useEffect } from "react";
 import StickyNote from "./sticky-note";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
+type EdgePosition =
+   | "top-left"
+   | "top-right"
+   | "bottom-left"
+   | "bottom-right"
+   | "center-left"
+   | "center-right"
+   | "top-center"
+   | "bottom-center";
+
+interface NoteData {
+   id: number;
+   date: string;
+   timeAgo: string;
+   edge: EdgePosition;
+   offsetX: number; // Offset từ edge position
+   offsetY: number; // Offset từ edge position
+   rotation: number;
+   zIndex: number;
+   text: React.ReactNode;
+}
+
 const StickyNotes = () => {
    const router = useRouter();
-   const [notes, setNotes] = useState([
+   const [screenDimensions, setScreenDimensions] = useState({
+      width: 0,
+      height: 0,
+   });
+   const [mounted, setMounted] = useState(false);
+
+   const [notes, setNotes] = useState<NoteData[]>([
       {
          id: 1,
          date: "Jun 12",
          timeAgo: "1 month ago",
-         x: 100,
-         y: 200,
+         edge: "top-left",
+         offsetX: 100,
+         offsetY: 200,
          rotation: -5,
          zIndex: 0,
          text: "Hôm nay tôi bắt đầu học React và Next.js. Tôi thấy rất thú vị với những khái niệm mới như Server Components và App Router. Hy vọng sẽ sớm làm chủ được framework này.",
@@ -23,8 +54,9 @@ const StickyNotes = () => {
          id: 2,
          date: "Today",
          timeAgo: "just now",
-         x: 200,
-         y: 350,
+         edge: "center-left",
+         offsetX: 200,
+         offsetY: -40,
          rotation: 3,
          zIndex: 1,
          text: "Cần hoàn thành dự án portfolio trong tuần này. Tasks:\n- Thiết kế UI/UX\n- Implement các components\n- Tối ưu performance\n- Deploy lên Vercel",
@@ -33,8 +65,9 @@ const StickyNotes = () => {
          id: 3,
          date: "Avatar",
          timeAgo: "2 weeks ago",
-         x: 1070,
-         y: 200,
+         edge: "top-right",
+         offsetX: -465,
+         offsetY: 200,
          rotation: -2,
          zIndex: 2,
          text: "Đã học được cách sử dụng Framer Motion để tạo animations. Thư viện này rất powerful và dễ sử dụng. Có thể áp dụng vào nhiều dự án trong tương lai.",
@@ -43,20 +76,21 @@ const StickyNotes = () => {
          id: 4,
          date: "About Me",
          timeAgo: "1 week ago",
-         x: 1200,
-         y: 300,
+         edge: "center-right",
+         offsetX: -335,
+         offsetY: -100,
          rotation: 4,
          zIndex: 3,
          text: (
             <div className="flex flex-col h-full">
                <p className="overflow-y-auto">
-                  I&apos;m on a journey to become a software engineer who
-                  builds thoughtful, scalable digital experiences. I&apos;m
-                  drawn to both the elegance of user interfaces and the logic
-                  behind backend systems and I find joy in connecting the
-                  two. Beyond the stack, I&apos;m also exploring how AI and
-                  automation can streamline development and enhance the way
-                  we build and use software.
+                  I&apos;m on a journey to become a software engineer who builds
+                  thoughtful, scalable digital experiences. I&apos;m drawn to
+                  both the elegance of user interfaces and the logic behind
+                  backend systems and I find joy in connecting the two. Beyond
+                  the stack, I&apos;m also exploring how AI and automation can
+                  streamline development and enhance the way we build and use
+                  software.
                </p>
                <div className="mt-auto">
                   <Button
@@ -72,6 +106,77 @@ const StickyNotes = () => {
       },
    ]);
 
+   // Cập nhật kích thước màn hình và mounted state
+   useEffect(() => {
+      setMounted(true);
+
+      const updateScreenDimensions = () => {
+         setScreenDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+         });
+      };
+
+      updateScreenDimensions();
+      window.addEventListener("resize", updateScreenDimensions);
+
+      return () => window.removeEventListener("resize", updateScreenDimensions);
+   }, []);
+
+   // Tính toán vị trí dựa trên edge và offset
+   const calculatePosition = (
+      edge: EdgePosition,
+      offsetX: number,
+      offsetY: number
+   ) => {
+      const { width, height } = screenDimensions;
+
+      if (width === 0 || height === 0) return { x: 0, y: 0 };
+
+      let baseX = 0;
+      let baseY = 0;
+
+      switch (edge) {
+         case "top-left":
+            baseX = 0;
+            baseY = 0;
+            break;
+         case "top-right":
+            baseX = width;
+            baseY = 0;
+            break;
+         case "bottom-left":
+            baseX = 0;
+            baseY = height;
+            break;
+         case "bottom-right":
+            baseX = width;
+            baseY = height;
+            break;
+         case "center-left":
+            baseX = 0;
+            baseY = height / 2;
+            break;
+         case "center-right":
+            baseX = width;
+            baseY = height / 2;
+            break;
+         case "top-center":
+            baseX = width / 2;
+            baseY = 0;
+            break;
+         case "bottom-center":
+            baseX = width / 2;
+            baseY = height;
+            break;
+      }
+
+      return {
+         x: baseX + offsetX,
+         y: baseY + offsetY,
+      };
+   };
+
    const handleDragStart = (id: number) => () => {
       const draggedNote = notes.find((note) => note.id === id);
       if (!draggedNote) return;
@@ -80,49 +185,141 @@ const StickyNotes = () => {
       setNotes([...otherNotes, draggedNote]);
    };
 
-   const handleDragEnd = (id: number) => (x: number, y: number) => {
+   const handleDragEnd = (id: number) => (dragX: number, dragY: number) => {
+      // Tính toán edge position mới dựa trên vị trí thực tế của element
+      const { width, height } = screenDimensions;
+      if (width === 0 || height === 0) return;
+
+      // Sử dụng vị trí thực tế từ motion values
+      const actualX = dragX;
+      const actualY = dragY;
+
+      let newEdge: EdgePosition = "top-left";
+      let newOffsetX = actualX;
+      let newOffsetY = actualY;
+
+      // Xác định edge gần nhất dựa trên vị trí thực tế
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const quarterX = width / 4;
+      const quarterY = height / 4;
+
+      // Logic chi tiết hơn để xác định edge
+      if (actualX < quarterX) {
+         if (actualY < quarterY) {
+            newEdge = "top-left";
+            newOffsetX = actualX;
+            newOffsetY = actualY;
+         } else if (actualY > height - quarterY) {
+            newEdge = "bottom-left";
+            newOffsetX = actualX;
+            newOffsetY = actualY - height;
+         } else {
+            newEdge = "center-left";
+            newOffsetX = actualX;
+            newOffsetY = actualY - centerY;
+         }
+      } else if (actualX > width - quarterX) {
+         if (actualY < quarterY) {
+            newEdge = "top-right";
+            newOffsetX = actualX - width;
+            newOffsetY = actualY;
+         } else if (actualY > height - quarterY) {
+            newEdge = "bottom-right";
+            newOffsetX = actualX - width;
+            newOffsetY = actualY - height;
+         } else {
+            newEdge = "center-right";
+            newOffsetX = actualX - width;
+            newOffsetY = actualY - centerY;
+         }
+      } else {
+         if (actualY < quarterY) {
+            newEdge = "top-center";
+            newOffsetX = actualX - centerX;
+            newOffsetY = actualY;
+         } else if (actualY > height - quarterY) {
+            newEdge = "bottom-center";
+            newOffsetX = actualX - centerX;
+            newOffsetY = actualY - height;
+         } else {
+            // Trung tâm - chọn edge gần nhất
+            if (actualX < centerX) {
+               newEdge = "center-left";
+               newOffsetX = actualX;
+               newOffsetY = actualY - centerY;
+            } else {
+               newEdge = "center-right";
+               newOffsetX = actualX - width;
+               newOffsetY = actualY - centerY;
+            }
+         }
+      }
+
       setNotes(
-         notes.map((note) => (note.id === id ? { ...note, x, y } : note)),
+         notes.map((note) =>
+            note.id === id
+               ? {
+                    ...note,
+                    edge: newEdge,
+                    offsetX: newOffsetX,
+                    offsetY: newOffsetY,
+                 }
+               : note
+         )
       );
    };
 
+   // Không render cho đến khi mounted
+   if (!mounted) {
+      return null;
+   }
+
    return (
       <div className="absolute inset-0 overflow-hidden hidden md:block pointer-events-none">
-         {notes.map((note, index) => (
-            <motion.div
-               key={note.id}
-               className="pointer-events-auto"
-               initial={{
-                  opacity: 0,
-                  y: 100,
-                  scale: 0.8,
-                  rotate: note.rotation,
-               }}
-               animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  rotate: note.rotation,
-               }}
-               transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: "easeOut",
-               }}
-            >
-               <StickyNote
-                  date={note.date}
-                  timeAgo={note.timeAgo}
-                  text={note.text}
-                  initialX={note.x}
-                  initialY={note.y}
-                  rotation={note.rotation}
-                  zIndex={note.zIndex}
-                  onDragStart={handleDragStart(note.id)}
-                  onDragEnd={handleDragEnd(note.id)}
-               />
-            </motion.div>
-         ))}
+         {notes.map((note, index) => {
+            const position = calculatePosition(
+               note.edge,
+               note.offsetX,
+               note.offsetY
+            );
+
+            return (
+               <motion.div
+                  key={note.id}
+                  className="pointer-events-auto"
+                  initial={{
+                     opacity: 0,
+                     y: 100,
+                     scale: 0.8,
+                     rotate: note.rotation,
+                  }}
+                  animate={{
+                     opacity: 1,
+                     y: 0,
+                     scale: 1,
+                     rotate: note.rotation,
+                  }}
+                  transition={{
+                     duration: 0.5,
+                     delay: index * 0.1,
+                     ease: "easeOut",
+                  }}
+               >
+                  <StickyNote
+                     date={note.date}
+                     timeAgo={note.timeAgo}
+                     text={note.text}
+                     initialX={position.x}
+                     initialY={position.y}
+                     rotation={note.rotation}
+                     zIndex={note.zIndex}
+                     onDragStart={handleDragStart(note.id)}
+                     onDragEnd={handleDragEnd(note.id)}
+                  />
+               </motion.div>
+            );
+         })}
       </div>
    );
 };
