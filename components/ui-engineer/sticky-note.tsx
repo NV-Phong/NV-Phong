@@ -160,7 +160,7 @@ const StickyNote = ({
    return (
       <motion.div
          ref={noteRef}
-         className={`absolute p-6 cursor-pointer bg-card rounded-2xl shadow-lg touch-none flex flex-col ${
+         className={`absolute p-6 cursor-grab bg-card rounded-2xl shadow-lg touch-none flex flex-col ${
             isExpanded ? "w-96 h-96" : "w-64 h-64"
          }`}
          style={{

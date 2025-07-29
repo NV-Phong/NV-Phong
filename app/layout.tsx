@@ -5,7 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { MusicPlayer } from "@/components/ui-engineer/music-player";
 import GradientBackground from "@/components/ui-engineer/gradient-background";
-import { MagicUIDock } from "@/components/layout/magicui-dock";
+// import { MagicUIDock } from "@/components/layout/magicui-dock";
 import { Spotlight } from "@/components/aceternity/spotlight-new";
 import { Tomorrow } from "next/font/google";
 import { ContributionGraphProvider } from "@/context/cg-context";
@@ -45,7 +45,7 @@ export default function RootLayout({
                <ContributionGraphProvider>
                   <Spotlight />
                   {children}
-                  <MagicUIDock />
+                  {/* <MagicUIDock /> */}
                   <MusicPlayer />
                   <GradientBackground />
                </ContributionGraphProvider>

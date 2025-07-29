@@ -49,7 +49,7 @@ const StickyNotes = () => {
          zIndex: 3,
          text: (
             <div className="flex flex-col h-full">
-               <p className="overflow-y-auto !scroll-bar-thin">
+               <p className="overflow-y-auto">
                   I&apos;m on a journey to become a software engineer who
                   builds thoughtful, scalable digital experiences. I&apos;m
                   drawn to both the elegance of user interfaces and the logic
@@ -87,10 +87,11 @@ const StickyNotes = () => {
    };
 
    return (
-      <div className="absolute inset-0 overflow-hidden hidden md:block">
+      <div className="absolute inset-0 overflow-hidden hidden md:block pointer-events-none">
          {notes.map((note, index) => (
             <motion.div
                key={note.id}
+               className="pointer-events-auto"
                initial={{
                   opacity: 0,
                   y: 100,

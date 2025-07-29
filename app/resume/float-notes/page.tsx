@@ -23,10 +23,10 @@ export default function Home() {
 
             <div className="flex flex-col items-center justify-center">
                <div className="mb-9 max-w-7xl mx-auto w-full pt-20 md:pt-0 text-center">
-                  <h1 className="h-40 text-xl md:text-3xl font-bold text-neutral-600">
+                  <h1 className="h-40 text-xl md:text-3xl font-bold text-foreground/50">
                      Hi there! I&apos;m
                      <GradualSpacing
-                        className="font-display text-center text-5xl font-bold -tracking-widest text-neutral-900 md:text-7xl md:leading-[5rem]"
+                        className="font-display text-center text-5xl font-bold -tracking-widest text-foreground md:text-7xl md:leading-[5rem]"
                         text="Nguyen Van Phong"
                      />
                      <br />
