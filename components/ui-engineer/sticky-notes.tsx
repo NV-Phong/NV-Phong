@@ -3,6 +3,7 @@
 import type React from "react";
 
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import StickyNote from "./sticky-note";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -33,6 +34,7 @@ interface NoteData {
 
 const StickyNotes = () => {
    const router = useRouter();
+   const { theme } = useTheme();
    const [screenDimensions, setScreenDimensions] = useState({
       width: 0,
       height: 0,
@@ -49,7 +51,13 @@ const StickyNotes = () => {
          offsetY: 200,
          rotation: -5,
          zIndex: 0,
-         text: "Hôm nay tôi bắt đầu học React và Next.js. Tôi thấy rất thú vị với những khái niệm mới như Server Components và App Router. Hy vọng sẽ sớm làm chủ được framework này.",
+         text: (
+            <p className="text-foreground">
+               Hôm nay tôi bắt đầu học React và Next.js. Tôi thấy rất thú vị với
+               những khái niệm mới như Server Components và App Router. Hy vọng
+               sẽ sớm làm chủ được framework này.
+            </p>
+         ),
       },
       {
          id: 2,
@@ -60,7 +68,15 @@ const StickyNotes = () => {
          offsetY: -40,
          rotation: 3,
          zIndex: 1,
-         text: "Cần hoàn thành dự án portfolio trong tuần này. Tasks:\n- Thiết kế UI/UX\n- Implement các components\n- Tối ưu performance\n- Deploy lên Vercel",
+         text: (
+            <p className="text-foreground">
+               Cần hoàn thành dự án portfolio trong tuần này. Tasks:
+               <br />- Thiết kế UI/UX
+               <br />- Implement các components
+               <br />- Tối ưu performance
+               <br />- Deploy lên Vercel
+            </p>
+         ),
       },
       {
          id: 3,
@@ -108,7 +124,7 @@ const StickyNotes = () => {
          zIndex: 3,
          text: (
             <div className="flex flex-col h-full">
-               <p className="overflow-y-auto">
+               <p className="overflow-y-auto text-foreground">
                   I&apos;m on a journey to become a software engineer who builds
                   thoughtful, scalable digital experiences. I&apos;m drawn to
                   both the elegance of user interfaces and the logic behind
@@ -295,8 +311,8 @@ const StickyNotes = () => {
       );
    };
 
-   // Không render cho đến khi mounted
-   if (!mounted) {
+   // Không render cho đến khi mounted hoặc trong dark mode
+   if (!mounted || theme === "dark") {
       return null;
    }
 

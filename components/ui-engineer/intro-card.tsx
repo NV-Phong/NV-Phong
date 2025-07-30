@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Tabs, TabsContent
+import {
+   Tabs,
+   TabsContent,
    // , TabsList, TabsTrigger
- } from "../ui/tabs";
+} from "../ui/tabs";
 import {
    Card,
    CardContent,
@@ -16,6 +18,9 @@ import CommitsPerDay from "./commits-per-day";
 import { Label } from "../ui/label";
 import { DatePicker } from "./date-picker";
 import PorfolioLogo from "./portfolio-logo";
+import Link from "next/link";
+import Icon from "./Icon";
+// import { Separator } from "../ui/separator";
 
 export default function IntroCard() {
    const [currentTab, setCurrentTab] = useState("introduce");
@@ -37,159 +42,106 @@ export default function IntroCard() {
 
             <div className="flex max-w-lg flex-col bg-primary/20 p-2 dark:bg-white/10">
                <TabsContent value="introduce" className="flex justify-center">
-                  <div className="rounded-xl bg-card p-10 text-sm/7 text-gray-700 dark:bg-card dark:text-gray-300">
-                     <PorfolioLogo className="mb-3" />
-
-                     <div className="space-y-3">
-                        <p>
-                           I build digital experiences that don&apos;t just work{" "}
+                  <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
+                     <CardHeader className="p-0">
+                        <CardTitle>
+                           <PorfolioLogo />
+                        </CardTitle>
+                        <CardDescription className="text-foreground">
+                           I build digital experiences that don&apos;t just work
+                           they{" "}
                            <strong className="text-primary-foreground-darker">
-                              <i>they spark something new.</i>
+                              <i>spark something new.</i>
                            </strong>
-                        </p>
-                        <ul className="space-y-3">
-                           <li className="flex">
-                              <svg
-                                 className="h-[1lh] w-5.5 shrink-0"
-                                 viewBox="0 0 22 22"
-                                 fill="none"
-                              >
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="11"
-                                    className="fill-primary/25"
+                        </CardDescription>
+                     </CardHeader>
+
+                     <CardContent className="space-y-2 p-0">
+                        <div className="space-y-2 flex justify-between">
+                           <div className="space-y-2">
+                              <Label>Birthday</Label>
+                              <DatePicker />
+                           </div>
+                           <div className="space-y-2">
+                              <Label>Commits Per Day</Label>
+                              <CommitsPerDay />
+                           </div>
+                        </div>
+                        <div className="space-y-2">
+                           <div className="space-y-2">
+                              <Label>Technical Skills</Label>
+                              <div className="flex items-center">
+                                 <Icon
+                                    size={10}
+                                    name={"solid/star"}
+                                    className="mt-1"
                                  />
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="10.5"
-                                    className="stroke-primary/25"
+                                 <p className="ml-1 text-foreground">
+                                    Customizing your theme with
+                                    <code className="font-mono font-medium text-foreground">
+                                       @theme
+                                    </code>
+                                 </p>
+                              </div>
+                              <div className="flex items-center">
+                                 <Icon
+                                    size={10}
+                                    name={"solid/star"}
+                                    className="mt-1"
                                  />
-                                 <path
-                                    d="M8 11.5L10.5 14L14 8"
-                                    className="stroke-primary-foreground-darker dark:stroke-sky-300"
+                                 <p className="ml-1 text-foreground">
+                                    Customizing your theme with
+                                    <code className="font-mono font-medium text-foreground">
+                                       @theme
+                                    </code>
+                                 </p>
+                              </div>
+                              <div className="flex items-center">
+                                 <Icon
+                                    size={10}
+                                    name={"solid/star"}
+                                    className="mt-1"
                                  />
-                              </svg>
-                              <p className="ml-3">
-                                 Customizing your theme with
-                                 <code className="font-mono font-medium text-gray-950 dark:text-white">
-                                    @theme
-                                 </code>
-                              </p>
-                           </li>
-                           <li className="flex">
-                              <svg
-                                 className="h-[1lh] w-5.5 shrink-0"
-                                 viewBox="0 0 22 22"
-                                 fill="none"
-                              >
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="11"
-                                    className="fill-primary/25"
-                                 />
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="10.5"
-                                    className="stroke-primary/25"
-                                 />
-                                 <path
-                                    d="M8 11.5L10.5 14L14 8"
-                                    className="stroke-primary-foreground-darker dark:stroke-sky-300"
-                                 />
-                              </svg>
-                              <p className="ml-3">
-                                 Adding custom utilities with
-                                 <code className="font-mono font-medium text-gray-950 dark:text-white">
-                                    @utility
-                                 </code>
-                              </p>
-                           </li>
-                           <li className="flex">
-                              <svg
-                                 className="h-[1lh] w-5.5 shrink-0"
-                                 viewBox="0 0 22 22"
-                                 fill="none"
-                              >
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="11"
-                                    className="fill-primary/25"
-                                 />
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="10.5"
-                                    className="stroke-primary/25"
-                                 />
-                                 <path
-                                    d="M8 11.5L10.5 14L14 8"
-                                    className="stroke-primary-foreground-darker dark:stroke-sky-300"
-                                 />
-                              </svg>
-                              <p className="ml-3">
-                                 Adding custom variants with
-                                 <code className="font-mono font-medium text-gray-950 dark:text-white">
-                                    @variant
-                                 </code>
-                              </p>
-                           </li>
-                           <li className="flex">
-                              <svg
-                                 className="h-[1lh] w-5.5 shrink-0"
-                                 viewBox="0 0 22 22"
-                                 fill="none"
-                              >
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="11"
-                                    className="fill-primary/25"
-                                 />
-                                 <circle
-                                    cx="11"
-                                    cy="11"
-                                    r="10.5"
-                                    className="stroke-primary/25"
-                                 />
-                                 <path
-                                    d="M8 11.5L10.5 14L14 8"
-                                    className="stroke-primary-foreground-darker dark:stroke-sky-300"
-                                 />
-                              </svg>
-                              <p className="ml-3">
-                                 Code completion with instant preview
-                              </p>
-                           </li>
-                        </ul>
+                                 <p className="ml-1 text-foreground">
+                                    Customizing your theme with
+                                    <code className="font-mono font-medium text-foreground">
+                                       @theme
+                                    </code>
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </CardContent>
+
+                     {/* <Separator className="bg-primary-foreground-darker/10" /> */}
+
+                     <CardFooter className="flex flex-col p-0">
                         <p>
                            Perfect for learning how the framework works,
                            prototyping a new idea, or creating a demo to share
                            online.
                         </p>
-                     </div>
-                     <hr className="my-6 w-full border-(--pattern-fg)" />
-                     <p className="mb-3">Want to dig deeper into Tailwind?</p>
-                     <p className="font-semibold">
-                        <a
-                           href="https://tailwindcss.com/docs"
-                           className="text-gray-950 underline decoration-primary dark:decoration-sky-400 underline-offset-3 hover:decoration-2 dark:text-white"
-                        >
-                           Read the docs &rarr;
-                        </a>
-                     </p>
-                  </div>
+                        <div className="w-full font-semibold flex justify-between mt-5">
+                           <Link
+                              href={"/resume"}
+                              className="text-gray-950 underline decoration-primary dark:decoration-sky-400 underline-offset-3 hover:decoration-2 dark:text-white"
+                           >
+                              Contact Me &rarr;
+                           </Link>
+                           <CommitChanges />
+                        </div>
+                     </CardFooter>
+                  </Card>
+                  {/* </div> */}
                </TabsContent>
 
                <TabsContent value="contact" className="flex justify-center">
                   <Card className="w-xl border-none shadow-none">
                      <CardHeader>
-                        <CardTitle className="text-xl">CALENDAR</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-xl text-foreground">
+                           CALENDAR
+                        </CardTitle>
+                        <CardDescription className="text-foreground">
                            Double-check to pick the correct commit dates, or
                            you&apos;ll need extra commits to fix the wrong ones.
                         </CardDescription>
