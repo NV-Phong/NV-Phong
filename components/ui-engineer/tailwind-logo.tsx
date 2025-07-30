@@ -1,15 +1,20 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
-export default function TailwindLogo() {
+interface TailwindLogoProps {
+  className?: string;
+}
+
+export default function TailwindLogo({ className }: TailwindLogoProps) {
    return (
          <svg
             viewBox="0 0 171 21"
             xmlns="http://www.w3.org/2000/svg"
-            className="mb-11.5 h-6"
+            className={cn("h-6", className)}
          >
             <path
-               fill-rule="evenodd"
-               clip-rule="evenodd"
+               // fill-rule="evenodd"
+               // clip-rule="evenodd"
                d="M16.414.441c-4.377 0-7.113 2.189-8.207 6.566 1.642-2.188 3.556-3.01 5.745-2.462 1.249.312 2.141 1.218 3.13 2.22 1.608 1.634 3.471 3.525 7.54 3.525 4.376 0 7.112-2.189 8.206-6.566-1.641 2.189-3.556 3.01-5.745 2.462-1.248-.312-2.14-1.218-3.129-2.22C22.345 2.332 20.482.44 16.414.44zM8.207 10.29c-4.377 0-7.113 2.189-8.207 6.566 1.641-2.189 3.556-3.01 5.745-2.463 1.249.313 2.141 1.218 3.13 2.221 1.608 1.634 3.471 3.524 7.54 3.524 4.376 0 7.112-2.188 8.206-6.565-1.641 2.188-3.556 3.009-5.745 2.462-1.248-.312-2.14-1.218-3.129-2.22-1.61-1.634-3.472-3.525-7.54-3.525z"
                className="fill-primary dark:fill-sky-400"
                // className="fill-sky-400"

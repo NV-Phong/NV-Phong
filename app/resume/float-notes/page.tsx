@@ -31,7 +31,7 @@ export default function Home() {
                      />
                      <br />
                   </h1>
-                  <p className="font-normal text-base text-neutral-700 max-w-3xl mx-auto">
+                  <p className="font-normal text-base text-neutral-700 max-w-5xl mx-auto">
                      I&apos;m on a journey to become a software engineer who
                      builds thoughtful, scalable digital experiences. I&apos;m drawn
                      to both the elegance of user interfaces and the logic
