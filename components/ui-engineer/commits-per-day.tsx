@@ -36,14 +36,14 @@ export default function CommitsPerDay() {
       <div className="flex items-center space-x-2">
          <Button
             variant="outline"
-            className="p-2"
+            className="p-2 bg-card border-primary/30"
             onClick={decrement}
             aria-label="Decrease value"
          >
             <Icon styles="stroke" name="arrow-left-01-stroke-standard" />
          </Button>
          <Input
-            className="w-20 text-center"
+            className="w-20 text-center bg-card border-primary/30"
             value={commitsPerDay === null ? "" : commitsPerDay}
             onChange={handleChange}
             type="number"
@@ -52,7 +52,7 @@ export default function CommitsPerDay() {
          />
          <Button
             variant="outline"
-            className="p-2"
+            className="p-2 bg-card border-primary/30"
             onClick={increment}
             aria-label="Increase value"
          >

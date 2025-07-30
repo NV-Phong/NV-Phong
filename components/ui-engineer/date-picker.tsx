@@ -149,7 +149,7 @@ export function DatePicker({
                   id="date"
                   variant="outline"
                   className={cn(
-                     "justify-start text-left p-2 font-normal",
+                     "justify-start text-left p-2 font-normal bg-card border-primary/30",
                      !date && !dateSelections.length && "text-muted-foreground"
                   )}
                >
