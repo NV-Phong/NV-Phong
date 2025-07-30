@@ -7,6 +7,7 @@ import StickyNote from "./sticky-note";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type EdgePosition =
    | "top-left"
@@ -70,7 +71,31 @@ const StickyNotes = () => {
          offsetY: 200,
          rotation: -2,
          zIndex: 2,
-         text: "Đã học được cách sử dụng Framer Motion để tạo animations. Thư viện này rất powerful và dễ sử dụng. Có thể áp dụng vào nhiều dự án trong tương lai.",
+         text: (
+            <div className="flex">
+               <Image
+                  src="/graphics/Avatar-1.png"
+                  alt="Description"
+                  width={100}
+                  height={100}
+                  className="rounded-md shadow-lg border-1 border-black -rotate-5 m-3"
+               />
+               <Image
+                  src="/graphics/Avatar-2.png"
+                  alt="Description"
+                  width={100}
+                  height={100}
+                  className="rounded-md shadow-lg border-1 border-black rotate-0 mt-5 -ml-20"
+               />
+               <Image
+                  src="/graphics/Avatar-3.png"
+                  alt="Description"
+                  width={100}
+                  height={100}
+                  className="rounded-md shadow-lg border-1 border-black rotate-5 m-3 -ml-20"
+               />
+            </div>
+         ),
       },
       {
          id: 4,

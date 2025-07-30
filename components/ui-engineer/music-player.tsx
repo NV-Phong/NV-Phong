@@ -107,7 +107,7 @@ export function MusicPlayer() {
                </p>
             </div>
             <Button
-               className="bg-(--selection) text-primary-foreground hover:[&>*]:invert dark:[&>*]:invert"
+               className="bg-primary text-primary-foreground hover:[&>*]:invert dark:bg-white dark:[&>*]:invert dark:hover:[&>*]:invert-0"
                variant="outline"
                size="icon"
                onClick={() => setIsPlaying(!isPlaying)}
@@ -223,7 +223,7 @@ export function MusicPlayer() {
                            <SkipBack className="h-3 w-3" />
                         </Button>
                         <Button
-                           className="bg-(--selection) text-primary-foreground hover:[&>*]:invert dark:[&>*]:invert"
+                           className="bg-primary text-primary-foreground hover:[&>*]:invert dark:bg-white dark:[&>*]:invert dark:hover:[&>*]:invert-0"
                            variant="outline"
                            size="icon"
                            onClick={() => setIsPlaying(!isPlaying)}
