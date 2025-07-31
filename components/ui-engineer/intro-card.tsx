@@ -124,7 +124,7 @@ export default function IntroCard() {
                         <div className="w-full font-semibold flex justify-between mt-5">
                            <Link
                               href={"/resume"}
-                              className="text-gray-950 underline decoration-primary dark:decoration-sky-400 underline-offset-3 hover:decoration-2 dark:text-white"
+                              className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
                            >
                               Contact Me &rarr;
                            </Link>

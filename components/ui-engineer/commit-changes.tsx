@@ -43,7 +43,7 @@ export function CommitChanges() {
                   Commit Changes
                </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] z-[51] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <DialogContent className="sm:max-w-[425px] bg-card z-[51] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                <DialogHeader>
                   <DialogTitle>COMMIT CHANGES</DialogTitle>
                   <DialogDescription>
@@ -52,7 +52,7 @@ export function CommitChanges() {
                </DialogHeader>
                <div className="space-y-3">
                   <div className="space-y-1">
-                     <div className="text-center p-2 bg-primary/15 border border-primary/20 rounded-md text-sm font-medium text-primary-foreground-darker">
+                     <div className="text-center p-2 bg-primary/5 border border-primary/20 rounded-md text-sm font-medium text-primary-foreground-darker">
                         Total Commit • {totalDays * (commitsPerDay ?? 0)}
                      </div>
                   </div>
@@ -60,7 +60,7 @@ export function CommitChanges() {
                      <Label htmlFor="description" className="pb-1">
                         Process
                      </Label>
-                     <div className=" h-30 text-center p-2 bg-primary/15 border border-primary/20 rounded-md text-sm flex justify-center items-center text-primary-foreground-darker">
+                     <div className=" h-30 text-center p-2 bg-primary/5 border border-primary/20 rounded-md text-sm flex justify-center items-center text-primary-foreground-darker">
                         <p>The process will be running here.</p>
                      </div>
                   </div>
@@ -69,7 +69,7 @@ export function CommitChanges() {
                   <Button
                      type="button"
                      variant="outline"
-                     className="w-2/5"
+                     className="w-2/5 bg-transparent"
                      onClick={() => setOpen(false)}
                   >
                      Cancel
