@@ -158,7 +158,7 @@ export function DatePicker({
                </Button>
             </PopoverTrigger>
             <PopoverContent
-               className="w-auto p-3 z-[51] relative"
+               className="w-auto p-3 z-[51] relative rounded-xl shadow-sm"
                align="center"
             >
                {calendarComponent}
@@ -177,7 +177,7 @@ export function DatePicker({
                         <Button
                            variant="outline"
                            onClick={handleClear}
-                           className="w-20"
+                           className="w-20 bg-transparent"
                         >
                            Clear
                         </Button>

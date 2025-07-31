@@ -43,7 +43,7 @@ export function CommitChanges() {
                   Commit Changes
                </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-card z-[51] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <DialogContent className="sm:max-w-[425px] rounded-xl shadow-sm bg-card z-[51] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                <DialogHeader>
                   <DialogTitle>COMMIT CHANGES</DialogTitle>
                   <DialogDescription>

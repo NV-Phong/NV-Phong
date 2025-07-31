@@ -62,7 +62,7 @@ export function MusicPlayer() {
       } else {
          setCurrentTrack(
             (prevTrack) =>
-               (prevTrack + (forward ? 1 : -1) + tracks.length) % tracks.length,
+               (prevTrack + (forward ? 1 : -1) + tracks.length) % tracks.length
          );
       }
       setProgress(0);
@@ -126,12 +126,17 @@ export function MusicPlayer() {
                   />
                )}
             </Button>
-            <Button variant="outline" size="icon" onClick={toggleCollapse}>
+            <Button
+               variant="outline"
+               size="icon"
+               onClick={toggleCollapse}
+               className="bg-transparent"
+            >
                <Maximize2 className="h-3 w-3" />
             </Button>
          </div>
       ),
-      [currentTrack, isPlaying, toggleCollapse, tracks],
+      [currentTrack, isPlaying, toggleCollapse, tracks]
    );
 
    return (
@@ -140,7 +145,7 @@ export function MusicPlayer() {
          <Card
             className={`w-full ${
                isCollapsed ? "max-w-xs" : "max-w-md"
-            } mx-auto fixed bottom-4 right-4 p-3 bg-background z-50 hidden md:block`}
+            } mx-auto fixed bottom-4 right-4 p-3 bg-card/20 backdrop-blur-xl z-50 hidden md:block`}
          >
             <CardContent className="p-4">
                {isCollapsed ? (
@@ -165,8 +170,8 @@ export function MusicPlayer() {
                               }
                               className={
                                  isCursorEnabled
-                                    ? "bg-primary text-primary-foreground"
-                                    : ""
+                                    ? "bg-primary text-primary-foreground "
+                                    : "bg-transparent"
                               }
                            >
                               <Icon
@@ -174,11 +179,12 @@ export function MusicPlayer() {
                                  name="cursor-magic-selection-02-solid-standard"
                               />
                            </Button>
-                           <ModeToggle />
+                           <ModeToggle buttonStyle="bg-transparent"/>
                            <Button
                               variant="outline"
                               size="icon"
                               onClick={toggleCollapse}
+                              className="bg-transparent"
                            >
                               <Minimize2 className="h-3 w-3" />
                            </Button>
@@ -210,7 +216,7 @@ export function MusicPlayer() {
                            className={
                               isShuffle
                                  ? "bg-primary text-primary-foreground"
-                                 : ""
+                                 : "bg-transparent"
                            }
                         >
                            <Shuffle className="h-3 w-3" />
@@ -218,6 +224,7 @@ export function MusicPlayer() {
                         <Button
                            variant="outline"
                            size="icon"
+                           className="bg-transparent"
                            onClick={() => skipTrack(false)}
                         >
                            <SkipBack className="h-3 w-3" />
@@ -245,6 +252,7 @@ export function MusicPlayer() {
                         <Button
                            variant="outline"
                            size="icon"
+                           className="bg-transparent"
                            onClick={() => skipTrack(true)}
                         >
                            <SkipForward className="h-3 w-3" />
@@ -256,7 +264,7 @@ export function MusicPlayer() {
                            className={
                               isRepeat
                                  ? "bg-primary text-primary-foreground"
-                                 : ""
+                                 : "bg-transparent"
                            }
                         >
                            <Repeat className="h-3 w-3" />
