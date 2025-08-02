@@ -171,7 +171,7 @@ export function MusicPlayer() {
                               className={
                                  isCursorEnabled
                                     ? "bg-primary text-primary-foreground "
-                                    : "bg-transparent"
+                                    : "bg-transparent dark:border-primary/10"
                               }
                            >
                               <Icon
@@ -179,12 +179,12 @@ export function MusicPlayer() {
                                  name="cursor-magic-selection-02-solid-standard"
                               />
                            </Button>
-                           <ModeToggle buttonStyle="bg-transparent"/>
+                           <ModeToggle buttonStyle="bg-transparent dark:border-primary/10"/>
                            <Button
                               variant="outline"
                               size="icon"
                               onClick={toggleCollapse}
-                              className="bg-transparent"
+                              className="bg-transparent dark:border-primary/10"
                            >
                               <Minimize2 className="h-3 w-3" />
                            </Button>
@@ -216,7 +216,7 @@ export function MusicPlayer() {
                            className={
                               isShuffle
                                  ? "bg-primary text-primary-foreground"
-                                 : "bg-transparent"
+                                 : "bg-transparent dark:border-primary/10"
                            }
                         >
                            <Shuffle className="h-3 w-3" />
@@ -224,7 +224,7 @@ export function MusicPlayer() {
                         <Button
                            variant="outline"
                            size="icon"
-                           className="bg-transparent"
+                           className="bg-transparent dark:border-primary/10"
                            onClick={() => skipTrack(false)}
                         >
                            <SkipBack className="h-3 w-3" />
@@ -252,7 +252,7 @@ export function MusicPlayer() {
                         <Button
                            variant="outline"
                            size="icon"
-                           className="bg-transparent"
+                           className="bg-transparent dark:border-primary/10"
                            onClick={() => skipTrack(true)}
                         >
                            <SkipForward className="h-3 w-3" />
@@ -264,7 +264,7 @@ export function MusicPlayer() {
                            className={
                               isRepeat
                                  ? "bg-primary text-primary-foreground"
-                                 : "bg-transparent"
+                                 : "bg-transparent dark:border-primary/10"
                            }
                         >
                            <Repeat className="h-3 w-3" />

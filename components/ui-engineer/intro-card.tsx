@@ -20,7 +20,7 @@ import { DatePicker } from "./date-picker";
 import PorfolioLogo from "./portfolio-logo";
 import Link from "next/link";
 import Icon from "./Icon";
-// import { Separator } from "../ui/separator";
+import { ContactMe } from "./contact-me";
 
 export default function IntroCard() {
    const [currentTab, setCurrentTab] = useState("introduce");
@@ -63,7 +63,7 @@ export default function IntroCard() {
                               <DatePicker />
                            </div>
                            <div className="space-y-2">
-                              <Label>Commits Per Day</Label>
+                              <Label>Technical Skills</Label>
                               <CommitsPerDay />
                            </div>
                         </div>
@@ -113,8 +113,6 @@ export default function IntroCard() {
                         </div>
                      </CardContent>
 
-                     {/* <Separator className="bg-primary-foreground-darker/10" /> */}
-
                      <CardFooter className="flex flex-col p-0">
                         <p>
                            Perfect for learning how the framework works,
@@ -126,9 +124,10 @@ export default function IntroCard() {
                               href={"/resume"}
                               className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
                            >
-                              Contact Me &rarr;
+                              {/* Contact Me &rarr; */}
+                              View my work &rarr;
                            </Link>
-                           <CommitChanges />
+                           <ContactMe />
                         </div>
                      </CardFooter>
                   </Card>

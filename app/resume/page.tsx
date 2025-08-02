@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
+import Resume from "@/components/ui-engineer/resume";
 
 export default function IntroCard() {
    const [currentTab, setCurrentTab] = useState("light");
@@ -24,7 +25,7 @@ export default function IntroCard() {
             <div className="flex max-w-lg flex-col bg-primary/20 p-2 dark:bg-white/10">
                <TabsContent value="light" className="flex justify-center">
                   <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
-                     light resume in here
+                     <Resume/>
                   </Card>
                </TabsContent>
 
