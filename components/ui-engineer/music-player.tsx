@@ -170,16 +170,17 @@ export function MusicPlayer() {
                               }
                               className={
                                  isCursorEnabled
-                                    ? "bg-primary text-primary-foreground "
+                                    ? "!bg-primary text-primary-foreground dark:hover:!bg-transparent"
                                     : "bg-transparent dark:border-primary/10"
                               }
                            >
                               <Icon
                                  styles="solid"
+                                 // className="dark:invert"
                                  name="cursor-magic-selection-02-solid-standard"
                               />
                            </Button>
-                           <ModeToggle buttonStyle="bg-transparent dark:border-primary/10"/>
+                           <ModeToggle buttonStyle="bg-transparent dark:border-primary/10" />
                            <Button
                               variant="outline"
                               size="icon"
