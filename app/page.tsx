@@ -9,11 +9,11 @@ export default function Home() {
    const { resolvedTheme } = useTheme();
    const [color, setColor] = useState("#ffffff");
 
-   // const [showParticles, setShowParticles] = useState(true);
+   const [showParticles, setShowParticles] = useState(true);
 
    useEffect(() => {
       setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000");
-      // setShowParticles(resolvedTheme === "dark");
+      setShowParticles(resolvedTheme === "dark");
    }, [resolvedTheme]);
 
    return (
@@ -30,7 +30,7 @@ export default function Home() {
                </div>
             </div>
 
-            {/* {showParticles && ( */}
+            {showParticles && (
                <Particles
                   className="absolute inset-0 z-0"
                   quantity={100}
@@ -38,7 +38,7 @@ export default function Home() {
                   color={color}
                   refresh
                />
-            {/* )} */}
+            )}
          </div>
       </div>
    );

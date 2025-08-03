@@ -20,7 +20,8 @@ import PorfolioLogo from "./portfolio-logo";
 import Link from "next/link";
 import Icon from "./Icon";
 import { ContactMe } from "./contact-me";
-import DatePicker from "../ui/date-picker";
+import DatePicker from "./date-picker";
+import MyAge from "./my-age";
 
 export default function IntroCard() {
    const [currentTab, setCurrentTab] = useState("introduce");
@@ -63,8 +64,8 @@ export default function IntroCard() {
                               <DatePicker />
                            </div>
                            <div className="space-y-2">
-                              <Label>Technical Skills</Label>
-                              <CommitsPerDay />
+                              <Label>My Age</Label>
+                              <MyAge />
                            </div>
                         </div>
                         <div className="space-y-2">

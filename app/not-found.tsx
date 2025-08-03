@@ -2,7 +2,7 @@
 import Particles from "@/components/magicui/particles";
 import { CommitChanges } from "@/components/ui-engineer/commit-changes";
 import CommitsPerDay from "@/components/ui-engineer/commits-per-day";
-import { DatePicker } from "@/components/ui-engineer/date-picker";
+import { DatePicker } from "@/components/ui-engineer/range-date-picker";
 import { Button } from "@/components/ui/button";
 import {
    Card,
