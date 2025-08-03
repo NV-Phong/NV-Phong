@@ -16,11 +16,11 @@ import { CommitChanges } from "./commit-changes";
 import { Button } from "../ui/button";
 import CommitsPerDay from "./commits-per-day";
 import { Label } from "../ui/label";
-import { DatePicker } from "./date-picker";
 import PorfolioLogo from "./portfolio-logo";
 import Link from "next/link";
 import Icon from "./Icon";
 import { ContactMe } from "./contact-me";
+import DatePicker from "../ui/date-picker";
 
 export default function IntroCard() {
    const [currentTab, setCurrentTab] = useState("introduce");
