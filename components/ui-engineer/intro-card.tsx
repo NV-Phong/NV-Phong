@@ -166,10 +166,8 @@ export default function IntroCard() {
                                     className="mt-1"
                                  />
                                  <p className="ml-1 text-foreground">
-                                    Customizing your theme with{" "}
-                                    <code className="font-mono font-medium text-foreground">
-                                       @theme
-                                    </code>
+                                    Making buttons that people actually want to
+                                    click
                                  </p>
                               </div>
                               <div className="flex items-center">
@@ -179,10 +177,7 @@ export default function IntroCard() {
                                     className="mt-1"
                                  />
                                  <p className="ml-1 text-foreground">
-                                    Customizing your theme with{" "}
-                                    <code className="font-mono font-medium text-foreground">
-                                       @theme
-                                    </code>
+                                    Automating the boring stuff
                                  </p>
                               </div>
                               <div className="flex items-center">
@@ -192,10 +187,7 @@ export default function IntroCard() {
                                     className="mt-1"
                                  />
                                  <p className="ml-1 text-foreground">
-                                    Customizing your theme with{" "}
-                                    <code className="font-mono font-medium text-foreground">
-                                       @theme
-                                    </code>
+                                    Writing code so clean you could eat off it
                                  </p>
                               </div>
                            </div>
@@ -203,9 +195,8 @@ export default function IntroCard() {
                      </CardContent>
                      <CardFooter className="flex flex-col p-0">
                         <p>
-                           Perfect for learning how the framework works,
-                           prototyping a new idea, or creating a demo to share
-                           online.
+                           I code because it&apos;s fun and nothing beats the
+                           joy of seeing your idea come to life.
                         </p>
                         <div className="w-full font-semibold flex justify-between mt-5">
                            <Link
