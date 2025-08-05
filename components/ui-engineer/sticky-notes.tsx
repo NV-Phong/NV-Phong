@@ -317,7 +317,7 @@ const StickyNotes = () => {
    }
 
    return (
-      <div className="absolute inset-0 overflow-hidden hidden md:block pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden hidden xl:block pointer-events-none">
          {notes.map((note, index) => {
             const position = calculatePosition(
                note.edge,
