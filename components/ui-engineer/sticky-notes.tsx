@@ -40,6 +40,7 @@ const StickyNotes = () => {
       height: 0,
    });
    const [mounted, setMounted] = useState(false);
+   const [expandedNotes, setExpandedNotes] = useState<Set<number>>(new Set());
 
    const [notes, setNotes] = useState<NoteData[]>([
       {
@@ -90,31 +91,7 @@ const StickyNotes = () => {
          offsetY: 200,
          rotation: -2,
          zIndex: 2,
-         text: (
-            <div className="flex">
-               <Image
-                  src="/graphics/Avatar-1.png"
-                  alt="Description"
-                  width={100}
-                  height={100}
-                  className="rounded-md shadow-lg border-1 border-black -rotate-5 m-3 pointer-events-none"
-               />
-               <Image
-                  src="/graphics/Avatar-2.png"
-                  alt="Description"
-                  width={100}
-                  height={100}
-                  className="rounded-md shadow-lg border-1 border-black rotate-0 mt-5 -ml-20 pointer-events-none"
-               />
-               <Image
-                  src="/graphics/Avatar-3.png"
-                  alt="Description"
-                  width={100}
-                  height={100}
-                  className="rounded-md shadow-lg border-1 border-black rotate-5 m-3 -ml-20 pointer-events-none"
-               />
-            </div>
-         ),
+         text: null, // Sẽ được xử lý riêng
       },
       {
          id: 4,
@@ -149,6 +126,18 @@ const StickyNotes = () => {
          ),
       },
    ]);
+
+   const handleExpandChange = (id: number) => (isExpanded: boolean) => {
+      setExpandedNotes((prev) => {
+         const newSet = new Set(prev);
+         if (isExpanded) {
+            newSet.add(id);
+         } else {
+            newSet.delete(id);
+         }
+         return newSet;
+      });
+   };
 
    // Cập nhật kích thước màn hình và mounted state
    useEffect(() => {
@@ -314,6 +303,43 @@ const StickyNotes = () => {
       );
    };
 
+   const renderAvatarContent = (isExpanded: boolean) => {
+      if (isExpanded) {
+         return (
+            <p className="text-foreground">
+               Here are some of my favorite avatar styles and expressions that
+               represent different aspects of my personality and interests.
+            </p>
+         );
+      }
+
+      return (
+         <div className="flex">
+            <Image
+               src="/graphics/Avatar-1.png"
+               alt="Description"
+               width={100}
+               height={100}
+               className="rounded-md shadow-lg border-1 border-black -rotate-5 m-3 pointer-events-none"
+            />
+            <Image
+               src="/graphics/Avatar-2.png"
+               alt="Description"
+               width={100}
+               height={100}
+               className="rounded-md shadow-lg border-1 border-black rotate-0 mt-5 -ml-20 pointer-events-none"
+            />
+            <Image
+               src="/graphics/Avatar-3.png"
+               alt="Description"
+               width={100}
+               height={100}
+               className="rounded-md shadow-lg border-1 border-black rotate-5 m-3 -ml-20 pointer-events-none"
+            />
+         </div>
+      );
+   };
+
    // Không render cho đến khi mounted hoặc trong dark mode
    if (!mounted || theme === "dark") {
       return null;
@@ -353,13 +379,18 @@ const StickyNotes = () => {
                   <StickyNote
                      date={note.date}
                      timeAgo={note.timeAgo}
-                     text={note.text}
+                     text={
+                        note.id === 3
+                           ? renderAvatarContent(expandedNotes.has(3))
+                           : note.text
+                     }
                      initialX={position.x}
                      initialY={position.y}
                      rotation={note.rotation}
                      zIndex={note.zIndex}
                      onDragStart={handleDragStart(note.id)}
                      onDragEnd={handleDragEnd(note.id)}
+                     onExpandChange={handleExpandChange(note.id)}
                   />
                </motion.div>
             );

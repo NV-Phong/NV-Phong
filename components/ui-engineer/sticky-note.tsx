@@ -16,6 +16,7 @@ interface StickyNoteProps {
    zIndex: number;
    onDragStart?: () => void;
    onDragEnd?: (x: number, y: number) => void;
+   onExpandChange?: (isExpanded: boolean) => void;
    animation?: "flyIn" | "flyOut" | "none";
 }
 
@@ -29,6 +30,7 @@ const StickyNote = ({
    zIndex,
    onDragStart,
    onDragEnd,
+   onExpandChange,
    animation = "none",
 }: StickyNoteProps) => {
    const [isDragging, setIsDragging] = useState(false);
@@ -60,6 +62,7 @@ const StickyNote = ({
             !noteRef.current.contains(event.target as Node)
          ) {
             setIsExpanded(false);
+            onExpandChange?.(false);
          }
       };
 
@@ -68,11 +71,13 @@ const StickyNote = ({
          return () =>
             document.removeEventListener("mousedown", handleClickOutside);
       }
-   }, [isExpanded]);
+   }, [isExpanded, onExpandChange]);
 
    const handleExpandClick = (e: React.MouseEvent) => {
       e.stopPropagation();
-      setIsExpanded(!isExpanded);
+      const newExpandedState = !isExpanded;
+      setIsExpanded(newExpandedState);
+      onExpandChange?.(newExpandedState);
    };
 
    const getAnimationVariants = () => {
