@@ -9,6 +9,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import {
+   Carousel,
+   CarouselContent,
+   CarouselItem,
+   CarouselNext,
+   CarouselPrevious,
+} from "../ui/carousel";
+import { Card, CardContent } from "../ui/card";
 
 type EdgePosition =
    | "top-left"
@@ -41,6 +49,11 @@ const StickyNotes = () => {
    });
    const [mounted, setMounted] = useState(false);
    const [expandedNotes, setExpandedNotes] = useState<Set<number>>(new Set());
+   const avatars = [
+      "/graphics/Avatar-1.png",
+      "/graphics/Avatar-2.png",
+      "/graphics/Avatar-3.png",
+   ];
 
    const [notes, setNotes] = useState<NoteData[]>([
       {
@@ -306,10 +319,30 @@ const StickyNotes = () => {
    const renderAvatarContent = (isExpanded: boolean) => {
       if (isExpanded) {
          return (
-            <p className="text-foreground">
-               Here are some of my favorite avatar styles and expressions that
-               represent different aspects of my personality and interests.
-            </p>
+            <div className="flex justify-center items-center">
+               <Carousel className="h-[240px] w-[240px]">
+                  <CarouselContent>
+                     {avatars.map((src, index) => (
+                        <CarouselItem key={index}>
+                           <Card className="p-0">
+                              <CardContent className="flex items-center justify-center p-0">
+                                 <Image
+                                    src={src}
+                                    alt={`Image ${index + 1}`}
+                                    width={300}
+                                    height={300}
+                                    className="object-cover rounded-md"
+                                    draggable={false}
+                                 />
+                              </CardContent>
+                           </Card>
+                        </CarouselItem>
+                     ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="bg-primary/30" />
+                  <CarouselNext className="bg-primary/30" />
+               </Carousel>
+            </div>
          );
       }
 
