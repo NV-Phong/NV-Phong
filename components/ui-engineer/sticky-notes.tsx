@@ -324,14 +324,14 @@ const StickyNotes = () => {
                   <CarouselContent>
                      {avatars.map((src, index) => (
                         <CarouselItem key={index}>
-                           <Card className="p-0">
+                           <Card className="p-0 border-none">
                               <CardContent className="flex items-center justify-center p-0">
                                  <Image
                                     src={src}
-                                    alt={`Image ${index + 1}`}
+                                    alt={`Avatar ${index + 1}`}
                                     width={300}
                                     height={300}
-                                    className="object-cover rounded-md"
+                                    className="object-cover rounded-xl border-3"
                                     draggable={false}
                                  />
                               </CardContent>
