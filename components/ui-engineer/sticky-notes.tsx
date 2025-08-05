@@ -353,21 +353,21 @@ const StickyNotes = () => {
                alt="Description"
                width={100}
                height={100}
-               className="rounded-md shadow-lg border-1 border-black -rotate-5 m-3 pointer-events-none"
+               className="rounded-md shadow-lg border-3 -rotate-5 m-3 pointer-events-none"
             />
             <Image
                src="/graphics/Avatar-2.png"
                alt="Description"
                width={100}
                height={100}
-               className="rounded-md shadow-lg border-1 border-black rotate-0 mt-5 -ml-20 pointer-events-none"
+               className="rounded-md shadow-lg border-3 rotate-0 mt-5 -ml-20 pointer-events-none"
             />
             <Image
                src="/graphics/Avatar-3.png"
                alt="Description"
                width={100}
                height={100}
-               className="rounded-md shadow-lg border-1 border-black rotate-5 m-3 -ml-20 pointer-events-none"
+               className="rounded-md shadow-lg border-3 rotate-5 m-3 -ml-20 pointer-events-none"
             />
          </div>
       );
