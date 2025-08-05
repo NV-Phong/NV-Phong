@@ -44,7 +44,7 @@ const StickyNotes = () => {
    const [notes, setNotes] = useState<NoteData[]>([
       {
          id: 1,
-         date: "Jun 12",
+         date: "My Journey",
          timeAgo: "1 month ago",
          edge: "top-left",
          offsetX: 100,
@@ -53,29 +53,32 @@ const StickyNotes = () => {
          zIndex: 0,
          text: (
             <p className="text-foreground">
-               Hôm nay tôi bắt đầu học React và Next.js. Tôi thấy rất thú vị với
-               những khái niệm mới như Server Components và App Router. Hy vọng
-               sẽ sớm làm chủ được framework này.
+               This note is meant to capture my journey - the ups, the downs,
+               the surprises, and the lessons along the way. But for now...
+               it&apos;s a bit of a blank page. Maybe I&apos;m still figuring
+               things out, or maybe the story just hasn&apos;t started yet.
+               Either way, stay tuned - future me might have something epic (or
+               at least mildly interesting) to say. See you then!
             </p>
          ),
       },
       {
          id: 2,
-         date: "Today",
-         timeAgo: "just now",
+         date: "Some Tips",
+         timeAgo: "you can drag and drop notes around",
          edge: "center-left",
          offsetX: 200,
          offsetY: -40,
          rotation: 3,
          zIndex: 1,
          text: (
-            <p className="text-foreground">
-               Cần hoàn thành dự án portfolio trong tuần này. Tasks:
-               <br />- Thiết kế UI/UX
-               <br />- Implement các components
-               <br />- Tối ưu performance
-               <br />- Deploy lên Vercel
-            </p>
+            <Image
+               src="/graphics/tip.svg"
+               alt="Description"
+               width={300}
+               height={300}
+               className="pointer-events-none"
+            />
          ),
       },
       {
@@ -94,21 +97,21 @@ const StickyNotes = () => {
                   alt="Description"
                   width={100}
                   height={100}
-                  className="rounded-md shadow-lg border-1 border-black -rotate-5 m-3"
+                  className="rounded-md shadow-lg border-1 border-black -rotate-5 m-3 pointer-events-none"
                />
                <Image
                   src="/graphics/Avatar-2.png"
                   alt="Description"
                   width={100}
                   height={100}
-                  className="rounded-md shadow-lg border-1 border-black rotate-0 mt-5 -ml-20"
+                  className="rounded-md shadow-lg border-1 border-black rotate-0 mt-5 -ml-20 pointer-events-none"
                />
                <Image
                   src="/graphics/Avatar-3.png"
                   alt="Description"
                   width={100}
                   height={100}
-                  className="rounded-md shadow-lg border-1 border-black rotate-5 m-3 -ml-20"
+                  className="rounded-md shadow-lg border-1 border-black rotate-5 m-3 -ml-20 pointer-events-none"
                />
             </div>
          ),
