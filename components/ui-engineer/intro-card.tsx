@@ -200,7 +200,7 @@ export default function IntroCard() {
                         </p>
                         <div className="w-full font-semibold flex justify-between mt-5">
                            <Link
-                              href={"/resume"}
+                              href={"/my-work"}
                               className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
                            >
                               View my work &rarr;
