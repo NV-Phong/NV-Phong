@@ -17,29 +17,26 @@ export default function Home() {
    }, [resolvedTheme]);
 
    return (
-      <div className="relative min-h-screen">
-         <div className="relative z-10 flex items-center justify-center min-h-screen">
-            <div className="fixed top-4 right-4 z-50"></div>
-            <div className="z-49">
-               <StickyNotes />
-            </div>
-
-            <div className="flex flex-col items-center justify-center">
-               <div className="mb-9 max-w-7xl mx-auto w-full pt-20 md:pt-0">
-                  <IntroCard />
-               </div>
-            </div>
-
-            {showParticles && (
-               <Particles
-                  className="absolute inset-0 z-0"
-                  quantity={100}
-                  ease={80}
-                  color={color}
-                  refresh
-               />
-            )}
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
+         <div className="z-49">
+            <StickyNotes />
          </div>
+
+         <div className="flex flex-col items-center justify-center">
+            <div className="max-w-7xl mx-auto w-full pt-20 md:pt-0">
+               <IntroCard />
+            </div>
+         </div>
+
+         {showParticles && (
+            <Particles
+               className="absolute inset-0 z-0"
+               quantity={100}
+               ease={80}
+               color={color}
+               refresh
+            />
+         )}
       </div>
    );
 }
