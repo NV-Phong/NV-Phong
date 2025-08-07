@@ -60,7 +60,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/CG-Editor"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         GitHub
                      </a>
@@ -77,12 +77,12 @@ const checkpointNotes: CheckpointNote[] = [
             id: "note-1-stack-1",
             title: "CG-Editor",
             text: (
-               <div className="h-full flex flex-col gap-10">
+               <div className="h-full flex flex-col gap-9">
                   <p className="overflow-y-auto text-foreground">
                      This Contribution Graph Editor, built with NextJS, provides
                      an intuitive interface with auto-commit functionality.
                   </p>
-                  <CGEditorPreview/>
+                  <CGEditorPreview />
                </div>
             ),
             timeAgo: "1 second ago",
@@ -136,7 +136,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/Workspacex"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         Client
                      </a>
@@ -146,7 +146,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/WS-CoreServer"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         Server
                      </a>
@@ -159,7 +159,7 @@ const checkpointNotes: CheckpointNote[] = [
                   <a
                      href="https://www.figma.com/board/fCejx1ykXQ0Hmrl7xvU6GI/System-Design?node-id=0-1&t=rOWhrYzM8c8pe7oD-1"
                      target="_blank"
-                     className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                   >
                      Database Diagram
                   </a>
@@ -226,7 +226,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/UI-Engineer"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         Client
                      </a>
@@ -236,7 +236,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/UIE-Server"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         Server
                      </a>
@@ -249,7 +249,7 @@ const checkpointNotes: CheckpointNote[] = [
                   <a
                      href="https://www.figma.com/board/EclK9sza1WAQuYoos7FPLv/Database?t=CGilsdxZD3WmMbAp-1"
                      target="_blank"
-                     className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                   >
                      Database Diagram
                   </a>
@@ -316,7 +316,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/PingMe"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         Client
                      </a>
@@ -326,7 +326,7 @@ const checkpointNotes: CheckpointNote[] = [
                      <a
                         href="https://github.com/NV-Phong/PM-Server"
                         target="_blank"
-                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                        className="hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2"
                      >
                         Server
                      </a>
@@ -553,7 +553,7 @@ export default function MyWork() {
                                  <h3 className="font-semibold flex justify-center text-lg text-primary-foreground-1">
                                     {note.title}
                                  </h3>
-                                 <div className="text-gray-600 text-sm leading-relaxed">
+                                 <div className="text-sm leading-relaxed">
                                     {note.text}
                                  </div>
                               </div>

@@ -5,6 +5,7 @@ import type React from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import type { ReactNode } from "react";
+import Icon from "./Icon";
 
 interface StickyNoteProps {
    text?: ReactNode;
@@ -222,52 +223,19 @@ const StickyNote = ({
          )}
 
          {text && (
-            <div className="text-gray-600 text-sm leading-relaxed select-none flex-1 overflow-y-auto">
+            <div className="text-foreground text-sm leading-relaxed select-none flex-1 overflow-y-auto">
                {text}
             </div>
          )}
 
-         <div className="flex items-center justify-between pt-2 mt-auto border-t border-gray-100">
-            <div className="flex items-center gap-2 text-gray-400 text-xs select-none">
-               <svg
-                  className="w-4 h-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-               >
-                  <path
-                     d="M8 12.2H15"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeMiterlimit="10"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-                  <path
-                     d="M8 16.2H12.38"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeMiterlimit="10"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-                  <path
-                     d="M10 6H14C16 6 16 5 16 4C16 2 15 2 14 2H10C9 2 8 2 8 4C8 6 9 6 10 6Z"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeMiterlimit="10"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-                  <path
-                     d="M16 4.02002C19.33 4.20002 21 5.43002 21 10V16C21 20 20 22 15 22H9C4 22 3 20 3 16V10C3 5.44002 4.67 4.20002 8 4.02002"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeMiterlimit="10"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-               </svg>
+         <div className="flex items-center justify-between pt-2 mt-auto">
+            <div className="flex items-center gap-2 text-foreground/75 text-xs select-none">
+               <Icon
+                  size={15}
+                  styles="stroke"
+                  name="task-01-stroke-rounded"
+                  className="!bg-foreground/75"
+               />
                Note • {timeAgo}
             </div>
 
@@ -275,34 +243,11 @@ const StickyNote = ({
                className="select-none cursor-pointer"
                onClick={handleExpandClick}
             >
-               <svg
-                  className="w-4 h-4 text-gray-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-               >
-                  <path
-                     d="M13 11L21.2 2.80005"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-                  <path
-                     d="M22 6.8V2H17.2"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-                  <path
-                     d="M11 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22H15C20 22 22 20 22 15V13"
-                     stroke="currentColor"
-                     strokeWidth="1.5"
-                     strokeLinecap="round"
-                     strokeLinejoin="round"
-                  />
-               </svg>
+               <Icon
+                  styles="bulk"
+                  name="link-circle-bulk-rounded"
+                  className="!bg-foreground/50"
+               />
             </div>
          </div>
       </motion.div>
