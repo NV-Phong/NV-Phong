@@ -7,6 +7,7 @@ import Icon from "@/components/ui-engineer/Icon";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Separator from "@/components/ui-engineer/separator";
+import { CGEditorPreview } from "@/components/ui-engineer/preview-project/cg-editor-preview";
 
 interface CheckpointNote {
    id: string;
@@ -82,9 +83,7 @@ const checkpointNotes: CheckpointNote[] = [
                      This Contribution Graph Editor, built with NextJS, provides
                      an intuitive interface with auto-commit functionality.
                   </p>
-                  <Button className="w-full bg-primary transition-colors duration-200">
-                     Take a look
-                  </Button>
+                  <CGEditorPreview/>
                </div>
             ),
             timeAgo: "1 second ago",
