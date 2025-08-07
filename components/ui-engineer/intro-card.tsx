@@ -24,7 +24,6 @@ import { ChevronsUpDown } from "lucide-react";
 import { CommitChanges } from "./commit-changes";
 import CommitsPerDay from "./commits-per-day";
 import PorfolioLogo from "./portfolio-logo";
-import Link from "next/link";
 import { ContactMe } from "./contact-me";
 import DatePicker from "./date-picker";
 import MyAge from "./my-age";
@@ -33,7 +32,11 @@ import { Badge } from "../ui/badge";
 import Icon from "./Icon";
 import Separator from "./separator";
 
-export default function IntroCard() {
+type IntroCardProps = {
+   onGoToMyWork?: () => void;
+};
+
+export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
    const [currentTab, setCurrentTab] = useState("introduce");
    const [isSkillsOpen, setIsSkillsOpen] = useState(false);
    return (
@@ -199,12 +202,13 @@ export default function IntroCard() {
                            joy of seeing your idea come to life.
                         </p>
                         <div className="w-full font-semibold flex justify-between mt-5">
-                           <Link
-                              href={"/my-work"}
-                              className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                           <Button
+                              variant={"outline"}
+                              onClick={onGoToMyWork}
+                              className="bg-transparent hover:bg-transparent border-none text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
                            >
                               View my work &rarr;
-                           </Link>
+                           </Button>
                            <ContactMe />
                         </div>
                      </CardFooter>

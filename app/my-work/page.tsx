@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import StickyNote from "@/components/ui-engineer/sticky-note";
 import Icon from "@/components/ui-engineer/Icon";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Separator from "@/components/ui-engineer/separator";
 import { CGEditorPreview } from "@/components/ui-engineer/preview-project/cg-editor-preview";
