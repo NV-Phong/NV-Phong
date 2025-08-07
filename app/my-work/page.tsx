@@ -3,17 +3,22 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import StickyNote from "@/components/ui-engineer/sticky-note";
+import Icon from "@/components/ui-engineer/Icon";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Separator from "@/components/ui-engineer/separator";
 
 interface CheckpointNote {
    id: string;
    title: string;
-   text: string;
-   date: string;
+   text: React.ReactNode;
+   month: string;
+   year: string;
    timeAgo: string;
    stackedNotes: {
       id: string;
       title: string;
-      text: string;
+      text: React.ReactNode;
       timeAgo: string;
    }[];
 }
@@ -21,85 +26,326 @@ interface CheckpointNote {
 const checkpointNotes: CheckpointNote[] = [
    {
       id: "note-1",
-      title: "Project Kickoff",
-      text: "Team meeting scheduled for Monday. Need to discuss project scope and timeline with all stakeholders. Budget approved and ready to start.",
-      date: "Jan 15",
+      title: "Technical Summary",
+      text: (
+         <div className="flex flex-col gap-2">
+            <div className="space-y-1">
+               <Separator textPosition="center">Tech Stack</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nextjs"
+                        image={true}
+                     />
+                     NextJS
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nodejs"
+                        image={true}
+                     />
+                     NodeJS
+                  </Badge>
+               </div>
+            </div>
+            <div className="space-y-1">
+               <Separator textPosition="center">Link Resource</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/CG-Editor"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        GitHub
+                     </a>
+                  </Badge>
+               </div>
+            </div>
+         </div>
+      ),
+      month: "May",
+      year: "2025",
       timeAgo: "2 weeks ago",
       stackedNotes: [
          {
             id: "note-1-stack-1",
-            title: "Budget Planning",
-            text: "Detailed budget breakdown completed. All departments have confirmed their resource requirements.",
-            timeAgo: "2 weeks ago",
-         },
-         {
-            id: "note-1-stack-2",
-            title: "Team Assembly",
-            text: "Core team members identified and onboarded. Roles and responsibilities clearly defined.",
-            timeAgo: "2 weeks ago",
+            title: "CG-Editor",
+            text: (
+               <div className="h-full flex flex-col gap-10">
+                  <p className="overflow-y-auto text-foreground">
+                     This Contribution Graph Editor, built with NextJS, provides
+                     an intuitive interface with auto-commit functionality.
+                  </p>
+                  <Button className="w-full bg-primary transition-colors duration-200">
+                     Take a look
+                  </Button>
+               </div>
+            ),
+            timeAgo: "1 second ago",
          },
       ],
    },
    {
       id: "note-2",
-      title: "Design Phase",
-      text: "Design mockups ready for review. The new UI looks promising and modern. User experience flow has been finalized.",
-      date: "Jan 28",
+      title: "Technical Summary",
+      text: (
+         <div className="flex flex-col gap-2">
+            <div className="space-y-1">
+               <Separator textPosition="center">Tech Stack</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nextjs"
+                        image={true}
+                     />
+                     NextJS
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nestjs"
+                        image={true}
+                     />
+                     NesJS
+                  </Badge>
+               </div>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="mongodb"
+                        image={true}
+                     />
+                     MongoDB
+                  </Badge>
+               </div>
+            </div>
+            <div className="space-y-1">
+               <Separator textPosition="center">Link Resource</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/Workspacex"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        Client
+                     </a>
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/WS-CoreServer"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        Server
+                     </a>
+                  </Badge>
+               </div>
+            </div>
+            <div className="flex items-center justify-center -mt-2">
+               <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                  <Icon size={15} styles="solid" name="figma" image={true} />
+                  <a
+                     href="https://www.figma.com/board/fCejx1ykXQ0Hmrl7xvU6GI/System-Design?node-id=0-1&t=rOWhrYzM8c8pe7oD-1"
+                     target="_blank"
+                     className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                  >
+                     Database Diagram
+                  </a>
+               </Badge>
+            </div>
+         </div>
+      ),
+      month: "Mar",
+      year: "2025",
       timeAgo: "1 week ago",
       stackedNotes: [
          {
             id: "note-2-stack-1",
-            title: "User Research",
-            text: "Completed user interviews and surveys. Key insights gathered about user preferences and pain points.",
-            timeAgo: "1 week ago",
-         },
-         {
-            id: "note-2-stack-2",
-            title: "Wireframes",
-            text: "Low-fidelity wireframes approved by stakeholders. Information architecture finalized.",
+            title: "Workspacex",
+            text: "Designed to help individuals and teams organize their work efficiently. It combines note-taking, idea management, and task tracking in a unified workspace",
             timeAgo: "1 week ago",
          },
       ],
    },
    {
       id: "note-3",
-      title: "Development Start",
-      text: "API endpoints completed. Authentication system is working perfectly with JWT tokens. Database schema finalized.",
-      date: "Feb 10",
+      title: "Technical Summary",
+      text: (
+         <div className="flex flex-col gap-2">
+            <div className="space-y-1">
+               <Separator textPosition="center">Tech Stack</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nextjs"
+                        image={true}
+                     />
+                     NextJS
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nestjs"
+                        image={true}
+                     />
+                     NesJS
+                  </Badge>
+               </div>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="mongodb"
+                        image={true}
+                     />
+                     MongoDB
+                  </Badge>
+               </div>
+            </div>
+            <div className="space-y-1">
+               <Separator textPosition="center">Link Resource</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/UI-Engineer"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        Client
+                     </a>
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/UIE-Server"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        Server
+                     </a>
+                  </Badge>
+               </div>
+            </div>
+            <div className="flex items-center justify-center -mt-2">
+               <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                  <Icon size={15} styles="solid" name="figma" image={true} />
+                  <a
+                     href="https://www.figma.com/board/EclK9sza1WAQuYoos7FPLv/Database?t=CGilsdxZD3WmMbAp-1"
+                     target="_blank"
+                     className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                  >
+                     Database Diagram
+                  </a>
+               </Badge>
+            </div>
+         </div>
+      ),
+      month: "Dec",
+      year: "2024",
       timeAgo: "5 days ago",
       stackedNotes: [
          {
             id: "note-3-stack-1",
-            title: "Environment Setup",
-            text: "Development, staging, and production environments configured. CI/CD pipeline established.",
-            timeAgo: "5 days ago",
-         },
-         {
-            id: "note-3-stack-2",
-            title: "Code Standards",
-            text: "Coding standards and best practices documented. Code review process implemented.",
+            title: "UI Engineer",
+            text: "An online platform for front-end developers to store and share HTML and CSS code snippets. It also supports embedding prototypes from Figma, making it easy to create and maintain visual documentation.",
             timeAgo: "5 days ago",
          },
       ],
    },
    {
       id: "note-4",
-      title: "Frontend Build",
-      text: "Frontend components built. React components are reusable and well-documented. Responsive design implemented.",
-      date: "Feb 20",
-      timeAgo: "3 days ago",
+      title: "Technical Summary",
+      text: (
+         <div className="flex flex-col gap-2">
+            <div className="space-y-1">
+               <Separator textPosition="center">Tech Stack</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="flutter"
+                        image={true}
+                     />
+                     Flutter
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="nestjs"
+                        image={true}
+                     />
+                     NesJS
+                  </Badge>
+               </div>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                     <Icon
+                        size={15}
+                        styles="solid"
+                        name="mongodb"
+                        image={true}
+                     />
+                     MongoDB
+                  </Badge>
+               </div>
+            </div>
+            <div className="space-y-1">
+               <Separator textPosition="center">Link Resource</Separator>
+               <div className="flex items-center gap-2 justify-center">
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/PingMe"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        Client
+                     </a>
+                  </Badge>
+                  <Badge className="text-primary-foreground-darker bg-transparent h-6.5">
+                     <Icon size={15} styles="solid" name="github" />
+                     <a
+                        href="https://github.com/NV-Phong/PM-Server"
+                        target="_blank"
+                        className="text-gray-950 hover:underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                     >
+                        Server
+                     </a>
+                  </Badge>
+               </div>
+            </div>
+         </div>
+      ),
+      month: "Nov",
+      year: "2024",
+      timeAgo: "5 days ago",
       stackedNotes: [
          {
             id: "note-4-stack-1",
-            title: "Component Library",
-            text: "Reusable component library created with Storybook documentation. Design system implemented.",
-            timeAgo: "3 days ago",
-         },
-         {
-            id: "note-4-stack-2",
-            title: "State Management",
-            text: "Redux store configured for global state management. API integration layer completed.",
-            timeAgo: "3 days ago",
+            title: "PingMe",
+            text: "A simple chat application that enables seamless, real-time communication between users. With an intuitive interface, it supports instant messaging, ensuring a smooth and efficient user experience.",
+            timeAgo: "5 days ago",
          },
       ],
    },
@@ -109,6 +355,7 @@ export default function MyWork() {
    const [notePositions, setNotePositions] = useState<
       Record<string, { x: number; y: number }>
    >({});
+   const [noteOrder, setNoteOrder] = useState<string[]>([]);
    const [screenWidth, setScreenWidth] = useState(0);
 
    useEffect(() => {
@@ -118,11 +365,37 @@ export default function MyWork() {
       return () => window.removeEventListener("resize", handleResize);
    }, []);
 
+   useEffect(() => {
+      if (noteOrder.length === 0) {
+         const allNoteIds: string[] = [];
+         checkpointNotes.forEach((note) => {
+            allNoteIds.push(note.id);
+            note.stackedNotes.forEach((stackedNote) => {
+               allNoteIds.push(stackedNote.id);
+            });
+         });
+         setNoteOrder(allNoteIds);
+      }
+   }, [noteOrder.length]);
+
    const handleNoteDragEnd = (noteId: string, x: number, y: number) => {
       setNotePositions((prev) => ({
          ...prev,
          [noteId]: { x, y },
       }));
+   };
+
+   const handleNoteDragStart = (noteId: string) => {
+      const allNoteIds: string[] = [];
+      checkpointNotes.forEach((note) => {
+         allNoteIds.push(note.id);
+         note.stackedNotes.forEach((stackedNote) => {
+            allNoteIds.push(stackedNote.id);
+         });
+      });
+
+      const otherNotes = allNoteIds.filter((id) => id !== noteId);
+      setNoteOrder([...otherNotes, noteId]);
    };
 
    const getInitialNotePosition = (index: number) => {
@@ -135,18 +408,24 @@ export default function MyWork() {
 
    const getNoteRotation = (index: number, stackIndex: number = -1) => {
       const rotations = [
-         [-3, 2, -5], // Group 1: main, stack1, stack2
-         [4, -2, 6], // Group 2
-         [-2, 5, -4], // Group 3
-         [3, -6, 1], // Group 4
-         [-4, 3, -1], // Group 5
-         [2, -3, 4], // Group 6
+         [-3, 2, -5],
+         [4, -2, 6],
+         [-2, 5, -4],
+         [3, -6, 1],
+         [-4, 3, -1],
+         [2, -3, 4],
       ];
 
       const groupRotations = rotations[index % rotations.length];
       return stackIndex === -1
          ? groupRotations[0]
          : groupRotations[stackIndex + 1];
+   };
+
+   const getNoteZIndex = (noteId: string, baseZIndex: number) => {
+      const orderIndex = noteOrder.indexOf(noteId);
+      if (orderIndex === -1) return baseZIndex;
+      return 1000 + orderIndex;
    };
 
    const timelineHeight = checkpointNotes.length * 280 + 300;
@@ -158,39 +437,60 @@ export default function MyWork() {
       <div className="relative" style={{ minHeight: `${timelineHeight}px` }}>
          {/* Central Timeline Line */}
          <div
-            className="absolute w-0.5 bg-gray-300"
+            className="absolute w-0.5 bg-primary dark:bg-primary/50"
             style={{
                left: `${centerX}px`,
                transform: "translateX(-50%)",
                top: "80px",
-               height: `${timelineHeight - 160}px`,
+               height: `${120 + checkpointNotes.length * 280 + 80 - 80}px`,
             }}
          />
+
+         {/* Present Arrow and Label */}
+         <div
+            className="absolute z-30"
+            style={{
+               left: `${centerX}px`,
+               transform: "translateX(-50%)",
+               top: "20px",
+            }}
+         >
+            <div className="flex flex-col items-center">
+               <div className="text-primary-foreground-darker font-semibold mb-5">
+                  PRESENT
+               </div>
+               <Icon
+                  styles="solid"
+                  className="!bg-primary-foreground-1"
+                  name="arrow-up-double-solid-standard"
+               />
+            </div>
+         </div>
 
          {/* Timeline Checkpoints */}
          {checkpointNotes.map((note, index) => {
             const isLeft = index % 2 === 0;
             const topPosition = 120 + index * 280;
-            const dotCenterY = topPosition + 80; // Vị trí trung tâm của dot
+            const dotCenterY = topPosition + 80;
 
             return (
                <div key={`checkpoint-${index}`}>
-                  {/* Horizontal Connection Line - căn chỉnh chính xác với dot */}
+                  {/* Horizontal Connection Line */}
                   <div
-                     className="absolute h-px bg-gray-200 z-10"
+                     className="absolute h-px bg-primary/30 z-10"
                      style={{
                         left: `${centerX - 100}px`,
                         width: "200px",
-                        top: `${dotCenterY}px`, // Sử dụng cùng vị trí với dot
+                        top: `${dotCenterY}px`,
                      }}
                   />
 
-                  {/* Timeline Dot - căn chỉnh hoàn hảo */}
+                  {/* Timeline Dot */}
                   <motion.div
-                     className="absolute w-4 h-4 bg-white border-2 border-gray-400 rounded-full shadow-sm z-20"
+                     className="absolute w-4 h-4 bg-card border-2 border-primary dark:border-primary/50 rounded-full shadow-sm z-20"
                      style={{
-                        left: `${centerX - 8}px`, // centerX - (width/2) = centerX - 8px
-                        top: `${dotCenterY - 8}px`, // dotCenterY - (height/2) = dotCenterY - 8px
+                        left: `${centerX - 8}px`,
+                        top: `${dotCenterY - 8}px`,
                      }}
                      initial={{ scale: 0 }}
                      animate={{ scale: 1 }}
@@ -199,32 +499,41 @@ export default function MyWork() {
 
                   {/* Date Card */}
                   <motion.div
-                     className="absolute bg-white rounded-lg shadow-sm border border-gray-200 z-30 p-3 min-w-[80px]"
+                     className="absolute bg-card rounded-xl border z-30 p-3 min-w-[70px]"
                      style={{
                         left: isLeft
                            ? `${centerX - 120}px`
                            : `${centerX + 40}px`,
-                        top: `${dotCenterY + 20}px`, // Đặt date card dưới dot
+                        top: `${dotCenterY + 20}px`,
                      }}
                      initial={{ opacity: 0, y: 10 }}
                      animate={{ opacity: 1, y: 0 }}
                      transition={{ delay: index * 0.1 + 0.2 }}
                   >
                      <div className="text-center">
-                        <div className="text-gray-500 text-xs font-medium uppercase tracking-wide">
-                           {new Date(note.date + ", 2024").toLocaleDateString(
-                              "en",
-                              { weekday: "short" }
-                           )}
-                        </div>
-                        <div className="text-gray-700 text-lg font-semibold mt-1">
-                           {note.date.split(" ")[1]}
-                        </div>
+                        <p className="text-primary-foreground-1 font-semibold uppercase">
+                           <code>{note.month}</code>
+                        </p>
+                        <p className="text-primary-foreground-darker text-xs font-medium uppercase">
+                           <code>{note.year}</code>
+                        </p>
                      </div>
                   </motion.div>
                </div>
             );
          })}
+
+         {/* Final Checkpoint Dot */}
+         <motion.div
+            className="absolute w-4 h-4 bg-card border-2 border-primary rounded-full z-20"
+            style={{
+               left: `${centerX - 8}px`,
+               top: `${120 + checkpointNotes.length * 280 + 80 - 8}px`,
+            }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: checkpointNotes.length * 0.1 }}
+         />
 
          {/* Checkpoint Notes */}
          <div className="relative">
@@ -243,12 +552,12 @@ export default function MyWork() {
                         <StickyNote
                            text={
                               <div>
-                                 <h3 className="font-semibold text-base mb-2 text-gray-800">
+                                 <h3 className="font-semibold flex justify-center text-lg text-primary-foreground-1">
                                     {note.title}
                                  </h3>
-                                 <p className="text-gray-600 text-sm leading-relaxed">
+                                 <div className="text-gray-600 text-sm leading-relaxed">
                                     {note.text}
-                                 </p>
+                                 </div>
                               </div>
                            }
                            date=""
@@ -256,7 +565,8 @@ export default function MyWork() {
                            initialX={notePositions[note.id]?.x || initialPos.x}
                            initialY={notePositions[note.id]?.y || initialPos.y}
                            rotation={getNoteRotation(index)}
-                           zIndex={30 + index * 3}
+                           zIndex={getNoteZIndex(note.id, 30 + index * 3)}
+                           onDragStart={() => handleNoteDragStart(note.id)}
                            onDragEnd={(x, y) =>
                               handleNoteDragEnd(note.id, x, y)
                            }
@@ -290,12 +600,12 @@ export default function MyWork() {
                               <StickyNote
                                  text={
                                     <div>
-                                       <h3 className="font-semibold text-base mb-2 text-gray-800">
+                                       <h3 className="font-semibold text-lg text-primary-foreground-1">
                                           {stackedNote.title}
                                        </h3>
-                                       <p className="text-gray-600 text-sm leading-relaxed">
+                                       <div className="text-foreground text-sm">
                                           {stackedNote.text}
-                                       </p>
+                                       </div>
                                     </div>
                                  }
                                  date=""
@@ -303,7 +613,13 @@ export default function MyWork() {
                                  initialX={stackedPos.x}
                                  initialY={stackedPos.y}
                                  rotation={getNoteRotation(index, stackIndex)}
-                                 zIndex={30 + index * 3 - (stackIndex + 1)}
+                                 zIndex={getNoteZIndex(
+                                    stackedNote.id,
+                                    30 + index * 3 - (stackIndex + 1)
+                                 )}
+                                 onDragStart={() =>
+                                    handleNoteDragStart(stackedNote.id)
+                                 }
                                  onDragEnd={(x, y) =>
                                     handleNoteDragEnd(stackedNote.id, x, y)
                                  }
