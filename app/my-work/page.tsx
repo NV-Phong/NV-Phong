@@ -77,10 +77,10 @@ const checkpointNotes: CheckpointNote[] = [
             id: "note-1-stack-1",
             title: "CG-Editor",
             text: (
-               <div className="h-full flex flex-col gap-9">
+               <div className="h-full flex flex-col gap-2">
                   <p className="overflow-y-auto text-foreground">
-                     This Contribution Graph Editor, built with NextJS, provides
-                     an intuitive interface with auto-commit functionality.
+                     This GitHub Contribution Graph Editor, built with NextJS, provides
+                     an intuitive interface with auto-commit functionality to make fake commit.
                   </p>
                   <CGEditorPreview />
                </div>

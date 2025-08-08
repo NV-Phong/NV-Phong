@@ -22,9 +22,11 @@ import Image from "next/image";
 export function CGEditorPreview() {
    const [open, setOpen] = React.useState(false);
    const avatars = [
-      "/graphics/Ảnh chụp màn hình (322).png",
-      "/graphics/Ảnh chụp màn hình (322).png",
-      "/graphics/Ảnh chụp màn hình (322).png",
+      "/graphics/project/cg-editor/377shots_so.png",
+      "/graphics/project/cg-editor/Ảnh chụp màn hình (334).png",
+      "/graphics/project/cg-editor/Ảnh chụp màn hình (335).png",
+      "/graphics/project/cg-editor/Ảnh chụp màn hình (336).png",
+      "/graphics/project/cg-editor/Ảnh chụp màn hình (337).png",
    ];
 
    return (
