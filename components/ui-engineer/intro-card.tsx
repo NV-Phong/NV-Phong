@@ -20,7 +20,6 @@ import {
    CollapsibleContent,
    CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronsUpDown } from "lucide-react";
 import { CommitChanges } from "./commit-changes";
 import CommitsPerDay from "./commits-per-day";
 import PorfolioLogo from "./portfolio-logo";
@@ -31,6 +30,7 @@ import { TechnicalSkills } from "./technical-skills";
 import { Badge } from "../ui/badge";
 import Icon from "./Icon";
 import Separator from "./separator";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 type IntroCardProps = {
    onGoToMyWork?: () => void;
@@ -93,8 +93,28 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                                        size="icon"
                                        className="size-8"
                                     >
-                                       <ChevronsUpDown />
-                                       <span className="sr-only">Toggle</span>
+                                       {isSkillsOpen ? (
+                                          <Icon
+                                             styles="stroke"
+                                             size={20}
+                                             name="cancel-01-stroke-standard"
+                                             className="!bg-primary-foreground-1/75"
+                                          />
+                                       ) : (
+                                          <Tooltip>
+                                             <TooltipTrigger asChild>
+                                                <Icon
+                                                   styles="solid"
+                                                   size={20}
+                                                   name="ai-scan-solid-rounded"
+                                                   className="!bg-primary-foreground-1/75"
+                                                />
+                                             </TooltipTrigger>
+                                             <TooltipContent>
+                                                More Skills
+                                             </TooltipContent>
+                                          </Tooltip>
+                                       )}
                                     </Button>
                                  </CollapsibleTrigger>
                               </div>
