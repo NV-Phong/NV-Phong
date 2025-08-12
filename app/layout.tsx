@@ -3,12 +3,12 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { MusicPlayer } from "@/components/ui-engineer/music-player";
-import GradientBackground from "@/components/ui-engineer/gradient-background";
+import GradientBackground from "@/components/ui-engineer/layout/gradient-background";
 // import { MagicUIDock } from "@/components/layout/magicui-dock";
 import { Spotlight } from "@/components/aceternity/spotlight-new";
 import { Tomorrow } from "next/font/google";
 import { ContributionGraphProvider } from "@/context/cg-context";
+import { MusicPlayer } from "@/components/ui-engineer/layout/music-player";
 
 const tomorrow = Tomorrow({
    subsets: ["latin"],

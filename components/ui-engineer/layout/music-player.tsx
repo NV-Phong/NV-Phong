@@ -11,12 +11,12 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
-import { ModeToggle } from "../layout/mode-toggle";
-import { SmoothCursor } from "../magicui/smooth-cursor";
-import Icon from "./Icon";
-import { Button } from "../ui/button";
 import Musics from "@/data/musics.json";
 import { Song } from "@/types/song";
+import { Button } from "@/components/ui/button";
+import Icon from "../Icon";
+import { SmoothCursor } from "@/components/magicui/smooth-cursor";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export function MusicPlayer() {
    const [isPlaying, setIsPlaying] = useState(false);
