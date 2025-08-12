@@ -9,6 +9,7 @@ import { Spotlight } from "@/components/aceternity/spotlight-new";
 import { Tomorrow } from "next/font/google";
 import { ContributionGraphProvider } from "@/context/cg-context";
 import { MusicPlayer } from "@/components/ui-engineer/layout/music-player";
+import QuickAction from "@/components/ui-engineer/layout/quick-action";
 
 const tomorrow = Tomorrow({
    subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
                   {children}
                   {/* <MagicUIDock /> */}
                   <MusicPlayer />
+                  <QuickAction/>
                   <GradientBackground />
                </ContributionGraphProvider>
             </ThemeProvider>

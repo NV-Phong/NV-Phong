@@ -423,7 +423,7 @@ export default function MyWork() {
    const getNoteZIndex = (noteId: string, baseZIndex: number) => {
       const orderIndex = noteOrder.indexOf(noteId);
       if (orderIndex === -1) return baseZIndex;
-      return 1000 + orderIndex;
+      return 100 + orderIndex;
    };
 
    const timelineHeight = checkpointNotes.length * 280 + 300;

@@ -26,7 +26,7 @@ export default function Home() {
 
    return (
       <div>
-         <div className="relative z-10 flex items-center justify-center min-h-screen">
+         <div className="z-10 flex items-center justify-center min-h-screen">
             <div className="z-49">
                <StickyNotes />
             </div>
