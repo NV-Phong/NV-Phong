@@ -1,6 +1,7 @@
 "use client";
 import { APIShowLogs } from "@/components/ui-engineer/api-show-logs";
 import Icon from "@/components/ui-engineer/Icon";
+import { RESTfulAPI } from "@/components/ui-engineer/restful-api";
 import Separator from "@/components/ui-engineer/separator";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -13,15 +14,27 @@ import {
    CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import {
+   Tooltip,
+   TooltipContent,
+   TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useAPI } from "@/hooks/use-api";
+import { Check, Copy } from "lucide-react";
 import React, { useState } from "react";
 
 export default function APITestZone() {
    const [currentTab, setCurrentTab] = useState("api");
    const [enpointValue, setEnpointValue] = useState("/me");
    const [endpoint, setEndpoint] = useState("/me");
-   const { data, loading, error, refetch } = useAPI<string>(endpoint);
+   const { data, loading, error } = useAPI<string>(endpoint);
+   const [copied, setCopied] = useState(false);
+   const handleCopy = (text: string) => {
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+   };
 
    return (
       <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
@@ -40,7 +53,7 @@ export default function APITestZone() {
                            </code>
                            <p className="text-2xl">HOOKS TEST ZONE</p>
                         </CardTitle>
-                        <CardDescription className="text-foreground">
+                        <CardDescription>
                            A simple playground to test and explore API-calling
                            hooks. 🧩
                         </CardDescription>
@@ -98,53 +111,76 @@ export default function APITestZone() {
                               onKeyDown={(e) => {
                                  if (e.key === "Enter") {
                                     setEndpoint(enpointValue);
+                                    setCopied(false);
                                  }
                               }}
                               onChange={(e) => setEnpointValue(e.target.value)}
                               className="border-primary/30"
                            />
-                           <Button
-                              onClick={() => setEndpoint(enpointValue)}
-                              variant={"ghost"}
-                              className="border"
+                           <RESTfulAPI />
+                        </div>
+                        <div className="relative flex flex-col p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
+                           <Badge className="text-primary-foreground-darker bg-transparent h-6.5 border-none mb-2 self-center">
+                              RESPONSE
+                           </Badge>
+
+                           <ScrollArea
+                              className="h-30 overflow-auto"
+                              scrollbarClassName="w-1.75"
                            >
-                              Send
-                           </Button>
-                        </div>
-                        <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
-                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
-                              GET
-                           </Badge>
-                           {loading ? (
-                              <p>Waiting for the server to wake up...</p>
-                           ) : error ? (
-                              <p>Error: {error.message}</p>
-                           ) : (
-                              <pre>{JSON.stringify(data, null, 2)}</pre>
-                           )}
-                        </div>
-                        <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
-                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
-                              POST
-                           </Badge>
-                        </div>
-                        <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
-                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
-                              PUT
-                           </Badge>
-                        </div>
-                        <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
-                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
-                              DELETE
-                           </Badge>
+                              {loading ? (
+                                 <p>Waiting for the server to wake up...</p>
+                              ) : error ? (
+                                 <p>Error: {error.message}</p>
+                              ) : (
+                                 <div className="p-2">
+                                    <pre className="whitespace-pre-wrap break-words">
+                                       {JSON.stringify(data, null, 2)}
+                                    </pre>
+                                 </div>
+                              )}
+                           </ScrollArea>
+
+                           <div className="absolute bottom-1 right-1">
+                              <Tooltip>
+                                 <TooltipTrigger asChild>
+                                    <Button
+                                       variant="ghost"
+                                       size="icon"
+                                       onClick={() =>
+                                          handleCopy(
+                                             JSON.stringify(data, null, 2)
+                                          )
+                                       }
+                                       className="hover:text-primary-foreground-1"
+                                    >
+                                       {copied ? (
+                                          <Check className="h-4 w-4 text-primary-foreground-1" />
+                                       ) : (
+                                          <Copy className="h-4 w-4" />
+                                       )}
+                                       <span className="sr-only">Copy</span>
+                                    </Button>
+                                 </TooltipTrigger>
+                                 <TooltipContent className="z-[52]">
+                                    <p>{copied ? "Copied" : "Copy"}</p>
+                                 </TooltipContent>
+                              </Tooltip>
+                           </div>
                         </div>
                      </CardContent>
 
                      <CardFooter className="flex flex-col p-0">
                         <div className="w-full font-semibold flex justify-between mt-5">
                            <APIShowLogs />
-                           <Button onClick={refetch} className="w-2/5">
-                              Refresh
+                           <Button
+                              onClick={() => {
+                                 setEndpoint(enpointValue);
+                                 setCopied(false);
+                              }}
+                              className="border w-2/5"
+                           >
+                              Send
                            </Button>
                         </div>
                      </CardFooter>

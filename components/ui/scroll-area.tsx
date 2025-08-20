@@ -4,12 +4,17 @@ import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
 import { cn } from "@/lib/utils";
+interface ScrollAreaProps
+   extends React.ComponentProps<typeof ScrollAreaPrimitive.Root> {
+   scrollbarClassName?: string;
+}
 
 function ScrollArea({
    className,
    children,
+   scrollbarClassName,
    ...props
-}: React.ComponentProps<typeof ScrollAreaPrimitive.Root>) {
+}: ScrollAreaProps) {
    return (
       <ScrollAreaPrimitive.Root
          data-slot="scroll-area"
@@ -22,7 +27,9 @@ function ScrollArea({
          >
             {children}
          </ScrollAreaPrimitive.Viewport>
-         <ScrollBar />
+
+         <ScrollBar className={scrollbarClassName} />
+
          <ScrollAreaPrimitive.Corner />
       </ScrollAreaPrimitive.Root>
    );
@@ -43,7 +50,7 @@ function ScrollBar({
                "h-full w-2.5 border-l border-l-transparent",
             orientation === "horizontal" &&
                "h-2.5 flex-col border-t border-t-transparent",
-            className,
+            className
          )}
          {...props}
       >

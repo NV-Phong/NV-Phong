@@ -154,7 +154,7 @@ export default function QuickAction() {
    };
 
    return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center">
          {isVisible &&
             createPortal(
                <div
