@@ -22,13 +22,13 @@ const NAVIGATION_LINKS: LinkItem[] = [
       className: "rotate-0 -ml-3",
       children: [
          {
-            href: "/ui-engineer/upgrade-banner",
+            href: "/ui-engineer/cpu-architecture",
             label: "Upgrade Banner",
             className: "-rotate-10 -ml-5",
          },
          {
-            href: "/ui-engineer/cpu-architecture",
-            label: "CPU Architecture",
+            href: "/ui-engineer/api-test-zone",
+            label: "API Test Zone",
             className: "rotate-0 -ml-3",
          },
          {
