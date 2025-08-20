@@ -27,8 +27,8 @@ const NAVIGATION_LINKS: LinkItem[] = [
             className: "-rotate-10 -ml-5",
          },
          {
-            href: "/ui-engineer/api-test-zone",
-            label: "API Test Zone",
+            href: "/ui-engineer/hooks-test-zone",
+            label: "Hooks Test Zone",
             className: "rotate-0 -ml-3",
          },
          {

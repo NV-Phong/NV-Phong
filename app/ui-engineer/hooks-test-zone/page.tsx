@@ -1,4 +1,5 @@
 "use client";
+import { APIShowLogs } from "@/components/ui-engineer/api-show-logs";
 import Icon from "@/components/ui-engineer/Icon";
 import Separator from "@/components/ui-engineer/separator";
 import { Badge } from "@/components/ui/badge";
@@ -13,11 +14,10 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { useAPI } from "@/hooks/use-api";
-import Link from "next/link";
 import React, { useState } from "react";
 
-export default function NotFound() {
-   const [currentTab, setCurrentTab] = useState("not-found");
+export default function APITestZone() {
+   const [currentTab, setCurrentTab] = useState("api");
    const { data, loading, error, refetch } = useAPI<string>("/");
 
    return (
@@ -28,23 +28,35 @@ export default function NotFound() {
             className="col-start-3 row-start-3 flex flex-col items-center z-1"
          >
             <div className="flex max-w-xl flex-col bg-primary/20 p-2 dark:bg-white/10">
-               <TabsContent value="not-found" className="flex justify-center">
+               <TabsContent value="api" className="flex justify-center">
                   <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
                      <CardHeader className="p-0">
-                        <CardTitle className=" flex flex-col">
+                        <CardTitle className="flex flex-col -mb-2">
                            <code className="text-primary-foreground-1 -mb-1">
                               API
                            </code>
-                           <p className="text-2xl">API TEST ZONE</p>
+                           <p className="text-2xl">HOOKS TEST ZONE</p>
                         </CardTitle>
                         <CardDescription className="text-foreground">
-                           A simple playground to test and explore your API
-                           endpoints. 🧩
+                           A simple playground to test and explore API-calling
+                           hooks. 🧩
                         </CardDescription>
                      </CardHeader>
 
                      <CardContent className="space-y-2 p-0 flex flex-col justify-center">
                         <Separator>Server Configuration</Separator>
+                        <div className="flex items-center gap-7 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm font-medium text-primary-foreground-darker">
+                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                              <Icon
+                                 size={15}
+                                 styles="solid"
+                                 className="!bg-primary-foreground-darker"
+                                 name="ai-browser-solid-rounded"
+                              />
+                              ENV
+                           </Badge>
+                           {process.env.NODE_ENV}
+                        </div>
                         <div className="flex items-center justify-between p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm font-medium text-primary-foreground-darker">
                            <div className="flex items-center gap-2">
                               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
@@ -72,18 +84,6 @@ export default function NotFound() {
                                  />
                               </Button>
                            </a>
-                        </div>
-                        <div className="flex items-center gap-7 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm font-medium text-primary-foreground-darker">
-                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
-                              <Icon
-                                 size={15}
-                                 styles="solid"
-                                 className="!bg-primary-foreground-darker"
-                                 name="ai-browser-solid-rounded"
-                              />
-                              ENV
-                           </Badge>
-                           {process.env.NODE_ENV}
                         </div>
                         <Separator>HTTP Methods</Separator>
                         <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
@@ -117,12 +117,7 @@ export default function NotFound() {
 
                      <CardFooter className="flex flex-col p-0">
                         <div className="w-full font-semibold flex justify-between mt-5">
-                           <Link
-                              href={"/"}
-                              className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
-                           >
-                              Back To Home &rarr;
-                           </Link>
+                           <APIShowLogs />
                            <Button onClick={refetch} className="w-2/5">
                               Refresh
                            </Button>
