@@ -12,13 +12,16 @@ import {
    CardHeader,
    CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { useAPI } from "@/hooks/use-api";
 import React, { useState } from "react";
 
 export default function APITestZone() {
    const [currentTab, setCurrentTab] = useState("api");
-   const { data, loading, error, refetch } = useAPI<string>("/");
+   const [enpointValue, setEnpointValue] = useState("/me");
+   const [endpoint, setEndpoint] = useState("/me");
+   const { data, loading, error, refetch } = useAPI<string>(endpoint);
 
    return (
       <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
@@ -86,16 +89,38 @@ export default function APITestZone() {
                            </a>
                         </div>
                         <Separator>HTTP Methods</Separator>
+                        <div className="flex items-center gap-2 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
+                           <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                              ENDPOINT
+                           </Badge>
+                           <Input
+                              value={enpointValue}
+                              onKeyDown={(e) => {
+                                 if (e.key === "Enter") {
+                                    setEndpoint(enpointValue);
+                                 }
+                              }}
+                              onChange={(e) => setEnpointValue(e.target.value)}
+                              className="border-primary/30"
+                           />
+                           <Button
+                              onClick={() => setEndpoint(enpointValue)}
+                              variant={"ghost"}
+                              className="border"
+                           >
+                              Send
+                           </Button>
+                        </div>
                         <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
                            <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
                               GET
                            </Badge>
                            {loading ? (
-                              <p>Loading...</p>
+                              <p>Waiting for the server to wake up...</p>
                            ) : error ? (
                               <p>Error: {error.message}</p>
                            ) : (
-                              data
+                              <pre>{JSON.stringify(data, null, 2)}</pre>
                            )}
                         </div>
                         <div className="flex items-center gap-5 p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm text-primary-foreground-darker">
