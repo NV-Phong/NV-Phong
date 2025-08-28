@@ -7,7 +7,7 @@ export default function UsersList() {
 
    useEffect(() => {
       async function fetchUsers() {
-         const res = await fetch("/api/supabase/users");
+         const res = await fetch("/api/supabase/me");
          const json = await res.json();
 
          if (res.ok) setUsers(json.data);
