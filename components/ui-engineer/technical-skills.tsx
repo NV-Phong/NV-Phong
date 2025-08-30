@@ -9,7 +9,7 @@ export function TechnicalSkills() {
          <div className="space-y-2">
             <Separator textPosition="start">Framework & Library</Separator>
             <div className="flex items-center gap-2">
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="stroke"
@@ -18,11 +18,11 @@ export function TechnicalSkills() {
                   />
                   React
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon size={15} styles="solid" name="nextjs" image={true} />
                   NextJS
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="solid"
@@ -31,7 +31,7 @@ export function TechnicalSkills() {
                   />
                   NestJS
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="solid"
@@ -40,7 +40,7 @@ export function TechnicalSkills() {
                   />
                   Flutter
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="solid"
@@ -54,7 +54,7 @@ export function TechnicalSkills() {
          <div className="space-y-2">
             <Separator textPosition="start">Database & Tools</Separator>
             <div className="flex items-center gap-2">
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="solid"
@@ -63,11 +63,11 @@ export function TechnicalSkills() {
                   />
                   MongoDB
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon size={15} styles="solid" name="figma" image={true} />
                   Figma
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="solid"
@@ -76,11 +76,11 @@ export function TechnicalSkills() {
                   />
                   Docker
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon size={15} styles="solid" name="jira" image={true} />
                   Jira
                </Badge>
-               <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+               <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                   <Icon
                      size={15}
                      styles="solid"

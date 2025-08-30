@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
    Tabs,
    TabsContent,
-   // TabsList, TabsTrigger
 } from "@/components/ui/tabs";
 import {
    Card,
@@ -46,14 +45,6 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
             onValueChange={setCurrentTab}
             className="col-start-3 row-start-3 flex flex-col items-center z-1"
          >
-            {/* <TabsList className="bg-primary/15 border border-primary/20">
-              <TabsTrigger value="introduce" className="text-primary">
-                Introduce
-              </TabsTrigger>
-              <TabsTrigger value="contact" className="text-primary">
-                Contact
-              </TabsTrigger>
-            </TabsList> */}
             <div className="flex max-w-lg flex-col bg-primary/20 p-2 dark:bg-white/10">
                <TabsContent value="introduce" className="flex justify-center">
                   <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
@@ -128,7 +119,7 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                                        Language
                                     </Separator>
                                     <div className="flex items-center gap-2">
-                                       <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                       <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                                           <Icon
                                              size={15}
                                              styles="solid"
@@ -137,7 +128,7 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                                           />
                                           JavaScript
                                        </Badge>
-                                       <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                       <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                                           <Icon
                                              size={15}
                                              styles="solid"
@@ -146,7 +137,7 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                                           />
                                           TypeScript
                                        </Badge>
-                                       <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                       <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                                           <Icon
                                              size={15}
                                              styles="solid"
@@ -155,7 +146,7 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                                           />
                                           Dart
                                        </Badge>
-                                       <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                       <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                                           <Icon
                                              size={15}
                                              styles="solid"
@@ -164,7 +155,7 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                                           />
                                           HTML
                                        </Badge>
-                                       <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                       <Badge className="text-primary-foreground-darker bg-primary/5 h-6.5 border-primary/20 dark:border-primary/5">
                                           <Icon
                                              size={15}
                                              styles="solid"

@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import GradientBackground from "@/components/ui-engineer/layout/gradient-background";
-// import { MagicUIDock } from "@/components/layout/magicui-dock";
 import { Spotlight } from "@/components/aceternity/spotlight-new";
 import { Tomorrow } from "next/font/google";
 import { ContributionGraphProvider } from "@/context/cg-context";
@@ -41,14 +40,13 @@ export default function RootLayout({
                defaultTheme="pastel-pink"
                enableSystem
                disableTransitionOnChange
-               themes={["light", "dark", "pastel-pink"]}
+               themes={["light", "dark", "pastel-pink", "neutralx"]}
             >
                <ContributionGraphProvider>
                   <Spotlight />
                   {children}
-                  {/* <MagicUIDock /> */}
                   <MusicPlayer />
-                  <QuickAction/>
+                  <QuickAction />
                   <GradientBackground />
                </ContributionGraphProvider>
             </ThemeProvider>
