@@ -10,15 +10,29 @@ import {
    CardHeader,
    CardTitle,
 } from "@/components/ui/card";
-import { CpuArchitecture } from "@/components/ui/cpu-architecture";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function NotFound() {
+export default function UIEngineer() {
    const router = useRouter();
-   const [currentTab, setCurrentTab] = useState("not-found");
+   const [currentTab, setCurrentTab] = useState("ui/ux");
+
+   const [items, setItems] = useState<string[]>([]);
+   const [APIitems, setAPIItems] = useState<string[]>([]);
+
+   useEffect(() => {
+      fetch("/api/next/ui-engineer")
+         .then((res) => res.json())
+         .then(setItems);
+   }, []);
+
+   useEffect(() => {
+      fetch("/api/next/ui-engineer/api")
+         .then((res) => res.json())
+         .then(setAPIItems);
+   }, []);
 
    return (
       <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
@@ -27,8 +41,16 @@ export default function NotFound() {
             onValueChange={setCurrentTab}
             className="col-start-3 row-start-3 flex flex-col items-center z-1"
          >
-            <div className="flex max-w-lg flex-col bg-primary/20 p-2 dark:bg-white/10">
-               <TabsContent value="not-found" className="flex justify-center">
+            <TabsList className="bg-primary/15 border border-primary/20">
+               <TabsTrigger value="ui/ux" className="text-primary">
+                  UI/UX
+               </TabsTrigger>
+               <TabsTrigger value="api" className="text-primary">
+                  API
+               </TabsTrigger>
+            </TabsList>
+            <div className="flex max-w-xl flex-col bg-primary/20 p-2 dark:bg-white/10">
+               <TabsContent value="ui/ux" className="flex justify-center">
                   <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
                      <CardHeader className="p-0">
                         <CardTitle className=" flex flex-col">
@@ -49,12 +71,90 @@ export default function NotFound() {
                         </CardDescription>
                      </CardHeader>
 
-                     <CardContent className="space-y-2 p-0 flex justify-center">
-                        <CpuArchitecture width="80%" />
+                     <CardContent className="space-y-2 p-0 flex">
+                        <ul>
+                           {items.map((item) => (
+                              <li
+                                 key={item}
+                                 className="flex items-center gap-2"
+                              >
+                                 <Icon
+                                    size={10}
+                                    name={"solid/star"}
+                                    className="mt-1"
+                                 />
+                                 <Link
+                                    href={`/ui-engineer/${item}`}
+                                    className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent border-none text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                                 >
+                                    {item}
+                                 </Link>
+                              </li>
+                           ))}
+                        </ul>
                      </CardContent>
 
                      <CardFooter className="flex flex-col p-0">
-                        <div className="w-full font-semibold flex justify-between mt-5">
+                        <div className="w-full font-semibold flex gap-50 justify-between mt-5">
+                           <Link
+                              href={"/"}
+                              className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                           >
+                              Report &rarr;
+                           </Link>
+                           <Button onClick={() => router.push("/")}>
+                              Return Home
+                           </Button>
+                        </div>
+                     </CardFooter>
+                  </Card>
+               </TabsContent>
+               <TabsContent value="api" className="flex justify-center">
+                  <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
+                     <CardHeader className="p-0">
+                        <CardTitle className=" flex flex-col">
+                           <Badge className="text-primary-foreground-darker bg-primary/10 rounded-sm border-primary/20">
+                              <Icon
+                                 size={15}
+                                 styles="bulk"
+                                 className="!bg-primary-foreground-darker"
+                                 name="start-up"
+                              />
+                              Coming Soon
+                           </Badge>
+                           <p className="text-2xl">API</p>
+                        </CardTitle>
+                        <CardDescription className="text-foreground">
+                           This site will be a place to store and share my UI/UX
+                           components and prototypes.
+                        </CardDescription>
+                     </CardHeader>
+
+                     <CardContent className="space-y-2 p-0 flex">
+                        <ul>
+                           {APIitems.map((item) => (
+                              <li
+                                 key={item}
+                                 className="flex items-center gap-2"
+                              >
+                                 <Icon
+                                    size={10}
+                                    name={"solid/star"}
+                                    className="mt-1"
+                                 />
+                                 <Link
+                                    href={`/${item.replace(/\[.*?\]/g, ":id")}`}
+                                    className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                                 >
+                                    {item}
+                                 </Link>
+                              </li>
+                           ))}
+                        </ul>
+                     </CardContent>
+
+                     <CardFooter className="flex flex-col p-0">
+                        <div className="w-full font-semibold flex gap-50 justify-between mt-5">
                            <Link
                               href={"/"}
                               className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
