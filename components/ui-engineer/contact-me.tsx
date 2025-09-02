@@ -229,11 +229,11 @@ export function ContactMe() {
                   </div>
                </div>
 
-               <Separator>Or ask me public question</Separator>
+               <Separator>Or chat with me</Separator>
                <div className="grid w-full max-w-xl items-start gap-4">
                   <Alert className="text-primary-foreground-darker">
                      <AlertCircleIcon />
-                     <AlertTitle>Public Question Coming Soon</AlertTitle>
+                     <AlertTitle>Chat Coming Soon</AlertTitle>
                      <AlertDescription>
                         <p>
                            New updates are on the way. Your interest and support
