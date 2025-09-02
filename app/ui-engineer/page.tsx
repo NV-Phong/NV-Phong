@@ -14,24 +14,45 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import routesData from "@/data/routes.json";
+import { RouteItem, RoutesData } from "@/types/route";
+
+const extractPaths = (routes: RouteItem[], basePath: string = ""): string[] => {
+   const paths: string[] = [];
+   routes.forEach((route) => {
+      const currentPath = basePath ? `${basePath}/${route.path}` : route.path;
+      paths.push(currentPath);
+      if (route.children && route.children.length > 0) {
+         paths.push(...extractPaths(route.children, currentPath));
+      }
+   });
+   return paths;
+};
 
 export default function UIEngineer() {
    const router = useRouter();
    const [currentTab, setCurrentTab] = useState("ui/ux");
-
    const [items, setItems] = useState<string[]>([]);
    const [APIitems, setAPIItems] = useState<string[]>([]);
 
    useEffect(() => {
-      fetch("/api/next/ui-engineer")
-         .then((res) => res.json())
-         .then(setItems);
+      const typedRoutesData = routesData as RoutesData;
+      const uiRoute = typedRoutesData.routes.find(
+         (route) => route.path === "ui-engineer"
+      );
+      const uiPaths = uiRoute?.children ? extractPaths(uiRoute.children) : [];
+      setItems(uiPaths);
    }, []);
 
    useEffect(() => {
-      fetch("/api/next/ui-engineer/api")
-         .then((res) => res.json())
-         .then(setAPIItems);
+      const typedRoutesData = routesData as RoutesData;
+      const apiRoute = typedRoutesData.api.find(
+         (route) => route.path === "api"
+      );
+      const apiPaths = apiRoute?.children
+         ? extractPaths(apiRoute.children)
+         : [];
+      setAPIItems(apiPaths);
    }, []);
 
    return (
@@ -143,7 +164,10 @@ export default function UIEngineer() {
                                     className="mt-1"
                                  />
                                  <Link
-                                    href={`/${item.replace(/\[.*?\]/g, ":id")}`}
+                                    href={`/api/${item.replace(
+                                       /\[.*?\]/g,
+                                       ":id"
+                                    )}`}
                                     className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
                                  >
                                     {item}

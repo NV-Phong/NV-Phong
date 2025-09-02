@@ -15,25 +15,25 @@ interface LinkItem {
 
 const NAVIGATION_LINKS: LinkItem[] = [
    { href: "/", label: "Home", className: "-rotate-20 -ml-10" },
-   { href: "/", label: "Contact", className: "-rotate-10 -ml-5" },
+   { href: "/chat", label: "Chat", className: "-rotate-10 -ml-5" },
    {
       href: "/ui-engineer",
       label: "UI Engineer",
       className: "rotate-0 -ml-3",
       children: [
          {
-            href: "/ui-engineer/cpu-architecture",
-            label: "Upgrade Banner",
+            href: "/ui-engineer/hooks-test-zone",
+            label: "Hooks Test Zone",
             className: "-rotate-10 -ml-5",
          },
          {
-            href: "/ui-engineer/hooks-test-zone",
-            label: "Hooks Test Zone",
+            href: "/ui-engineer/storage/blob",
+            label: "Upload File",
             className: "rotate-0 -ml-3",
          },
          {
-            href: "/ui-engineer/tailwind-card",
-            label: "Tailwind Card",
+            href: "/ui-engineer/not-found",
+            label: "Not Found Page",
             className: "rotate-10 -ml-5",
          },
       ],
