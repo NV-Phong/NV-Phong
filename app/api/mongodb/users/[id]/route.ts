@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/mongoose";
-import { User } from "@/schema/user";
+import { User } from "@/schemas/user";
 import { NextResponse } from "next/server";
 
 type RouteContext = {
