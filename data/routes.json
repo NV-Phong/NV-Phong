@@ -30,6 +30,9 @@
                "path": "upgrade-banner"
             }
          ]
+      },
+      {
+         "path": "auth"
       }
    ],
    "api": [
