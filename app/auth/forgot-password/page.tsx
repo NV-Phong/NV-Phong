@@ -1,7 +1,5 @@
 "use client";
 import Particles from "@/components/magicui/particles";
-import Icon from "@/components/ui-engineer/Icon";
-import Separator from "@/components/ui-engineer/separator";
 import { Button } from "@/components/ui/button";
 import {
    Card,
@@ -12,19 +10,23 @@ import {
    CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import {
+   InputOTP,
+   InputOTPGroup,
+   InputOTPSeparator,
+   InputOTPSlot,
+} from "@/components/ui/input-otp";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { useTheme } from "next-themes";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { toast } from "sonner";
 
 export default function Auth() {
    const { resolvedTheme } = useTheme();
    const [color, setColor] = useState("#ffffff");
    const [showParticles, setShowParticles] = useState(true);
-   const [currentTab, setCurrentTab] = useState("sign-in");
+   const [currentTab, setCurrentTab] = useState("forgot-password");
    const router = useRouter();
 
    const [email, setEmail] = useState("");
@@ -36,48 +38,27 @@ export default function Auth() {
       setShowParticles(resolvedTheme === "dark");
    }, [resolvedTheme]);
 
-   async function handleSignIn() {
-      try {
-         setLoading(true);
-         const res = await fetch("/api/supabase/auth/sign-in", {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-         });
-         const json = await res.json();
-         if (res.ok) {
-            toast("Sign in successfully", {
-               description: "Welcome back !",
-            });
-         } else {
-            toast(json.error, {
-               description: "Please try again !",
-            });
-         }
-      } finally {
+   function handleSend() {
+      setLoading(true);
+      setTimeout(() => {
          setLoading(false);
-      }
+         setCurrentTab("otp");
+      }, 1000);
+   }
+   function handleVerify() {
+      setLoading(true);
+      setTimeout(() => {
+         setLoading(false);
+         setCurrentTab("reset-password");
+      }, 1000);
    }
 
-   async function handleSignUp() {
-      try {
-         setLoading(true);
-         const res = await fetch("/api/supabase/auth/sign-up", {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-         });
-         const json = await res.json();
-         if (res.ok) {
-            toast("Sign up successfully", {
-               //TODO: check user exists
-               description: "Please check your email to verify your account !",
-            });
-         } else {
-            toast(json.error, {
-               description: "Please try again !",
-            });
-         }
-      } finally {
-         setLoading(false);
+   const tabOrder = ["forgot-password", "otp", "reset-password"];
+
+   function handleBack() {
+      const idx = tabOrder.indexOf(currentTab);
+      if (idx > 0) {
+         setCurrentTab(tabOrder[idx - 1]);
       }
    }
 
@@ -93,123 +74,128 @@ export default function Auth() {
             />
          )}
          <Tabs
-            defaultValue={currentTab}
+            value={currentTab}
             onValueChange={setCurrentTab}
             className="col-start-3 row-start-3 flex flex-col items-center z-1"
          >
-            <TabsList className="bg-primary/15 border border-primary/20">
-               <TabsTrigger
-                  value="sign-in"
-                  className="text-primary-foreground-1"
-               >
-                  Sign In
-               </TabsTrigger>
-               <TabsTrigger
-                  value="sign-up"
-                  className="text-primary-foreground-1"
-               >
-                  Sign Up
-               </TabsTrigger>
-            </TabsList>
-
             <div className="flex max-w-xl flex-col bg-primary/20 p-2 dark:bg-white/10">
-               <TabsContent value="sign-in" className="flex justify-center">
+               <TabsContent
+                  value="forgot-password"
+                  className="flex justify-center"
+               >
                   <Card className="rounded-xl bg-card p-8 text-sm/7 text-foreground shadow-none border-none">
                      <CardHeader className="p-0 -mt-2.5">
                         <CardTitle className=" flex flex-col">
-                           <p className="text-2xl uppercase">SIGN IN</p>
+                           <p className="text-2xl uppercase">FORGOT PASSWORD</p>
                         </CardTitle>
                         <CardDescription className="text-foreground">
-                           Make changes to your account here. Click save when
-                           you&apos;re done. 🧩
+                           Enter your email and we&apos;ll send you a link to
+                           reset your password.
                         </CardDescription>
                      </CardHeader>
 
                      <CardContent className="w-85 p-0 flex flex-col justify-center space-y-3">
-                        <div className="grid grid-cols-2 gap-5">
-                           <Button
-                              variant={"ghost"}
-                              className="border shadow-sm"
-                           >
-                              <Icon styles="solid" name="github" />
-                              Github
-                           </Button>
-                           <Button
-                              variant={"ghost"}
-                              className="border shadow-sm"
-                           >
-                              <Icon styles="solid" name="google-logo-bold" />
-                              Google
-                           </Button>
-                        </div>
-                        <Separator />
                         <div className="space-y-1">
-                           <Label htmlFor="username">Email</Label>
+                           <Label>Email</Label>
                            <Input
                               className=" text-sm border-primary/30 dark:border-input"
                               value={email}
                               onChange={(e) => setEmail(e.target.value)}
                               placeholder="Enter Your Email"
-                           />
-                        </div>
-                        <div className="space-y-1">
-                           <Label htmlFor="password">Password</Label>
-                           <Input
-                              className="text-sm border-primary/30 dark:border-input"
-                              type="password"
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                              placeholder="Enter Your Password"
                            />
                         </div>
                      </CardContent>
 
                      <CardFooter className="flex flex-col p-0">
                         <div className="w-full font-semibold flex justify-between mt-3">
-                           <Link
-                              href={"auth/forgot-password"}
-                              className="text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
+                           <Button
+                              className="w-2/5 border border-primary/50"
+                              type="button"
+                              variant={"ghost"}
+                              onClick={() => router.push("/auth")}
                            >
-                              Forgot Password &rarr;
-                           </Link>
+                              Back
+                           </Button>
                            <Button
                               className="w-2/5"
                               type="button"
-                              onClick={handleSignIn}
+                              onClick={handleSend}
                            >
-                              {loading ? "Loading..." : "Sign In"}
+                              {loading ? "Loading..." : "Send"}
                            </Button>
                         </div>
                      </CardFooter>
                   </Card>
                </TabsContent>
 
-               <TabsContent value="sign-up" className="flex justify-center">
+               <TabsContent value="otp" className="flex justify-center">
                   <Card className="rounded-xl bg-card p-8 text-sm/7 text-foreground shadow-none border-none">
                      <CardHeader className="p-0 -mt-2.5">
                         <CardTitle className=" flex flex-col">
-                           <p className="text-2xl uppercase">SIGN UP</p>
+                           <p className="text-2xl uppercase">FORGOT PASSWORD</p>
                         </CardTitle>
                         <CardDescription className="text-foreground">
-                           Create Your Account to Unleash Your Dreams
+                           Enter your OTP to reset your password.
+                        </CardDescription>
+                     </CardHeader>
+
+                     <CardContent className="w-85 p-0 flex flex-col justify-center items-center space-y-3">
+                        <InputOTP maxLength={6}>
+                           <InputOTPGroup>
+                              <InputOTPSlot index={0} />
+                              <InputOTPSlot index={1} />
+                              <InputOTPSlot index={2} />
+                           </InputOTPGroup>
+                           <InputOTPSeparator />
+                           <InputOTPGroup>
+                              <InputOTPSlot index={3} />
+                              <InputOTPSlot index={4} />
+                              <InputOTPSlot index={5} />
+                           </InputOTPGroup>
+                        </InputOTP>
+                     </CardContent>
+
+                     <CardFooter className="flex flex-col p-0">
+                        <div className="w-full font-semibold flex justify-between mt-3">
+                           <Button
+                              className="w-2/5 border border-primary/50"
+                              type="button"
+                              variant={"ghost"}
+                              onClick={handleBack}
+                           >
+                              Back
+                           </Button>
+                           <Button
+                              className="w-2/5"
+                              type="button"
+                              onClick={handleVerify}
+                           >
+                              {loading ? "Loading..." : "Verify"}
+                           </Button>
+                        </div>
+                     </CardFooter>
+                  </Card>
+               </TabsContent>
+
+               <TabsContent
+                  value="reset-password"
+                  className="flex justify-center"
+               >
+                  <Card className="rounded-xl bg-card p-8 text-sm/7 text-foreground shadow-none border-none">
+                     <CardHeader className="p-0 -mt-2.5">
+                        <CardTitle className=" flex flex-col">
+                           <p className="text-2xl uppercase">FORGOT PASSWORD</p>
+                        </CardTitle>
+                        <CardDescription className="text-foreground">
+                           Type your new password.
                         </CardDescription>
                      </CardHeader>
 
                      <CardContent className="w-85 p-0 flex flex-col justify-center space-y-3">
                         <div className="space-y-1">
-                           <Label htmlFor="username">Email</Label>
+                           <Label>Password</Label>
                            <Input
                               className=" text-sm border-primary/30 dark:border-input"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              placeholder="Enter Your Email"
-                           />
-                        </div>
-                        <div className="space-y-1">
-                           <Label htmlFor="password">Password</Label>
-                           <Input
-                              className="text-sm border-primary/30 dark:border-input"
-                              type="password"
                               value={password}
                               onChange={(e) => setPassword(e.target.value)}
                               placeholder="Enter Your Password"
@@ -223,16 +209,16 @@ export default function Auth() {
                               className="w-2/5 border border-primary/50"
                               type="button"
                               variant={"ghost"}
-                              onClick={() => router.push("/")}
+                              onClick={handleBack}
                            >
-                              Back To Home
+                              Back
                            </Button>
                            <Button
                               className="w-2/5"
                               type="button"
-                              onClick={handleSignUp}
+                              onClick={handleSend}
                            >
-                              {loading ? "Loading..." : "Sign Up"}
+                              {loading ? "Loading..." : "Send"}
                            </Button>
                         </div>
                      </CardFooter>
