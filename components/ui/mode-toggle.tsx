@@ -48,6 +48,9 @@ export function ModeToggle({ buttonStyle }: ModeToggleProps) {
             <DropdownMenuItem onClick={() => setTheme("pastel-pink")}>
                Pastel Pink
             </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("pastel-blue")}>
+               Pastel Blue
+            </DropdownMenuItem>
             <DropdownMenuItem onClick={() => setTheme("neutralx")}>
                Neutral
             </DropdownMenuItem>

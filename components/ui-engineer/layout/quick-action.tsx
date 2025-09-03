@@ -15,7 +15,7 @@ interface LinkItem {
 
 const NAVIGATION_LINKS: LinkItem[] = [
    { href: "/", label: "Home", className: "-rotate-20 -ml-10" },
-   { href: "/chat", label: "Chat", className: "-rotate-10 -ml-5" },
+   { href: "/auth", label: "Chat", className: "-rotate-10 -ml-5" },
    {
       href: "/ui-engineer",
       label: "UI Engineer",

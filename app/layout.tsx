@@ -41,7 +41,7 @@ export default function RootLayout({
                defaultTheme="pastel-pink"
                enableSystem
                disableTransitionOnChange
-               themes={["light", "dark", "pastel-pink", "neutralx"]}
+               themes={["light", "dark", "pastel-pink","pastel-blue", "neutralx"]}
             >
                <ContributionGraphProvider>
                   <Spotlight />
