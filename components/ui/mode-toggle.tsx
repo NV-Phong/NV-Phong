@@ -15,12 +15,18 @@ import {
    DropdownMenuSubContent,
 } from "@/components/ui/dropdown-menu";
 import Icon from "../ui-engineer/Icon";
+import { createPortal } from "react-dom";
 
 interface ModeToggleProps {
    buttonStyle?: string;
+   enableBlur?: boolean;
 }
 
-export function ModeToggle({ buttonStyle }: ModeToggleProps) {
+export function ModeToggle({
+   buttonStyle,
+   enableBlur = false,
+}: ModeToggleProps) {
+   const [open, setOpen] = React.useState(false);
    const { setTheme, theme } = useTheme();
 
    const renderPastel = (label: string, value: string, colorClass: string) => (
@@ -41,7 +47,17 @@ export function ModeToggle({ buttonStyle }: ModeToggleProps) {
    );
 
    return (
-      <DropdownMenu>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
+         {enableBlur &&
+            open &&
+            createPortal(
+               <div
+                  className="fixed inset-0 backdrop-blur-[10px] z-3000"
+                  onClick={() => setOpen(false)}
+               />,
+               document.body
+            )}
+
          <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon" className={buttonStyle}>
                <Icon
@@ -58,7 +74,7 @@ export function ModeToggle({ buttonStyle }: ModeToggleProps) {
             </Button>
          </DropdownMenuTrigger>
 
-         <DropdownMenuContent align="end">
+         <DropdownMenuContent align="end" className="z-3001">
             {renderDefault("Light", "light")}
             {renderDefault("Dark", "dark")}
             {renderDefault("System", "system")}

@@ -176,7 +176,6 @@ export function MusicPlayer() {
                            >
                               <Icon
                                  styles="solid"
-                                 // className="dark:invert"
                                  name="cursor-magic-selection-02-solid-standard"
                               />
                            </Button>
