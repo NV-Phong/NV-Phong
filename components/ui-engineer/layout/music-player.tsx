@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import Icon from "../Icon";
 import { SmoothCursor } from "@/components/magicui/smooth-cursor";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import { Settings } from "../settings";
 
 export function MusicPlayer() {
    const [isPlaying, setIsPlaying] = useState(false);
@@ -25,7 +26,9 @@ export function MusicPlayer() {
    const [isCollapsed, setIsCollapsed] = useState(true);
    const [isRepeat, setIsRepeat] = useState(false);
    const [isShuffle, setIsShuffle] = useState(false);
-   const [isCursorEnabled, setIsCursorEnabled] = useState(false);
+   const [isCursorEnabled, 
+      // setIsCursorEnabled
+   ] = useState(false);
    const audioRef = useRef<HTMLAudioElement>(null);
 
    const tracks: Song[] = Musics;
@@ -162,7 +165,7 @@ export function MusicPlayer() {
                            </p>
                         </div>
                         <div className="flex items-center space-x-2">
-                           <Button
+                           {/* <Button
                               variant="outline"
                               size="icon"
                               onClick={() =>
@@ -178,7 +181,8 @@ export function MusicPlayer() {
                                  styles="solid"
                                  name="cursor-magic-selection-02-solid-standard"
                               />
-                           </Button>
+                           </Button> */}
+                           <Settings/>
                            <ModeToggle buttonStyle="bg-transparent dark:border-primary/10" />
                            <Button
                               variant="outline"
