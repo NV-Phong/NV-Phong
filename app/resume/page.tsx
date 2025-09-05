@@ -19,10 +19,12 @@ import {
    TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Separator from "@/components/ui-engineer/separator";
+import { useRouter } from "next/navigation";
 
 export default function Resume() {
    const [currentTab, setCurrentTab] = useState("preview");
    const [selectedThemes, setSelectedThemes] = useState(new Set<string>());
+   const router = useRouter();
 
    const handleCheckboxChange = (theme: string, checked: boolean) => {
       setSelectedThemes((prev) => {
@@ -78,6 +80,12 @@ export default function Resume() {
                   className="text-primary-foreground-1"
                >
                   Download
+               </TabsTrigger>
+               <TabsTrigger
+                  value="jobs-tracker"
+                  className="text-primary-foreground-1"
+               >
+                  Jobs Tracker
                </TabsTrigger>
             </TabsList>
 
@@ -267,6 +275,44 @@ export default function Resume() {
                               ? "Download PDF"
                               : "Download PDFs"}
                         </Button>
+                     </CardFooter>
+                  </Card>
+               </TabsContent>
+
+               <TabsContent
+                  forceMount={true}
+                  value="jobs-tracker"
+                  className="flex justify-center data-[state=inactive]:hidden"
+               >
+                  <Card className="rounded-xl bg-card text-sm/7 text-foreground shadow-none border-none">
+                     <CardHeader>
+                        <CardTitle className="text-xl text-primary-foreground-darker uppercase">
+                           Jobs Tracker
+                        </CardTitle>
+                        <CardDescription className="text-primary-foreground-darker/60">
+                           Track and manage your job applications easily.
+                        </CardDescription>
+                     </CardHeader>
+                     <CardContent>
+                        <div className="border border-primary/30 rounded-xl overflow-hidden p-1 bg-primary/20 overflow:hidden">
+                           <iframe
+                              className="rounded-xl border border-primary/30"
+                              width="1300"
+                              height="500"
+                              src="https://1drv.ms/x/c/346357cb3e9bf76a/IQQkRgUPfZR7RIkAi1jBObJ9Ady4okZYZlHBSMntg6Ic_uw"
+                              allowFullScreen
+                           ></iframe>
+                        </div>
+                     </CardContent>
+                     <CardFooter className="align justify-between">
+                        <a
+                           href="https://1drv.ms/x/c/346357cb3e9bf76a/ESRGBQ99lHtEiQCLWME5sn0BZLGK0B3StFvfRaCHclILeQ?e=nsE4jS"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="w-full"
+                        >
+                           <Button>Download xlsx</Button>
+                        </a>
                      </CardFooter>
                   </Card>
                </TabsContent>
