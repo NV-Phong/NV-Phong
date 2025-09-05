@@ -19,12 +19,10 @@ import {
    TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Separator from "@/components/ui-engineer/separator";
-import { useRouter } from "next/navigation";
 
 export default function Resume() {
    const [currentTab, setCurrentTab] = useState("preview");
    const [selectedThemes, setSelectedThemes] = useState(new Set<string>());
-   const router = useRouter();
 
    const handleCheckboxChange = (theme: string, checked: boolean) => {
       setSelectedThemes((prev) => {
@@ -71,19 +69,19 @@ export default function Resume() {
             <TabsList className="bg-primary/15 border border-primary/20">
                <TabsTrigger
                   value="preview"
-                  className="text-primary-foreground-1"
+                  className="text-primary-foreground-darker"
                >
                   Preview
                </TabsTrigger>
                <TabsTrigger
                   value="download"
-                  className="text-primary-foreground-1"
+                  className="text-primary-foreground-darker"
                >
                   Download
                </TabsTrigger>
                <TabsTrigger
                   value="jobs-tracker"
-                  className="text-primary-foreground-1"
+                  className="text-primary-foreground-darker"
                >
                   Jobs Tracker
                </TabsTrigger>
@@ -304,12 +302,12 @@ export default function Resume() {
                            ></iframe>
                         </div>
                      </CardContent>
-                     <CardFooter className="align justify-between">
+                     <CardFooter className="flex justify-between">
                         <a
                            href="https://1drv.ms/x/c/346357cb3e9bf76a/ESRGBQ99lHtEiQCLWME5sn0BZLGK0B3StFvfRaCHclILeQ?e=nsE4jS"
                            target="_blank"
                            rel="noopener noreferrer"
-                           className="w-full"
+                           className="w-full flex justify-center"
                         >
                            <Button>Download xlsx</Button>
                         </a>
