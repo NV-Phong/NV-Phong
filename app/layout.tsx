@@ -49,7 +49,7 @@ export default function RootLayout({
                   "pastel-green",
                   "pastel-blue",
                   "pastel-violet",
-                  "neutralx",
+                  "pastel-orange",
                ]}
             >
                <ContributionGraphProvider>

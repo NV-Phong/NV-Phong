@@ -351,6 +351,52 @@ body {
    --pastel-6: oklch(69.36% 0.20101 332.329);
 }
 
+.pastel-orange {
+   --background: oklch(1 0 0);
+   --foreground: oklch(39.418% 0.00004 271.152);
+   --card: oklch(98.623% 0.01411 84.538);
+   --card-foreground: oklch(0.13 0.028 261.692);
+   --popover: oklch(98.623% 0.01411 84.538);
+   --popover-foreground: oklch(0.13 0.028 261.692);
+   --primary: oklch(82.008% 0.11054 77.538);
+   --primary-foreground: oklch(98.559% 0.0016 66.223);
+   --primary-foreground-1: oklch(67.926% 0.09712 91.492);
+   --primary-foreground-darker: oklch(52.668% 0.06429 76.762);
+   --secondary: oklch(0.967 0.003 264.542);
+   --secondary-foreground: oklch(0.21 0.034 264.665);
+   --muted: oklch(96.179% 0.02478 89.21);
+   --muted-foreground: oklch(61.671% 0.00007 271.152);
+   --accent: oklch(80.679% 0.09557 88.695 / 0.2);
+   --accent-foreground: oklch(0.21 0.034 264.665);
+   --destructive: oklch(0.577 0.245 27.325);
+   --border: oklch(81.083% 0.09701 90.515 / 0.3);
+   --input: oklch(93.446% 0.00568 84.451);
+   /* --input: oklch(0.83 0.1354 129.16 / 0.5); */
+   --ring: oklch(73.322% 0.02252 85.944);
+   --chart-1: oklch(0.646 0.222 41.116);
+   --chart-2: oklch(0.6 0.118 184.704);
+   --chart-3: oklch(0.398 0.07 227.392);
+   --chart-4: oklch(0.828 0.189 84.429);
+   --chart-5: oklch(0.769 0.188 70.08);
+   --sidebar: oklch(0.985 0.002 247.839);
+   --sidebar-foreground: oklch(0.13 0.028 261.692);
+   --sidebar-primary: oklch(0.21 0.034 264.665);
+   --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
+   --sidebar-accent: oklch(0.967 0.003 264.542);
+   --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
+   --sidebar-border: oklch(0.928 0.006 264.531);
+   --sidebar-ring: oklch(0.707 0.022 261.325);
+   --selection: oklch(82.008% 0.11054 77.538);
+   --icon: oklch(51.028% 0.00006 271.152);
+
+   --pastel-1: oklch(98.247% 0.02186 89.788);
+   --pastel-2: oklch(88.451% 0.10637 78.943);
+   --pastel-3: oklch(80.277% 0.09423 86.813);
+   --pastel-4: oklch(82.414% 0.08365 85.605);
+   --pastel-5: oklch(74.22% 0.06316 81.349);
+   --pastel-6: oklch(77.663% 0.10886 72.592);
+}
+
 .bg-pastel-1 {
    background-color: var(--pastel-1);
 }

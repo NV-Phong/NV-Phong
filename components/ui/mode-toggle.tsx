@@ -102,6 +102,11 @@ export function ModeToggle({
                      "pastel-violet",
                      "bg-[oklch(0.773_0.1514_308.03)]"
                   )}
+                  {renderPastel(
+                     "Orange",
+                     "pastel-orange",
+                     "bg-[oklch(82.008%_0.11054_77.538)]"
+                  )}
                </DropdownMenuSubContent>
             </DropdownMenuSub>
          </DropdownMenuContent>
