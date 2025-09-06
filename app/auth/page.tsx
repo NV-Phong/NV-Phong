@@ -2,6 +2,7 @@
 import Particles from "@/components/magicui/particles";
 import Icon from "@/components/ui-engineer/Icon";
 import Separator from "@/components/ui-engineer/separator";
+import TurnstileWidget from "@/components/ui-engineer/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import {
    Card,
@@ -16,9 +17,10 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function Auth() {
    const { resolvedTheme } = useTheme();
@@ -63,31 +65,49 @@ export default function Auth() {
       provider,
       email,
       password,
+      anonymous,
+      capchaToken,
    }: {
       provider?: "google" | "github";
       email?: string;
       password?: string;
+      anonymous?: boolean;
+      capchaToken?: string;
    }) {
       try {
          setLoading(true);
-         const body = provider ? { provider } : { email, password };
+
+         let body: Record<string, unknown> = {};
+         if (provider) body = { provider };
+         else if (anonymous)
+            body = { anonymous: true, captchaToken: capchaToken };
+         else body = { email, password };
 
          const res = await fetch("/api/supabase/auth/sign-in", {
             method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
          });
+
          const json = await res.json();
 
          if (res.ok) {
             if (json.data?.url) {
                window.location.href = json.data.url;
             } else {
-               toast("Sign in successfully", { description: "Welcome back!" });
+               Cookies.set("auth-success", "true", { path: "/" });
+               router.push("/");
             }
          } else {
-            toast(json.error || `${provider ?? "Email"} Sign-In failed`, {
-               description: "Please try again!",
-            });
+            toast(
+               json.error ||
+                  `${
+                     provider ?? (anonymous ? "Anonymous" : "Email")
+                  } Sign-In failed`,
+               {
+                  description: "Please try again!",
+               }
+            );
          }
       } finally {
          setLoading(false);
@@ -210,7 +230,7 @@ export default function Auth() {
                            <p className="text-2xl uppercase">SIGN UP</p>
                         </CardTitle>
                         <CardDescription className="text-foreground">
-                           Create Your Account to Unleash Your Dreams
+                           Create your account to unleash your dreams
                         </CardDescription>
                      </CardHeader>
 
@@ -238,14 +258,22 @@ export default function Auth() {
 
                      <CardFooter className="flex flex-col p-0">
                         <div className="w-full font-semibold flex justify-between mt-3">
-                           <Button
+                           {/* <Button
                               className="w-2/5 border border-primary/50"
                               type="button"
                               variant={"ghost"}
-                              onClick={() => router.push("/")}
+                              onClick={() => handleSignIn({ anonymous: true })}
                            >
-                              Back To Home
-                           </Button>
+                              Anonymous
+                           </Button> */}
+                           <TurnstileWidget
+                              onSuccess={(tok) =>
+                                 handleSignIn({
+                                    anonymous: true,
+                                    capchaToken: tok,
+                                 })
+                              }
+                           />
                            <Button
                               className="w-2/5"
                               type="button"

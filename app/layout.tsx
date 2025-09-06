@@ -11,6 +11,7 @@ import { MusicPlayer } from "@/components/ui-engineer/layout/music-player";
 import QuickAction from "@/components/ui-engineer/layout/quick-action";
 import { Toaster } from "@/components/ui/sonner";
 import HiddenComponent from "@/components/ui-engineer/hidden-component";
+import Script from "next/script";
 
 const tomorrow = Tomorrow({
    subsets: ["latin"],
@@ -67,6 +68,11 @@ export default function RootLayout({
             </ThemeProvider>
             <Analytics />
             <SpeedInsights />
+            <Script
+               src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+               async
+               defer
+            />
          </body>
       </html>
    );

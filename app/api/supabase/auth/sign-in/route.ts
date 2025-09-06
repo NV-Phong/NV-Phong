@@ -3,7 +3,8 @@ import { createClient } from "@/utils/supabase/server";
 
 export async function POST(req: Request) {
    const supabase = await createClient();
-   const { email, password, provider } = await req.json();
+   const { email, password, provider, anonymous, captchaToken } =
+      await req.json();
    const origin = new URL(req.url).origin;
 
    //-------------------------------------------------- OAUTH --------------------------------------------------//
@@ -14,6 +15,16 @@ export async function POST(req: Request) {
          options: {
             redirectTo: `${origin}/api/next/auth/callback`,
          },
+      });
+      return error
+         ? NextResponse.json({ error: error.message }, { status: 400 })
+         : NextResponse.json({ data });
+   }
+
+   //-------------------------------------------------- ANONYMOUS --------------------------------------------------//
+   if (anonymous) {
+      const { data, error } = await supabase.auth.signInAnonymously({
+         options: { captchaToken },
       });
       return error
          ? NextResponse.json({ error: error.message }, { status: 400 })
