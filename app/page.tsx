@@ -30,7 +30,7 @@ export default function Home() {
       const checkAuth = () => {
          if (Cookies.get("auth-success")) {
             toast.success("Welcome back!", {
-               description: "You've been successfully signed in with Google.",
+               description: "You've been successfully signed in.",
             });
             Cookies.remove("auth-success");
          }

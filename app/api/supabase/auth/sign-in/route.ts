@@ -28,6 +28,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ data });
    }
 
+   //-------------------------------------------------- GITHUB --------------------------------------------------//
+   if (provider === "github") {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+         provider: "github",
+         options: {
+            redirectTo: `${origin}/callback`,
+         },
+      });
+
+      if (error) {
+         return NextResponse.json({ error: error.message }, { status: 400 });
+      }
+
+      return NextResponse.json({ data });
+   }
+
    //-------------------------------------------------- RESPONSE --------------------------------------------------//
    if (error) {
       return NextResponse.json({ error: error.message }, { status: 400 });

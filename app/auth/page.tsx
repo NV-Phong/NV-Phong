@@ -101,6 +101,26 @@ export default function Auth() {
       }
    }
 
+   async function handleGithubSignIn() {
+      try {
+         setLoading(true);
+         const res = await fetch("/api/supabase/auth/sign-in", {
+            method: "POST",
+            body: JSON.stringify({ provider: "github" }),
+         });
+         const json = await res.json();
+         if (res.ok && json.data.url) {
+            window.location.href = json.data.url;
+         } else {
+            toast(json.error || "Github Sign-In failed", {
+               description: "Please try again !",
+            });
+         }
+      } finally {
+         setLoading(false);
+      }
+   }
+
    return (
       <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
          {showParticles && (
@@ -150,6 +170,7 @@ export default function Auth() {
                            <Button
                               variant={"ghost"}
                               className="border shadow-sm"
+                              onClick={handleGithubSignIn}
                            >
                               <Icon styles="solid" name="github" />
                               Github
