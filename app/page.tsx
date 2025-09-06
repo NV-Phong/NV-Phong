@@ -5,6 +5,8 @@ import StickyNotes from "@/components/ui-engineer/sticky-notes";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import MyWork from "./my-work/page";
+import { toast } from "sonner";
+import Cookies from "js-cookie";
 
 export default function Home() {
    const { resolvedTheme } = useTheme();
@@ -23,6 +25,18 @@ export default function Home() {
          myWorkRef.current.scrollIntoView({ behavior: "smooth" });
       }
    };
+
+   useEffect(() => {
+      const checkAuth = () => {
+         if (Cookies.get("auth-success")) {
+            toast.success("Welcome back!", {
+               description: "You've been successfully signed in with Google.",
+            });
+            Cookies.remove("auth-success");
+         }
+      };
+      setTimeout(checkAuth, 0);
+   }, []);
 
    return (
       <div>
