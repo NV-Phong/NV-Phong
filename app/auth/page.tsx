@@ -36,28 +36,6 @@ export default function Auth() {
       setShowParticles(resolvedTheme === "dark");
    }, [resolvedTheme]);
 
-   async function handleSignIn() {
-      try {
-         setLoading(true);
-         const res = await fetch("/api/supabase/auth/sign-in", {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-         });
-         const json = await res.json();
-         if (res.ok) {
-            toast("Sign in successfully", {
-               description: "Welcome back !",
-            });
-         } else {
-            toast(json.error, {
-               description: "Please try again !",
-            });
-         }
-      } finally {
-         setLoading(false);
-      }
-   }
-
    async function handleSignUp() {
       try {
          setLoading(true);
@@ -81,39 +59,34 @@ export default function Auth() {
       }
    }
 
-   async function handleGoogleSignIn() {
+   async function handleSignIn({
+      provider,
+      email,
+      password,
+   }: {
+      provider?: "google" | "github";
+      email?: string;
+      password?: string;
+   }) {
       try {
          setLoading(true);
-         const res = await fetch("/api/supabase/auth/sign-in", {
-            method: "POST",
-            body: JSON.stringify({ provider: "google" }),
-         });
-         const json = await res.json();
-         if (res.ok && json.data.url) {
-            window.location.href = json.data.url;
-         } else {
-            toast(json.error || "Google Sign-In failed", {
-               description: "Please try again !",
-            });
-         }
-      } finally {
-         setLoading(false);
-      }
-   }
+         const body = provider ? { provider } : { email, password };
 
-   async function handleGithubSignIn() {
-      try {
-         setLoading(true);
          const res = await fetch("/api/supabase/auth/sign-in", {
             method: "POST",
-            body: JSON.stringify({ provider: "github" }),
+            body: JSON.stringify(body),
          });
          const json = await res.json();
-         if (res.ok && json.data.url) {
-            window.location.href = json.data.url;
+
+         if (res.ok) {
+            if (json.data?.url) {
+               window.location.href = json.data.url;
+            } else {
+               toast("Sign in successfully", { description: "Welcome back!" });
+            }
          } else {
-            toast(json.error || "Github Sign-In failed", {
-               description: "Please try again !",
+            toast(json.error || `${provider ?? "Email"} Sign-In failed`, {
+               description: "Please try again!",
             });
          }
       } finally {
@@ -170,7 +143,9 @@ export default function Auth() {
                            <Button
                               variant={"ghost"}
                               className="border shadow-sm"
-                              onClick={handleGithubSignIn}
+                              onClick={() =>
+                                 handleSignIn({ provider: "github" })
+                              }
                            >
                               <Icon styles="solid" name="github" />
                               Github
@@ -178,7 +153,9 @@ export default function Auth() {
                            <Button
                               variant={"ghost"}
                               className="border shadow-sm"
-                              onClick={handleGoogleSignIn}
+                              onClick={() =>
+                                 handleSignIn({ provider: "google" })
+                              }
                            >
                               <Icon styles="solid" name="google-logo-bold" />
                               Google
@@ -217,7 +194,7 @@ export default function Auth() {
                            <Button
                               className="w-2/5"
                               type="button"
-                              onClick={handleSignIn}
+                              onClick={() => handleSignIn({ email, password })}
                            >
                               {loading ? "Loading..." : "Sign In"}
                            </Button>
