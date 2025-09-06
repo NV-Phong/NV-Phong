@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 export async function POST(req: Request) {
    const supabase = await createClient();
    const { email, password, provider } = await req.json();
+   const origin = new URL(req.url);
 
    //-------------------------------------------------- EMAIL/PASSWORD --------------------------------------------------//
    const { data, error } = await supabase.auth.signInWithPassword({
@@ -16,7 +17,7 @@ export async function POST(req: Request) {
       const { data, error } = await supabase.auth.signInWithOAuth({
          provider: "google",
          options: {
-            redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/api/supabase/auth/sign-in/callback`,
+            redirectTo: `${origin}/callback`,
          },
       });
 
