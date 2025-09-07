@@ -296,7 +296,15 @@ export default function BlobUploadFile() {
 
                                           <DialogOverlay className="backdrop-blur-[10px] z-50" />
 
-                                          <DialogContent className="max-w-5xl p-0 bg-transparent border-none shadow-none z-50 [&>button]:hidden gap-2">
+                                          <DialogContent
+                                             onOpenAutoFocus={(e) => {
+                                                e.preventDefault();
+                                                (
+                                                   e.currentTarget as HTMLElement
+                                                ).focus();
+                                             }}
+                                             className="max-w-5xl p-0 bg-transparent border-none shadow-none z-50 [&>button]:hidden gap-2"
+                                          >
                                              <DialogTitle className="flex justify-center">
                                                 <ToggleGroup
                                                    variant="outline"
