@@ -54,6 +54,8 @@ export default function BlobUploadFile() {
    const [files, setFiles] = useState<FileItem[]>([]);
    const [url, setUrl] = useState<string>("");
    const [progress, setProgress] = useState<number>(0);
+   const [loading, setLoading] = useState(false);
+   const [error, setError] = useState<string | null>(null);
 
    const [copiedFile, setCopiedFile] = useState<string | null>(null);
 
@@ -110,11 +112,16 @@ export default function BlobUploadFile() {
 
    async function handleGetFiles() {
       try {
+         setLoading(true);
+         setError(null);
          const res = await fetch("/api/vercel/storage");
+         if (!res.ok) throw new Error(`HTTP ${res.status}`);
          const data: FileItem[] = await res.json();
          setFiles(data);
-      } catch (error) {
-         console.error("Failed to fetch files:", error);
+      } catch (err: unknown) {
+         setError(err instanceof Error ? err.message : "Failed to fetch files");
+      } finally {
+         setLoading(false);
       }
    }
 
@@ -149,8 +156,8 @@ export default function BlobUploadFile() {
                <TabsTrigger value="upload" className="text-primary">
                   Upload
                </TabsTrigger>
-               <TabsTrigger value="galery" className="text-primary">
-                  Galery
+               <TabsTrigger value="gallery" className="text-primary">
+                  Gallery
                </TabsTrigger>
             </TabsList>
             <div className="flex max-w-xl flex-col bg-primary/20 p-2 dark:bg-white/10">
@@ -236,7 +243,7 @@ export default function BlobUploadFile() {
                      </CardFooter>
                   </Card>
                </TabsContent>
-               <TabsContent value="galery" className="flex justify-center">
+               <TabsContent value="gallery" className="flex justify-center">
                   <Card className="rounded-xl bg-card p-10 text-sm/7 text-foreground shadow-none border-none">
                      <CardHeader className="p-0">
                         <CardTitle className=" flex flex-col">
@@ -251,208 +258,236 @@ export default function BlobUploadFile() {
                      </CardHeader>
 
                      <CardContent className="space-y-4 p-0 flex flex-col">
-                        <Tabs
-                           defaultValue={currentFileTab}
-                           onValueChange={setCurrentFileTab}
-                        >
-                           <TabsList className="bg-primary/15 border border-primary/20">
-                              <TabsTrigger
-                                 value="graphic"
-                                 className="text-primary"
-                              >
-                                 Graphic
-                              </TabsTrigger>
-                              <TabsTrigger
-                                 value="file"
-                                 className="text-primary"
-                              >
-                                 File
-                              </TabsTrigger>
-                           </TabsList>
+                        {loading || error ? (
+                           <div className="flex items-center justify-between p-2 bg-primary/5 dark:bg-primary/2 border border-primary/20 dark:border-primary/10 rounded-md text-sm font-medium text-primary-foreground-darker">
+                              <div className="flex items-center gap-2 max-w-[400px] w-80">
+                                 <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                    <Icon
+                                       size={15}
+                                       styles="solid"
+                                       className="!bg-primary-foreground-darker"
+                                       name="server"
+                                    />
+                                    {loading ? "Loading" : "Error"}
+                                 </Badge>
+                                 <span className="truncate font-normal">
+                                    {loading ? "Rendering gallery..." : error}
+                                 </span>
+                              </div>
+                           </div>
+                        ) : (
+                           <Tabs
+                              defaultValue={currentFileTab}
+                              onValueChange={setCurrentFileTab}
+                           >
+                              <TabsList className="bg-primary/15 border border-primary/20">
+                                 <TabsTrigger
+                                    value="graphic"
+                                    className="text-primary"
+                                 >
+                                    Graphic
+                                 </TabsTrigger>
+                                 <TabsTrigger
+                                    value="file"
+                                    className="text-primary"
+                                 >
+                                    File
+                                 </TabsTrigger>
+                              </TabsList>
 
-                           <TabsContent value="graphic">
-                              <ScrollArea className="w-full h-75 p-2">
-                                 <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 p-2">
-                                    {graphicFiles.map((file) => (
-                                       <Dialog
-                                          key={file.pathname}
-                                          onOpenChange={(isOpen) => {
-                                             if (!isOpen) setCopiedFile(null);
-                                          }}
-                                       >
-                                          <DialogTrigger asChild>
-                                             <Card className="mb-3 border-none p-0 shadow-none break-inside-avoid cursor-pointer">
-                                                <CardContent className="flex justify-center p-0">
+                              <TabsContent value="graphic">
+                                 <ScrollArea className="w-full h-75 p-2">
+                                    <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 p-2">
+                                       {graphicFiles.map((file) => (
+                                          <Dialog
+                                             key={file.pathname}
+                                             onOpenChange={(isOpen) => {
+                                                if (!isOpen)
+                                                   setCopiedFile(null);
+                                             }}
+                                          >
+                                             <DialogTrigger asChild>
+                                                <Card className="mb-3 border-none p-0 shadow-none break-inside-avoid cursor-pointer">
+                                                   <CardContent className="flex justify-center p-0">
+                                                      <Image
+                                                         src={file.url}
+                                                         alt={file.pathname}
+                                                         width={500}
+                                                         height={500}
+                                                         className="w-full h-auto object-cover rounded-md"
+                                                      />
+                                                   </CardContent>
+                                                </Card>
+                                             </DialogTrigger>
+
+                                             <DialogOverlay className="backdrop-blur-[10px] z-50" />
+
+                                             <DialogContent
+                                                onOpenAutoFocus={(e) => {
+                                                   e.preventDefault();
+                                                   (
+                                                      e.currentTarget as HTMLElement
+                                                   ).focus();
+                                                }}
+                                                className="max-w-5xl p-0 bg-transparent border-none shadow-none z-50 [&>button]:hidden gap-2"
+                                             >
+                                                <DialogTitle className="flex justify-center">
+                                                   <ToggleGroup
+                                                      variant="outline"
+                                                      type="multiple"
+                                                   >
+                                                      <Tooltip>
+                                                         <TooltipTrigger
+                                                            asChild
+                                                         >
+                                                            <ToggleGroupItem
+                                                               value="download"
+                                                               aria-label="Download image"
+                                                               className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                                               onClick={() => {
+                                                                  const a =
+                                                                     document.createElement(
+                                                                        "a"
+                                                                     );
+                                                                  a.href =
+                                                                     file.downloadUrl ||
+                                                                     file.url;
+                                                                  a.download =
+                                                                     file.pathname;
+                                                                  a.click();
+                                                               }}
+                                                            >
+                                                               <Download className="h-4 w-4 text-primary-foreground-darker" />
+                                                            </ToggleGroupItem>
+                                                         </TooltipTrigger>
+                                                         <TooltipContent className="py-2">
+                                                            Download
+                                                         </TooltipContent>
+                                                      </Tooltip>
+
+                                                      <Tooltip>
+                                                         <TooltipTrigger
+                                                            asChild
+                                                         >
+                                                            <ToggleGroupItem
+                                                               value="zoom"
+                                                               aria-label="Zoom image"
+                                                               className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                                               onClick={() =>
+                                                                  window.open(
+                                                                     file.url,
+                                                                     "_blank"
+                                                                  )
+                                                               }
+                                                            >
+                                                               <ZoomIn className="h-4 w-4 text-primary-foreground-darker" />
+                                                            </ToggleGroupItem>
+                                                         </TooltipTrigger>
+                                                         <TooltipContent className="py-2">
+                                                            Zoom
+                                                         </TooltipContent>
+                                                      </Tooltip>
+
+                                                      <Tooltip>
+                                                         <TooltipTrigger
+                                                            asChild
+                                                         >
+                                                            <ToggleGroupItem
+                                                               value="share"
+                                                               aria-label="Share image"
+                                                               className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                                               onClick={async () => {
+                                                                  try {
+                                                                     await navigator.clipboard.writeText(
+                                                                        file.url
+                                                                     );
+                                                                     setCopiedFile(
+                                                                        file.pathname
+                                                                     );
+                                                                  } catch {}
+                                                               }}
+                                                            >
+                                                               {copiedFile ===
+                                                               file.pathname ? (
+                                                                  <Check className="h-4 w-4 text-primary-foreground-darker" />
+                                                               ) : (
+                                                                  <Share2 className="h-4 w-4 text-primary-foreground-darker" />
+                                                               )}
+                                                            </ToggleGroupItem>
+                                                         </TooltipTrigger>
+                                                         <TooltipContent className="py-2">
+                                                            {copiedFile ===
+                                                            file.pathname
+                                                               ? "Copied!"
+                                                               : "Copy link"}
+                                                         </TooltipContent>
+                                                      </Tooltip>
+
+                                                      <Tooltip>
+                                                         <TooltipTrigger
+                                                            asChild
+                                                         >
+                                                            <ToggleGroupItem
+                                                               value="delete"
+                                                               aria-label="Delete image"
+                                                               className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                                            >
+                                                               <Trash2 className="h-4 w-4 text-primary-foreground-darker" />
+                                                            </ToggleGroupItem>
+                                                         </TooltipTrigger>
+                                                         <TooltipContent className="py-2">
+                                                            Delete
+                                                         </TooltipContent>
+                                                      </Tooltip>
+                                                   </ToggleGroup>
+                                                </DialogTitle>
+                                                <div className="flex justify-center items-center">
                                                    <Image
                                                       src={file.url}
                                                       alt={file.pathname}
-                                                      width={500}
-                                                      height={500}
-                                                      className="w-full h-auto object-cover rounded-md"
+                                                      width={1200}
+                                                      height={1200}
+                                                      className="max-h-[80vh] w-auto h-auto object-contain rounded-md"
                                                    />
-                                                </CardContent>
-                                             </Card>
-                                          </DialogTrigger>
+                                                </div>
+                                             </DialogContent>
+                                          </Dialog>
+                                       ))}
+                                    </div>
+                                 </ScrollArea>
+                              </TabsContent>
 
-                                          <DialogOverlay className="backdrop-blur-[10px] z-50" />
-
-                                          <DialogContent
-                                             onOpenAutoFocus={(e) => {
-                                                e.preventDefault();
-                                                (
-                                                   e.currentTarget as HTMLElement
-                                                ).focus();
-                                             }}
-                                             className="max-w-5xl p-0 bg-transparent border-none shadow-none z-50 [&>button]:hidden gap-2"
-                                          >
-                                             <DialogTitle className="flex justify-center">
-                                                <ToggleGroup
-                                                   variant="outline"
-                                                   type="multiple"
-                                                >
-                                                   <Tooltip>
-                                                      <TooltipTrigger asChild>
-                                                         <ToggleGroupItem
-                                                            value="download"
-                                                            aria-label="Download image"
-                                                            className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
-                                                            onClick={() => {
-                                                               const a =
-                                                                  document.createElement(
-                                                                     "a"
-                                                                  );
-                                                               a.href =
-                                                                  file.downloadUrl ||
-                                                                  file.url;
-                                                               a.download =
-                                                                  file.pathname;
-                                                               a.click();
-                                                            }}
-                                                         >
-                                                            <Download className="h-4 w-4 text-primary-foreground-darker" />
-                                                         </ToggleGroupItem>
-                                                      </TooltipTrigger>
-                                                      <TooltipContent className="py-2">
-                                                         Download
-                                                      </TooltipContent>
-                                                   </Tooltip>
-
-                                                   <Tooltip>
-                                                      <TooltipTrigger asChild>
-                                                         <ToggleGroupItem
-                                                            value="zoom"
-                                                            aria-label="Zoom image"
-                                                            className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
-                                                            onClick={() =>
-                                                               window.open(
-                                                                  file.url,
-                                                                  "_blank"
-                                                               )
-                                                            }
-                                                         >
-                                                            <ZoomIn className="h-4 w-4 text-primary-foreground-darker" />
-                                                         </ToggleGroupItem>
-                                                      </TooltipTrigger>
-                                                      <TooltipContent className="py-2">
-                                                         Zoom
-                                                      </TooltipContent>
-                                                   </Tooltip>
-
-                                                   <Tooltip>
-                                                      <TooltipTrigger asChild>
-                                                         <ToggleGroupItem
-                                                            value="share"
-                                                            aria-label="Share image"
-                                                            className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
-                                                            onClick={async () => {
-                                                               try {
-                                                                  await navigator.clipboard.writeText(
-                                                                     file.url
-                                                                  );
-                                                                  setCopiedFile(
-                                                                     file.pathname
-                                                                  );
-                                                               } catch {}
-                                                            }}
-                                                         >
-                                                            {copiedFile ===
-                                                            file.pathname ? (
-                                                               <Check className="h-4 w-4 text-primary-foreground-darker" />
-                                                            ) : (
-                                                               <Share2 className="h-4 w-4 text-primary-foreground-darker" />
-                                                            )}
-                                                         </ToggleGroupItem>
-                                                      </TooltipTrigger>
-                                                      <TooltipContent className="py-2">
-                                                         {copiedFile ===
-                                                         file.pathname
-                                                            ? "Copied!"
-                                                            : "Copy link"}
-                                                      </TooltipContent>
-                                                   </Tooltip>
-
-                                                   <Tooltip>
-                                                      <TooltipTrigger asChild>
-                                                         <ToggleGroupItem
-                                                            value="delete"
-                                                            aria-label="Delete image"
-                                                            className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
-                                                         >
-                                                            <Trash2 className="h-4 w-4 text-primary-foreground-darker" />
-                                                         </ToggleGroupItem>
-                                                      </TooltipTrigger>
-                                                      <TooltipContent className="py-2">
-                                                         Delete
-                                                      </TooltipContent>
-                                                   </Tooltip>
-                                                </ToggleGroup>
-                                             </DialogTitle>
-                                             <div className="flex justify-center items-center">
-                                                <Image
-                                                   src={file.url}
-                                                   alt={file.pathname}
-                                                   width={1200}
-                                                   height={1200}
-                                                   className="max-h-[80vh] w-auto h-auto object-contain rounded-md"
-                                                />
-                                             </div>
-                                          </DialogContent>
-                                       </Dialog>
+                              <TabsContent value="file">
+                                 <div className="flex flex-col gap-2">
+                                    {otherFiles.map((file) => (
+                                       <a
+                                          key={file.pathname}
+                                          href={file.downloadUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="flex items-center gap-2 p-2 border rounded-md hover:bg-primary/10"
+                                       >
+                                          <Badge className="text-primary-foreground-darker bg-primary/10 rounded-sm border-primary/20">
+                                             <Icon
+                                                size={15}
+                                                styles="bulk"
+                                                className="!bg-primary-foreground-darker"
+                                                name="files"
+                                             />
+                                             File
+                                          </Badge>
+                                          <span className="truncate">
+                                             {file.pathname}
+                                          </span>
+                                          <span className="text-xs text-gray-500">
+                                             ({Math.round(file.size / 1024)} KB)
+                                          </span>
+                                       </a>
                                     ))}
                                  </div>
-                              </ScrollArea>
-                           </TabsContent>
-
-                           <TabsContent value="file">
-                              <div className="flex flex-col gap-2">
-                                 {otherFiles.map((file) => (
-                                    <a
-                                       key={file.pathname}
-                                       href={file.downloadUrl}
-                                       target="_blank"
-                                       rel="noopener noreferrer"
-                                       className="flex items-center gap-2 p-2 border rounded-md hover:bg-primary/10"
-                                    >
-                                       <Badge className="text-primary-foreground-darker bg-primary/10 rounded-sm border-primary/20">
-                                          <Icon
-                                             size={15}
-                                             styles="bulk"
-                                             className="!bg-primary-foreground-darker"
-                                             name="files"
-                                          />
-                                          File
-                                       </Badge>
-                                       <span className="truncate">
-                                          {file.pathname}
-                                       </span>
-                                       <span className="text-xs text-gray-500">
-                                          ({Math.round(file.size / 1024)} KB)
-                                       </span>
-                                    </a>
-                                 ))}
-                              </div>
-                           </TabsContent>
-                        </Tabs>
+                              </TabsContent>
+                           </Tabs>
+                        )}
                      </CardContent>
 
                      <CardFooter className="flex flex-col p-0">
