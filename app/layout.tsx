@@ -54,16 +54,16 @@ export default function RootLayout({
                ]}
             >
                <ContributionGraphProvider>
-                  <Spotlight />
-                  {children}
-                  <Toaster />
-                  <HiddenComponent routes={["/resume"]}>
-                     <MusicPlayer />
-                  </HiddenComponent>
-                  <HiddenComponent routes={["/themes/*"]}>
-                     <GradientBackground />
-                  </HiddenComponent>
-                  <QuickAction />
+                     <Spotlight />
+                     {children}
+                     <Toaster />
+                     <HiddenComponent routes={["/resume"]}>
+                        <MusicPlayer />
+                     </HiddenComponent>
+                     <HiddenComponent routes={["/themes/*"]}>
+                        <GradientBackground />
+                     </HiddenComponent>
+                     <QuickAction />
                </ContributionGraphProvider>
             </ThemeProvider>
             <Analytics />
