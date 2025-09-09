@@ -9,11 +9,17 @@ import {
 import React from "react";
 import { createPortal } from "react-dom";
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
-import { Bold, Italic, Underline } from "lucide-react";
+import {
+   Download,
+   Share2,
+   Trash2,
+   ZoomIn,
+} from "lucide-react";
 import Separator from "./separator";
 import { Font } from "./font";
 import { Badge } from "../ui/badge";
 import Icon from "./Icon";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function Settings() {
    const [open, setOpen] = React.useState(false);
@@ -38,7 +44,7 @@ export function Settings() {
          <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                <Button variant={"ghost"} className="border">
-                  Setting
+                  Settings
                </Button>
             </PopoverTrigger>
             <PopoverContent className="w-80">
@@ -64,11 +70,11 @@ export function Settings() {
                   </div>
                   <div className="grid gap-2">
                      <div className="grid grid-cols-3 items-center gap-4">
-                        <Label htmlFor="width">Width</Label>
+                        <Label htmlFor="name">Name</Label>
                         <Input
-                           id="width"
-                           defaultValue="100%"
                            className="col-span-2 h-8 border border-primary/30"
+                           defaultValue={"Anonymous"}
+                           placeholder="Type your name"
                         />
                      </div>
                      <div className="grid grid-cols-3 items-center gap-4">
@@ -85,30 +91,68 @@ export function Settings() {
                            <Font />
                         </div>
                      </div>
-                     <Separator>Chaos Magic</Separator>
-                     <div className="flex items-center justify-center gap-4">
+                     <Separator>Quick Action</Separator>
+                     <div className="flex items-center justify-center">
                         <ToggleGroup variant="outline" type="multiple">
-                           <ToggleGroupItem
-                              value="bold"
-                              aria-label="Toggle bold"
-                              className="border border-primary/50"
-                           >
-                              <Bold className="h-4 w-4" />
-                           </ToggleGroupItem>
-                           <ToggleGroupItem
-                              value="italic"
-                              aria-label="Toggle italic"
-                              className="border border-primary/50"
-                           >
-                              <Italic className="h-4 w-4" />
-                           </ToggleGroupItem>
-                           <ToggleGroupItem
-                              value="strikethrough"
-                              aria-label="Toggle strikethrough"
-                              className="border border-primary/50"
-                           >
-                              <Underline className="h-4 w-4" />
-                           </ToggleGroupItem>
+                           <Tooltip>
+                              <TooltipTrigger asChild>
+                                 <ToggleGroupItem
+                                    value="download"
+                                    aria-label="Download image"
+                                    className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                 >
+                                    <Download className="h-4 w-4 text-primary-foreground-darker" />
+                                 </ToggleGroupItem>
+                              </TooltipTrigger>
+                              <TooltipContent className="py-2">
+                                 Download
+                              </TooltipContent>
+                           </Tooltip>
+
+                           <Tooltip>
+                              <TooltipTrigger asChild>
+                                 <ToggleGroupItem
+                                    value="zoom"
+                                    aria-label="Zoom image"
+                                    className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                 >
+                                    <ZoomIn className="h-4 w-4 text-primary-foreground-darker" />
+                                 </ToggleGroupItem>
+                              </TooltipTrigger>
+                              <TooltipContent className="py-2">
+                                 Zoom
+                              </TooltipContent>
+                           </Tooltip>
+
+                           <Tooltip>
+                              <TooltipTrigger asChild>
+                                 <ToggleGroupItem
+                                    value="share"
+                                    aria-label="Share image"
+                                    className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                 >
+                                    <Share2 className="h-4 w-4 text-primary-foreground-darker" />
+                                 </ToggleGroupItem>
+                              </TooltipTrigger>
+                              <TooltipContent className="py-2">
+                                 Copy Link
+                              </TooltipContent>
+                           </Tooltip>
+
+                           <Tooltip>
+                              <TooltipTrigger asChild>
+                                 <ToggleGroupItem
+                                    value="delete"
+                                    aria-label="Delete image"
+                                    className="border border-primary/50 data-[state=on]:bg-transparent hover:!bg-accent"
+                                 >
+                                    <Trash2 className="h-4 w-4 text-primary-foreground-darker" />
+                                 </ToggleGroupItem>
+                              </TooltipTrigger>
+                              <TooltipContent className="py-2">
+                                 Delete
+                              </TooltipContent>
+                           </Tooltip>
                         </ToggleGroup>
                      </div>
                   </div>

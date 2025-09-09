@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
             hostname: "*.vercel-storage.com",
             pathname: "/files/**",
          },
+         {
+            protocol: "https",
+            hostname: "lh3.googleusercontent.com",
+            pathname: "/**",
+         },
       ],
    },
 };
