@@ -12,6 +12,7 @@ import QuickAction from "@/components/ui-engineer/layout/quick-action";
 import { Toaster } from "@/components/ui/sonner";
 import HiddenComponent from "@/components/ui-engineer/hidden-component";
 import Script from "next/script";
+import { ProfileProvider } from "@/context/profile-context";
 
 const tomorrow = Tomorrow({
    subsets: ["latin"],
@@ -54,16 +55,18 @@ export default function RootLayout({
                ]}
             >
                <ContributionGraphProvider>
-                     <Spotlight />
+                  <Spotlight />
+                  <ProfileProvider>
                      {children}
                      <Toaster />
                      <HiddenComponent routes={["/resume"]}>
                         <MusicPlayer />
                      </HiddenComponent>
-                     <HiddenComponent routes={["/themes/*"]}>
-                        <GradientBackground />
-                     </HiddenComponent>
-                     <QuickAction />
+                  </ProfileProvider>
+                  <HiddenComponent routes={["/themes/*"]}>
+                     <GradientBackground />
+                  </HiddenComponent>
+                  <QuickAction />
                </ContributionGraphProvider>
             </ThemeProvider>
             <Analytics />
