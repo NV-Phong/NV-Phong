@@ -22,7 +22,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-export default function Auth() {
+export default function ForgotPassword() {
    const { resolvedTheme } = useTheme();
    const [color, setColor] = useState("#ffffff");
    const [showParticles, setShowParticles] = useState(true);
@@ -43,14 +43,14 @@ export default function Auth() {
       setTimeout(() => {
          setLoading(false);
          setCurrentTab("otp");
-      }, 1000);
+      });
    }
    function handleVerify() {
       setLoading(true);
       setTimeout(() => {
          setLoading(false);
          setCurrentTab("reset-password");
-      }, 1000);
+      });
    }
 
    const tabOrder = ["forgot-password", "otp", "reset-password"];

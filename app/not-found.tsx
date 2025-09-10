@@ -69,7 +69,7 @@ export default function NotFound() {
                            <code className="text-primary-foreground-1 -mb-2">
                               404
                            </code>
-                           <p className="text-2xl">NOT FOUND</p>
+                           <p className="text-2xl uppercase">NOT FOUND</p>
                         </CardTitle>
                         <CardDescription className="text-foreground">
                            You&apos;re lost but hey, at least you found this cute
