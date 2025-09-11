@@ -218,7 +218,7 @@ export default function IntroCard({ onGoToMyWork }: IntroCardProps) {
                               onClick={onGoToMyWork}
                               className="bg-transparent hover:bg-transparent dark:bg-transparent dark:hover:bg-transparent border-none text-gray-950 underline decoration-primary dark:decoration-primary-foreground-1 underline-offset-3 hover:decoration-2 dark:text-white"
                            >
-                              View my work &rarr;
+                              View my journey &rarr;
                            </Button>
                            <ContactMe />
                         </div>

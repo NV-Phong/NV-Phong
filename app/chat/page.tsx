@@ -24,6 +24,7 @@ import {
    TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Icon from "@/components/ui-engineer/Icon";
+import Chats from "@/data/chats.json";
 
 interface Message {
    id: number;
@@ -56,6 +57,9 @@ interface Conversation {
 
 type MessagesRecord = Record<string, Message[]>;
 
+const STATIC_CONVERSATIONS: Conversation[] = Chats.conversations;
+const STATIC_MESSAGES: MessagesRecord = Chats.messages;
+
 export default function Chat() {
    const { resolvedTheme } = useTheme();
    const [color, setColor] = useState("#ffffff");
@@ -74,52 +78,66 @@ export default function Chat() {
    const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
    useEffect(() => {
-      const fetchProfiles = async () => {
-        setLoading(true);
-        try {
-          const res = await fetch("/api/profile/all");
-          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    
-          const data = await res.json();
-          const profiles: Profile[] = Array.isArray(data)
-            ? data
-            : Array.isArray(data.data)
-            ? data.data
-            : Array.isArray(data.profiles)
-            ? data.profiles
-            : [];
-    
-          // tạo conversation trực tiếp mà không setProfiles
-          const conversations: Conversation[] = profiles
-            .filter((p) => !p.is_deleted)
-            .map((p) => ({
-              id: p.user_id,
-              name: p.full_name || p.username,
-              username: p.username,
-              avatar: p.avatar_url || "/placeholder.svg",
-              lastMessage: "No messages yet",
-              timestamp: formatTimestamp(p.created_at),
-              unreadCount: 0,
-              online: Math.random() > 0.5,
-            }));
-    
-          setConversations(conversations);
-    
-          const initialMessages: MessagesRecord = {};
-          conversations.forEach((c) => (initialMessages[c.id] = []));
-          setMessages(initialMessages);
-        } catch (err) {
-          setError(err instanceof Error ? err.message : "Failed to fetch profiles");
-          console.error(err);
-        } finally {
-          setLoading(false);
-        }
-      };
-    
-      fetchProfiles();
-    }, []);
+      const fetchData = async () => {
+         setLoading(true);
+         try {
+            const res = await fetch("/api/profile/all");
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
-   // Helper function để format timestamp
+            const data = await res.json();
+            const profiles: Profile[] = Array.isArray(data)
+               ? data
+               : Array.isArray(data.data)
+               ? data.data
+               : Array.isArray(data.profiles)
+               ? data.profiles
+               : [];
+
+            const apiConversations: Conversation[] = profiles
+               .filter((p) => !p.is_deleted)
+               .map((p) => ({
+                  id: p.user_id,
+                  name: p.full_name || "Anonymous",
+                  username: p.username,
+                  avatar: p.avatar_url || "/placeholder.svg",
+                  lastMessage: "No messages yet",
+                  timestamp: formatTimestamp(p.created_at),
+                  unreadCount: 0,
+                  online: Math.random() > 0.5,
+               }));
+
+            const combinedConversations = [
+               ...STATIC_CONVERSATIONS,
+               ...apiConversations.filter(
+                  (apiConv) =>
+                     !STATIC_CONVERSATIONS.some(
+                        (staticConv) => staticConv.id === apiConv.id
+                     )
+               ),
+            ];
+
+            const combinedMessages: MessagesRecord = { ...STATIC_MESSAGES };
+            combinedConversations.forEach((conv) => {
+               if (!combinedMessages[conv.id]) {
+                  combinedMessages[conv.id] = [];
+               }
+            });
+
+            setConversations(combinedConversations);
+            setMessages(combinedMessages);
+         } catch (err) {
+            setError(
+               err instanceof Error ? err.message : "Failed to fetch profiles"
+            );
+            console.error(err);
+         } finally {
+            setLoading(false);
+         }
+      };
+
+      fetchData();
+   }, []);
+
    const formatTimestamp = (timestamp: string): string => {
       const date = new Date(timestamp);
       const now = new Date();
@@ -168,7 +186,6 @@ export default function Chat() {
          ],
       }));
 
-      // Update last message trong conversation
       setConversations((prev) =>
          prev.map((conv) =>
             conv.id === selectedConversation
@@ -183,7 +200,7 @@ export default function Chat() {
 
       setTimeout(() => {
          setNewMessage("");
-      }, 500);
+      });
    }
 
    const tabOrder = ["chats", "messages"];
@@ -288,6 +305,7 @@ export default function Chat() {
                                              <AvatarImage
                                                 src={conversation.avatar}
                                                 alt={conversation.name}
+                                                className="object-cover"
                                              />
                                              <AvatarFallback>
                                                 {conversation.name
