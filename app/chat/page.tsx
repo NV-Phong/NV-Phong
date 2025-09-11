@@ -33,56 +33,28 @@ interface Message {
    isMe: boolean;
 }
 
+interface Profile {
+   user_id: string;
+   username: string;
+   full_name: string | null;
+   avatar_url: string | null;
+   background_url: string | null;
+   created_at: string;
+   is_deleted: boolean | null;
+}
+
 interface Conversation {
-   id: number;
+   id: string;
    name: string;
    avatar: string;
    lastMessage: string;
    timestamp: string;
    unreadCount: number;
    online: boolean;
+   username: string;
 }
 
-type MessagesRecord = Record<number, Message[]>;
-
-const mockConversations: Conversation[] = [
-   {
-      id: 1,
-      name: "Nguyễn Văn Phong",
-      avatar:
-         "https://i.pinimg.com/736x/0b/2a/9f/0b2a9fc1102593dfa1c06d7223ac089b.jpg",
-      lastMessage: "let's say hi ^_^",
-      timestamp: "2 min ago",
-      unreadCount: 1,
-      online: true,
-   },
-];
-
-const mockMessages: MessagesRecord = {
-   1: [
-      {
-         id: 1,
-         text: "Hey! How are you doing?",
-         sender: "Alice Johnson",
-         timestamp: "10:30 AM",
-         isMe: false,
-      },
-      {
-         id: 2,
-         text: "I'm doing great! Thanks for asking. How about you?",
-         sender: "Me",
-         timestamp: "10:32 AM",
-         isMe: true,
-      },
-      {
-         id: 3,
-         text: "I'm good too! Want to grab coffee later?",
-         sender: "Alice Johnson",
-         timestamp: "10:33 AM",
-         isMe: false,
-      },
-   ],
-};
+type MessagesRecord = Record<string, Message[]>;
 
 export default function Chat() {
    const { resolvedTheme } = useTheme();
@@ -90,25 +62,93 @@ export default function Chat() {
    const [showParticles, setShowParticles] = useState(true);
    const [currentTab, setCurrentTab] = useState("chats");
 
+   const [conversations, setConversations] = useState<Conversation[]>([]);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState<string | null>(null);
+
    const [selectedConversation, setSelectedConversation] = useState<
-      number | null
+      string | null
    >(null);
    const [newMessage, setNewMessage] = useState("");
-   const [messages, setMessages] = useState<MessagesRecord>(mockMessages);
+   const [messages, setMessages] = useState<MessagesRecord>({});
    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+   useEffect(() => {
+      const fetchProfiles = async () => {
+        setLoading(true);
+        try {
+          const res = await fetch("/api/profile/all");
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    
+          const data = await res.json();
+          const profiles: Profile[] = Array.isArray(data)
+            ? data
+            : Array.isArray(data.data)
+            ? data.data
+            : Array.isArray(data.profiles)
+            ? data.profiles
+            : [];
+    
+          // tạo conversation trực tiếp mà không setProfiles
+          const conversations: Conversation[] = profiles
+            .filter((p) => !p.is_deleted)
+            .map((p) => ({
+              id: p.user_id,
+              name: p.full_name || p.username,
+              username: p.username,
+              avatar: p.avatar_url || "/placeholder.svg",
+              lastMessage: "No messages yet",
+              timestamp: formatTimestamp(p.created_at),
+              unreadCount: 0,
+              online: Math.random() > 0.5,
+            }));
+    
+          setConversations(conversations);
+    
+          const initialMessages: MessagesRecord = {};
+          conversations.forEach((c) => (initialMessages[c.id] = []));
+          setMessages(initialMessages);
+        } catch (err) {
+          setError(err instanceof Error ? err.message : "Failed to fetch profiles");
+          console.error(err);
+        } finally {
+          setLoading(false);
+        }
+      };
+    
+      fetchProfiles();
+    }, []);
+
+   // Helper function để format timestamp
+   const formatTimestamp = (timestamp: string): string => {
+      const date = new Date(timestamp);
+      const now = new Date();
+      const diffMs = now.getTime() - date.getTime();
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+      const diffMinutes = Math.floor(diffMs / (1000 * 60));
+
+      if (diffMinutes < 1) return "Just now";
+      if (diffMinutes < 60) return `${diffMinutes} min ago`;
+      if (diffHours < 24) return `${diffHours}h ago`;
+      if (diffDays < 7) return `${diffDays}d ago`;
+
+      return date.toLocaleDateString();
+   };
 
    useEffect(() => {
       setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000");
       setShowParticles(resolvedTheme === "dark");
    }, [resolvedTheme]);
 
-   function handleConversationClick(conversationId: number) {
+   function handleConversationClick(conversationId: string) {
       setSelectedConversation(conversationId);
       setCurrentTab("messages");
    }
 
    function handleSendMessage() {
       if (!newMessage.trim() || !selectedConversation) return;
+
       const newMsg: Message = {
          id: Date.now(),
          text: newMessage.trim(),
@@ -128,6 +168,19 @@ export default function Chat() {
          ],
       }));
 
+      // Update last message trong conversation
+      setConversations((prev) =>
+         prev.map((conv) =>
+            conv.id === selectedConversation
+               ? {
+                    ...conv,
+                    lastMessage: newMessage.trim(),
+                    timestamp: "Just now",
+                 }
+               : conv
+         )
+      );
+
       setTimeout(() => {
          setNewMessage("");
       }, 500);
@@ -146,12 +199,43 @@ export default function Chat() {
    }
 
    const selectedConversationData = selectedConversation
-      ? mockConversations.find((c) => c.id === selectedConversation)
+      ? conversations.find((c) => c.id === selectedConversation)
       : null;
 
    useEffect(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
    }, [messages, selectedConversation]);
+
+   if (loading) {
+      return (
+         <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
+            <div className="col-start-3 row-start-3 flex items-center justify-center">
+               <div className="text-center">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                  <p>Loading conversations...</p>
+               </div>
+            </div>
+         </div>
+      );
+   }
+
+   if (error) {
+      return (
+         <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
+            <div className="col-start-3 row-start-3 flex items-center justify-center">
+               <div className="text-center text-red-500">
+                  <p>Error: {error}</p>
+                  <button
+                     onClick={() => window.location.reload()}
+                     className="mt-2 px-4 py-2 bg-primary text-primary-foreground rounded"
+                  >
+                     Retry
+                  </button>
+               </div>
+            </div>
+         </div>
+      );
+   }
 
    return (
       <div className="relative grid min-h-screen grid-cols-[1fr_2.5rem_auto_2.5rem_1fr] grid-rows-[1fr_1px_auto_1px_1fr] [--pattern-fg:var(--color-gray-950)]/5 dark:[--pattern-fg:var(--color-white)]/10">
@@ -182,64 +266,69 @@ export default function Chat() {
                      </CardHeader>
 
                      <CardContent className="w-100 p-0 flex flex-col justify-center space-y-3">
-                        <ScrollArea className="h-20">
+                        <ScrollArea className="h-50">
                            <div className="space-y-2">
-                              {mockConversations.map((conversation) => (
-                                 <div
-                                    key={conversation.id}
-                                    className="flex items-center border border-primary/15 bg-primary/5 space-x-3 p-3 rounded-lg hover:bg-primary/15 cursor-pointer transition-colors"
-                                    onClick={() =>
-                                       handleConversationClick(conversation.id)
-                                    }
-                                 >
-                                    <div className="relative">
-                                       <Avatar className="h-12 w-12">
-                                          <AvatarImage
-                                             src={
-                                                conversation.avatar ||
-                                                "/placeholder.svg"
-                                             }
-                                             alt={conversation.name}
-                                          />
-                                          <AvatarFallback>
-                                             {conversation.name
-                                                .split(" ")
-                                                .map((n) => n[0])
-                                                .join("")}
-                                          </AvatarFallback>
-                                       </Avatar>
-                                       {conversation.online && (
-                                          <div className="absolute bottom-0 right-0 h-3 w-3 bg-green-500 rounded-full border-2 border-background"></div>
-                                       )}
-                                    </div>
-                                    <div className="w-full flex flex-col gap-2">
-                                       <div className="flex justify-between items-center">
-                                          <p className="text-sm font-medium truncate">
-                                             {conversation.name}
-                                          </p>
-                                          <span className="text-xs text-muted-foreground">
-                                             {conversation.timestamp}
-                                          </span>
-                                       </div>
-                                       <div className="flex items-center justify-between">
-                                          <p className="text-sm text-muted-foreground truncate">
-                                             {conversation.lastMessage}
-                                          </p>
-                                          {conversation.unreadCount > 0 && (
-                                             <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
-                                                <Icon
-                                                   size={15}
-                                                   styles="bulk"
-                                                   className="!bg-primary-foreground-darker"
-                                                   name="notification"
-                                                />
-                                                {conversation.unreadCount}
-                                             </Badge>
+                              {conversations.length === 0 ? (
+                                 <div className="text-center text-muted-foreground py-4">
+                                    No conversations found
+                                 </div>
+                              ) : (
+                                 conversations.map((conversation) => (
+                                    <div
+                                       key={conversation.id}
+                                       className="flex items-center border border-primary/15 bg-primary/5 space-x-3 p-3 rounded-lg hover:bg-primary/15 cursor-pointer transition-colors"
+                                       onClick={() =>
+                                          handleConversationClick(
+                                             conversation.id
+                                          )
+                                       }
+                                    >
+                                       <div className="relative">
+                                          <Avatar className="h-12 w-12">
+                                             <AvatarImage
+                                                src={conversation.avatar}
+                                                alt={conversation.name}
+                                             />
+                                             <AvatarFallback>
+                                                {conversation.name
+                                                   .split(" ")
+                                                   .map((n) => n[0])
+                                                   .join("")}
+                                             </AvatarFallback>
+                                          </Avatar>
+                                          {conversation.online && (
+                                             <div className="absolute bottom-0 right-0 h-3 w-3 bg-green-500 rounded-full border-2 border-background"></div>
                                           )}
                                        </div>
+                                       <div className="w-full flex flex-col gap-2">
+                                          <div className="flex justify-between items-center">
+                                             <p className="text-sm font-medium truncate">
+                                                {conversation.name}
+                                             </p>
+                                             <span className="text-xs text-muted-foreground">
+                                                {conversation.timestamp}
+                                             </span>
+                                          </div>
+                                          <div className="flex items-center justify-between">
+                                             <p className="text-sm text-muted-foreground truncate">
+                                                {conversation.lastMessage}
+                                             </p>
+                                             {conversation.unreadCount >= 0 && (
+                                                <Badge className="text-primary-foreground-darker bg-primary/10 h-6.5 border-primary/20">
+                                                   <Icon
+                                                      size={15}
+                                                      styles="bulk"
+                                                      className="!bg-primary-foreground-darker"
+                                                      name="notification"
+                                                   />
+                                                   {conversation.unreadCount}
+                                                </Badge>
+                                             )}
+                                          </div>
+                                       </div>
                                     </div>
-                                 </div>
-                              ))}
+                                 ))
+                              )}
                            </div>
                         </ScrollArea>
                      </CardContent>
@@ -328,10 +417,7 @@ export default function Chat() {
                               <div className="flex items-center space-x-2 p-2 rounded-lg cursor-pointer transition-colors">
                                  <Avatar className="h-8 w-8">
                                     <AvatarImage
-                                       src={
-                                          selectedConversationData.avatar ||
-                                          "/placeholder.svg"
-                                       }
+                                       src={selectedConversationData.avatar}
                                        alt={selectedConversationData.name}
                                     />
                                     <AvatarFallback>
@@ -346,6 +432,7 @@ export default function Chat() {
                                        {selectedConversationData.name}
                                     </p>
                                     <p className="text-xs text-muted-foreground">
+                                       @{selectedConversationData.username} •{" "}
                                        {selectedConversationData.online
                                           ? "Online"
                                           : "Offline"}
@@ -450,15 +537,6 @@ export default function Chat() {
                            Press enter to send
                         </Badge>
 
-                        {/* <Textarea
-                           className="w-full border-none max-h-30 bg-card resize-none"
-                           value={newMessage}
-                           onChange={(e) => setNewMessage(e.target.value)}
-                           placeholder="Let's say hi ^_^"
-                           onKeyPress={(e) =>
-                              e.key === "Enter" && handleSendMessage()
-                           }
-                        /> */}
                         <Input
                            className="w-full border-none max-h-30 bg-card resize-none"
                            value={newMessage}
