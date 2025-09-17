@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
          {
             source: "/signature",
             destination:
-               "https://qq90n93onn5q8tmx.public.blob.vercel-storage.com/Signature/Signature%20-%20Pink.png",
+               "https://qq90n93onn5q8tmx.public.blob.vercel-storage.com/Signature/Signature%20-%20Green.png",
          },
          {
             source: "/signature/green",
@@ -59,6 +59,11 @@ const nextConfig: NextConfig = {
          {
             protocol: "https",
             hostname: "avatars.githubusercontent.com",
+            pathname: "/**",
+         },
+         {
+            protocol: "https",
+            hostname: "nv-phong.vercel.app",
             pathname: "/**",
          },
       ],
