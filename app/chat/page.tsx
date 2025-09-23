@@ -159,9 +159,62 @@ export default function Chat() {
       setShowParticles(resolvedTheme === "dark");
    }, [resolvedTheme]);
 
-   function handleConversationClick(conversationId: string) {
-      setSelectedConversation(conversationId);
-      setCurrentTab("messages");
+   async function handleConversationClick(targetUserId: string) {
+      try {
+         // Call the API to start or retrieve a conversation
+         const response = await fetch("/api/conversations/direct-message", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ target_user_id: targetUserId }),
+         });
+
+         const result = await response.json();
+
+         if (!response.ok) {
+            throw new Error(result.error || "Failed to start conversation");
+         }
+
+         const conversationId = result.data.id;
+
+         // Check if the conversation already exists in the state
+         const existingConversation = conversations.find(
+            (conv) => conv.id === conversationId
+         );
+
+         if (!existingConversation) {
+            // If it's a new conversation, add it to the conversations list
+            const targetProfile = conversations.find(
+               (conv) => conv.id === targetUserId
+            );
+            const newConversation: Conversation = {
+               id: conversationId,
+               name: targetProfile?.name || "Anonymous",
+               username: targetProfile?.username || "",
+               avatar: targetProfile?.avatar || "/placeholder.svg",
+               lastMessage: "No messages yet",
+               timestamp: "Just now",
+               unreadCount: 0,
+               online: targetProfile?.online || false,
+            };
+
+            setConversations((prev) => [...prev, newConversation]);
+            setMessages((prev) => ({
+               ...prev,
+               [conversationId]: [],
+            }));
+         }
+
+         // Set the selected conversation and switch to the messages tab
+         setSelectedConversation(conversationId);
+         setCurrentTab("messages");
+      } catch (err) {
+         setError(
+            err instanceof Error ? err.message : "Failed to start conversation"
+         );
+         console.error(err);
+      }
    }
 
    function handleSendMessage() {
