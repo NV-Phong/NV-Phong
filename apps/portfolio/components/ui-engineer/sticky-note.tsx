@@ -89,12 +89,10 @@ const StickyNote = ({
             rotate: isExpanded ? 0 : rotation,
             scale: isExpanded ? 1.2 : 1,
             transition: {
-               type: "spring",
+               type: "spring" as const,
                stiffness: 200,
                damping: 25,
                mass: 1,
-               ease: [0.23, 1, 0.32, 1],
-               duration: 0.3,
             },
          },
          exit: { opacity: 0 },
@@ -115,7 +113,7 @@ const StickyNote = ({
                   y: initialY,
                   scale: 1,
                   transition: {
-                     type: "spring",
+                     type: "spring" as const,
                      stiffness: 200,
                      damping: 20,
                      mass: 1,
@@ -127,7 +125,7 @@ const StickyNote = ({
                   y: initialY - 100,
                   scale: 0.5,
                   transition: {
-                     type: "spring",
+                     type: "spring" as const,
                      stiffness: 200,
                      damping: 20,
                      mass: 1,
@@ -148,7 +146,7 @@ const StickyNote = ({
                   y: initialY,
                   scale: 1,
                   transition: {
-                     type: "spring",
+                     type: "spring" as const,
                      stiffness: 200,
                      damping: 20,
                      mass: 1,
@@ -160,7 +158,7 @@ const StickyNote = ({
                   y: initialY + 100,
                   scale: 0.5,
                   transition: {
-                     type: "spring",
+                     type: "spring" as const,
                      stiffness: 200,
                      damping: 20,
                      mass: 1,
@@ -209,7 +207,7 @@ const StickyNote = ({
             scale: isDragging ? 1.02 : isExpanded ? 1.2 : 1.01,
             rotate: isExpanded ? 0 : rotation + (Math.random() - 0.5) * 3,
             transition: {
-               type: "spring",
+               type: "spring" as const,
                stiffness: 400,
                damping: 25,
             },
