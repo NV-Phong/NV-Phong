@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import MyWork from "./my-work/page";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
+import "@/styles/themes/pastel.css";
 
 export default function Home() {
    const { resolvedTheme } = useTheme();
