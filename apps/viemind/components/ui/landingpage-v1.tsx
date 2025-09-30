@@ -497,7 +497,7 @@ function TopNavbar() {
                      </div>
                   </div>
                   <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[25.621px] text-nowrap text-white whitespace-pre">
-                     Macro
+                     VieMind
                   </p>
                </div>
                <div
@@ -657,7 +657,7 @@ function Card() {
                   </div>
                </div>
                <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#1a1a1a] text-[23.064px] text-nowrap whitespace-pre">
-                  Macro
+                  VieMind
                </p>
             </div>
             <div
@@ -1797,7 +1797,7 @@ function Logo() {
       >
          <Group18856 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#1a1a1a] text-[23.064px] text-nowrap whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -2321,7 +2321,7 @@ function Logo2() {
       >
          <Group18859 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#1a1a1a] text-[23.064px] text-nowrap whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -2754,7 +2754,7 @@ function Frame4() {
    return (
       <div className="absolute bg-[#83ff8f] box-border content-stretch flex gap-[10px] items-start left-[97px] px-[24px] py-[16px] rounded-[24px] top-[522px]">
          <p className="font-['Clash_Display:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[18px] text-black text-nowrap whitespace-pre">
-            Digitize Now
+            Contact Us Now
          </p>
       </div>
    );
@@ -3260,16 +3260,15 @@ function HeroSection1() {
          </div>
          <HeroSection />
          <div className="absolute font-['Clash_Display:Semibold',_sans-serif] leading-[1.13] left-[92px] not-italic text-[96px] text-white top-[158px] tracking-[-1.44px] w-[1199px]">
-            <p className="mb-0">{`Manage your `}</p>
-            <p>Personal Finances the Easy way</p>
+            <p className="mb-0">{`Transforming `}</p>
+            <p>Business with AI Solutions</p>
          </div>
          <p
-            className="absolute font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] left-[805px] text-[16px] text-justify text-white top-[206px] w-[540px]"
-            style={{ fontVariationSettings: "'wdth' 100" }}
+            className="absolute font-['Archivo:Regular',_sans-serif] font-normal left-[805px] text-[16px] text-justify text-white top-[206px] w-[540px]"
          >
-            Manage your personal finances the easy way - See all your accounts
-            in one place and get insights, so you can make informed choices
-            about your money.
+            We help businesses leverage cutting-edge AI technology to optimize
+            operations, enhance customer experiences, and drive growth in the
+            digital era.
          </p>
          <Frame4 />
          <Group18864 />
@@ -3370,7 +3369,7 @@ function Frame21() {
    return (
       <div className="absolute bg-[#83ff8f] box-border content-stretch flex gap-[10px] items-start left-[92px] px-[24px] py-[16px] rounded-[24px] top-[1955px]">
          <p className="font-['Clash_Display:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[18px] text-black text-nowrap whitespace-pre">
-            Digitize Now
+            Contact Us Now
          </p>
       </div>
    );
@@ -3381,7 +3380,7 @@ function Group18870() {
       <div className="absolute contents left-[92px] top-[1636px]">
          <Frame21 />
          <p className="absolute font-['Clash_Display:Semibold',_sans-serif] leading-[1.13] left-[92px] not-italic text-[64px] text-black top-[1676px] tracking-[-0.96px] w-[680px]">
-            Best Features Given by Macro
+            Best Features Given by VieMind
          </p>
          <p className="absolute font-['Clash_Display:Medium',_sans-serif] leading-[1.13] left-[92px] not-italic text-[#616161] text-[24px] top-[1636px] w-[292px]">
             Features
@@ -3496,7 +3495,7 @@ function Frame22() {
             className="font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] opacity-80 relative shrink-0 text-[18px] text-center text-neutral-600 w-[249px]"
             style={{ fontVariationSettings: "'wdth' 100" }}
          >
-            Macro Users from all over the globe
+            VieMind Users from all over the globe
          </p>
       </div>
    );
@@ -3512,7 +3511,7 @@ function Frame23() {
             className="font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] opacity-80 relative shrink-0 text-[18px] text-center text-neutral-600 w-[249px]"
             style={{ fontVariationSettings: "'wdth' 100" }}
          >
-            Macro’s Revenue in 2023 in the first Quater
+            VieMind’s Revenue in 2023 in the first Quater
          </p>
       </div>
    );
@@ -3528,7 +3527,7 @@ function Frame24() {
             className="font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] opacity-80 relative shrink-0 text-[18px] text-center text-neutral-600 w-[249px]"
             style={{ fontVariationSettings: "'wdth' 100" }}
          >
-            Macro Investment Growth in 2023
+            VieMind Investment Growth in 2023
          </p>
       </div>
    );
@@ -3726,7 +3725,7 @@ function Logo4() {
       >
          <Group18861 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[21.6px] text-nowrap text-white whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -3736,7 +3735,7 @@ function Frame42() {
    return (
       <div className="absolute box-border content-stretch flex gap-[10px] items-start left-[151px] px-[24px] py-[16px] rounded-[24px] top-[3713px]">
          <p className="font-['Clash_Display:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[18px] text-black text-nowrap whitespace-pre">
-            Digitize Now
+            Contact Us Now
          </p>
       </div>
    );
@@ -5384,7 +5383,7 @@ function Logo5() {
       >
          <Group18862 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#1a1a1a] text-[19.369px] text-nowrap whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -6080,7 +6079,7 @@ function Logo6() {
       >
          <Group18863 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#1a1a1a] text-[19.369px] text-nowrap whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -6671,7 +6670,7 @@ function Logo7() {
       >
          <Group18872 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[#1a1a1a] text-[62.096px] text-nowrap whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -6791,7 +6790,7 @@ function Frame45() {
          }}
       >
          <p className="font-['Clash_Display:Medium',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[18px] text-black text-nowrap whitespace-pre">
-            Join Macro Now
+            Join VieMind Now
          </p>
       </div>
    );
@@ -6822,7 +6821,7 @@ function Logo8() {
       >
          <Group18873 />
          <p className="font-['Clash_Display:Semibold',_sans-serif] leading-[normal] not-italic relative shrink-0 text-[30.473px] text-nowrap text-white whitespace-pre">
-            Macro
+            VieMind
          </p>
       </div>
    );
@@ -7084,7 +7083,7 @@ export default function LandingPageV1() {
             02
          </p>
          <p className="absolute font-['Clash_Display:Semibold',_sans-serif] leading-[1.13] left-[92px] not-italic text-[64px] text-black top-[2530px] tracking-[-0.96px] w-[680px]">
-            Get to know More about Macro
+            Get to know More about VieMind
          </p>
          <p className="absolute font-['Clash_Display:Medium',_sans-serif] leading-[1.13] left-[92px] not-italic text-[#616161] text-[24px] top-[2490px] w-[292px]">
             About Us
@@ -7095,7 +7094,7 @@ export default function LandingPageV1() {
             04
          </p>
          <p className="absolute font-['Clash_Display:Semibold',_sans-serif] leading-[1.13] left-[92px] not-italic text-[64px] text-black top-[4313px] tracking-[-0.96px] w-[639px]">
-            Meet Macro most trusted partners
+            Meet VieMind most trusted partners
          </p>
          <p
             className="absolute font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] left-[768px] text-[#6d6d6d] text-[16px] text-justify top-[4343px] w-[580px]"
@@ -7147,7 +7146,7 @@ export default function LandingPageV1() {
             04
          </p>
          <p className="absolute font-['Clash_Display:Semibold',_sans-serif] leading-[1.13] left-[92px] not-italic text-[64px] text-black top-[5793px] tracking-[-0.96px] w-[639px]">
-            Let’s learn how Macro works
+            Let’s learn how VieMind works
          </p>
          <p
             className="absolute font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] left-[768px] text-[#6d6d6d] text-[16px] text-justify top-[5823px] w-[580px]"
@@ -7165,7 +7164,7 @@ export default function LandingPageV1() {
          <Logo7 />
          <Group628011 />
          <p className="absolute font-['Clash_Display:Semibold',_sans-serif] leading-[1.13] left-[720.5px] not-italic text-[64px] text-center text-white top-[6963px] tracking-[-0.96px] translate-x-[-50%] w-[761px]">
-            Join Macro for finance management
+            Join VieMind for finance management
          </p>
          <Frame45 />
          <Logo8 />
@@ -7177,7 +7176,7 @@ export default function LandingPageV1() {
             className="absolute font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] left-[581px] text-[#f8f8f8] text-[18px] text-nowrap top-[7544.49px] whitespace-pre"
             style={{ fontVariationSettings: "'wdth' 100" }}
          >
-            @2023 Macro All Rights Reserved
+            @2023 VieMind All Rights Reserved
          </p>
          <p
             className="absolute font-['Archivo:Regular',_sans-serif] font-normal leading-[1.333] left-[1251px] text-[#f8f8f8] text-[18px] text-nowrap top-[7544.49px] whitespace-pre"
