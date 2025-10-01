@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
@@ -7,7 +9,7 @@ import {
   Sparkles,
   Star,
 } from "lucide-react";
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 type PillProps = {
   icon?: LucideIcon;
@@ -15,11 +17,13 @@ type PillProps = {
 };
 
 const navItems = [
-  "Services",
-  "Capabilities",
-  "Case Studies",
-  "Insights",
-  "Contact",
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/careers" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Admin", href: "/admin" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const heroMetrics = [
@@ -137,17 +141,33 @@ const timeline = [
 const footerLinks = [
   {
     title: "Company",
-    links: ["About", "Careers", "Diversity", "Press"],
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Press", href: "/about" },
+      { label: "Diversity", href: "/careers" },
+    ],
   },
   {
     title: "Expertise",
-    links: ["Experience Strategy", "Platform Engineering", "AI Studio", "Transformation"],
+    links: [
+      { label: "Experience Strategy", href: "/services" },
+      { label: "Platform Engineering", href: "/services" },
+      { label: "AI Studio", href: "/services" },
+      { label: "Transformation", href: "/services" },
+    ],
   },
   {
     title: "Resources",
-    links: ["Insights", "Events", "Playbooks", "Newsletter"],
+    links: [
+      { label: "Insights", href: "/blog" },
+      { label: "Events", href: "/blog" },
+      { label: "Playbooks", href: "/services" },
+      { label: "Newsletter", href: "/contact" },
+    ],
   },
 ];
+
 
 function AccentPill({ icon: Icon, children }: PillProps) {
   return (
@@ -159,30 +179,41 @@ function AccentPill({ icon: Icon, children }: PillProps) {
 }
 
 export default function LandingPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="bg-[#F8F8F8] text-neutral-900">
-      <div className="relative isolate overflow-hidden bg-[#1A1A1A] pb-24 text-white">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-[#8E7FF0]/40 via-[#83FF8F]/20 to-transparent blur-3xl" />
-          <div className="absolute -left-32 top-40 h-64 w-64 rotate-6 rounded-3xl bg-gradient-to-br from-[#F0DE7F]/40 via-[#FEEA9D]/30 to-transparent blur-[120px]" />
-          <div className="absolute -right-40 bottom-10 h-[420px] w-[420px] -rotate-12 rounded-3xl bg-gradient-to-br from-[#83FF8F]/30 via-[#8E7FF0]/20 to-transparent blur-3xl" />
-        </div>
-
-        <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-7">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-white/10 bg-black/75 backdrop-blur"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-white">
           <Link href="#" className="flex items-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#83FF8F] to-[#8E7FF0] text-lg font-semibold text-black">
               VM
             </span>
             <span className="text-lg font-semibold">VieMind</span>
           </Link>
-          <nav className="hidden items-center gap-10 text-sm font-medium text-white/70 lg:flex">
+          <nav className="hidden items-center gap-8 text-sm font-medium text-white/70 lg:flex">
             {navItems.map((item) => (
               <Link
-                key={item}
-                href="#"
+                key={item.href}
+                href={item.href}
                 className="transition hover:text-white"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </nav>
@@ -193,7 +224,15 @@ export default function LandingPage() {
             Start a project
             <ArrowRight size={16} />
           </Link>
-        </header>
+        </div>
+      </header>
+
+      <div className="relative isolate overflow-hidden bg-[#1A1A1A] pb-24 pt-40 text-white">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gradient-to-br from-[#8E7FF0]/40 via-[#83FF8F]/20 to-transparent blur-3xl" />
+          <div className="absolute -left-32 top-40 h-64 w-64 rotate-6 rounded-3xl bg-gradient-to-br from-[#F0DE7F]/40 via-[#FEEA9D]/30 to-transparent blur-[120px]" />
+          <div className="absolute -right-40 bottom-10 h-[420px] w-[420px] -rotate-12 rounded-3xl bg-gradient-to-br from-[#83FF8F]/30 via-[#8E7FF0]/20 to-transparent blur-3xl" />
+        </div>
 
         <main className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6">
           <section className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr]">
@@ -212,14 +251,14 @@ export default function LandingPage() {
               </div>
               <div className="flex flex-wrap items-center gap-4">
                 <Link
-                  href="#"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-full bg-[#83FF8F] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#72f283]"
                 >
                   Book a working session
                   <MoveRight size={16} />
                 </Link>
                 <Link
-                  href="#"
+                  href="/services"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-white"
                 >
                   Download capabilities deck
@@ -337,7 +376,7 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <Link
-                  href="#"
+                  href="/services"
                   className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 transition hover:gap-3"
                 >
                   Explore offering
@@ -471,7 +510,7 @@ export default function LandingPage() {
               </h2>
             </div>
             <Link
-              href="#"
+              href="/blog"
               className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 transition hover:gap-3"
             >
               Browse all stories
@@ -519,14 +558,14 @@ export default function LandingPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="#"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-[#83FF8F] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#72f283]"
             >
               Schedule an intro call
               <MoveRight size={16} />
             </Link>
             <Link
-              href="#"
+              href="/services"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
             >
               Get the transformation playbook
@@ -539,7 +578,7 @@ export default function LandingPage() {
       <footer className="bg-[#111111] py-16 text-white">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[0.4fr_0.6fr]">
           <div className="space-y-6">
-            <Link href="#" className="flex items-center gap-2 text-xl font-semibold">
+            <Link href="/" className="flex items-center gap-2 text-xl font-semibold">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#83FF8F] to-[#8E7FF0] text-lg font-semibold text-black">
                 VM
               </span>
@@ -550,11 +589,11 @@ export default function LandingPage() {
               products that matter.
             </p>
             <div className="flex gap-4 text-sm text-white/60">
-              <Link href="#" className="transition hover:text-white">
+              <Link href="mailto:hello@viemind.com" className="transition hover:text-white">
                 hello@viemind.com
               </Link>
               <span>•</span>
-              <Link href="#" className="transition hover:text-white">
+              <Link href="tel:+14155550132" className="transition hover:text-white">
                 +1 (415) 555-0132
               </Link>
             </div>
@@ -567,9 +606,12 @@ export default function LandingPage() {
                 </h3>
                 <ul className="space-y-3 text-sm text-white/70">
                   {column.links.map((link) => (
-                    <li key={link}>
-                      <Link href="#" className="transition hover:text-white">
-                        {link}
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="transition hover:text-white"
+                      >
+                        {link.label}
                       </Link>
                     </li>
                   ))}
