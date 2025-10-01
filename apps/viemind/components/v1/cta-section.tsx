@@ -9,13 +9,13 @@ export function CTASection() {
       <div className="absolute -left-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#83FF8F]/50 via-transparent to-transparent blur-3xl" />
       <div className="absolute -right-12 top-10 h-48 w-48 rounded-full bg-gradient-to-br from-[#8E7FF0]/40 via-transparent to-transparent blur-3xl" />
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 text-center">
-        <AccentPill icon={Sparkles}>Let's build what's next</AccentPill>
+        <AccentPill icon={Sparkles}>Let&apos;s build what&apos;s next</AccentPill>
         <h2 className="text-3xl font-semibold sm:text-4xl">
-          Bring us your boldest initiative. We'll help you design it, build it,
+          Bring us your boldest initiative. We&apos;ll help you design it, build it,
           and scale it.
         </h2>
         <p className="max-w-2xl text-white/70">
-          Share your brief and we'll assemble a bespoke squad to co-create the
+          Share your brief and we&apos;ll assemble a bespoke squad to co-create the
           roadmap, stand up the stack, and launch with confidence in eight
           weeks or less.
         </p>

@@ -9,6 +9,7 @@ import {
    imgGroup628011,
    imgGroup18869,
 } from "./assets";
+import Image from "next/image";
 
 function Neteller() {
    return (
@@ -3159,30 +3160,30 @@ function Frame10() {
    return (
       <div className="box-border content-stretch flex items-start pl-0 pr-[6.726px] py-0 relative shrink-0">
          <div className="mr-[-6.726px] relative shrink-0 size-[48.045px]">
-            <img
+            <Image
                alt=""
                className="block max-w-none size-full"
-               height="48.045"
+               height={48.045}
                src={imgEllipse8}
-               width="48.045"
+               width={48.045}
             />
          </div>
          <div className="mr-[-6.726px] relative shrink-0 size-[48.045px]">
-            <img
+            <Image
                alt=""
                className="block max-w-none size-full"
-               height="48.045"
+               height={48.045}
                src={imgEllipse9}
-               width="48.045"
+               width={48.045}
             />
          </div>
          <div className="mr-[-6.726px] relative shrink-0 size-[48.045px]">
-            <img
+            <Image
                alt=""
                className="block max-w-none size-full"
-               height="48.045"
+               height={48.045}
                src={imgEllipse10}
-               width="48.045"
+               width={48.045}
             />
          </div>
       </div>

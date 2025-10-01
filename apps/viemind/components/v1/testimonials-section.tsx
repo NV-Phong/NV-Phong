@@ -47,7 +47,7 @@ export function TestimonialsSection() {
               <div className="absolute -top-10 right-6 h-24 w-24 rounded-full bg-gradient-to-br from-[#83FF8F]/40 via-[#8E7FF0]/40 to-transparent blur-2xl" />
               <Star size={32} className="mb-6 text-[#F0DE7F]" />
               <blockquote className="text-lg text-neutral-700">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-6 text-sm">
                 <div className="font-semibold text-neutral-900">
