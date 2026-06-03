@@ -1,20 +1,45 @@
+<div align="center">
+
 <picture>
   <source
-    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true"
+    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true"
     media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
   />
   <source
-    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Dark.gif?raw=true"
+    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Day%20by%20Day%20%E2%80%A2%20Dark.gif?raw=true"
     media="(prefers-color-scheme: dark)"
   />
-  <img src="https://github.com/NV-Phong/NV-Phong/blob/master/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true" />
+  <img src="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Day%20by%20Day%20%E2%80%A2%20Light.gif?raw=true" />
 </picture>
+
+</div>
 
 ## HI THERE 👋
 
 ### I'M NV-PHONG
 
 I'm on a journey to become a software engineer who builds thoughtful, scalable digital experiences. I’m drawn to both the elegance of user interfaces and the logic behind backend systems and I find joy in connecting the two. Beyond the stack, I’m also exploring how AI and automation can streamline development and enhance the way we build and use software.
+
+<div align="center">
+
+<!-- <picture>
+  <source
+    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true"
+    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+  />
+  <source
+    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Number-Loops.gif?raw=true"
+    media="(prefers-color-scheme: dark)"
+  />
+  <img src="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true" width="300"/>
+</picture> -->
+
+<img
+  src="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true#gh-light-mode-only"
+  width="300"
+/>
+
+</div>
 
 ### ACTIVITY
 
@@ -40,7 +65,7 @@ I'm on a journey to become a software engineer who builds thoughtful, scalable d
 </div>
 &nbsp; -->
 <p align="center">
-  <img src="https://repobeats.axiom.co/api/embed/e16675cee69e8529e528fd3194e077594b03fd5a.svg" />
+  <img src="https://repobeats.axiom.co/api/embed/2d2be1ee3543a8bbe4bdcac153c6eee61e5a62c0.svg" />
 </p>
 
 ### TECH • STACK
@@ -71,17 +96,17 @@ I'm on a journey to become a software engineer who builds thoughtful, scalable d
     <td align="center">AWS</td> -->
   </tr>
   <tr>
-    <td align="center"><img src="./public/graphics/tech-stack/javascript.svg" alt="JavaScript" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/typescript.svg" alt="TypeScript" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/icons8-dart.svg" alt="Dart" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/html-5-solid-sharp.svg" alt="HTML" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/css-3-solid-rounded.svg" alt="CSS" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/react-stroke-rounded.svg" alt="React" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/icons8-nextjs.svg" alt="NextJS" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/nestjs.svg" alt="NestJS" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/icons8-flutter.svg" alt="Flutter" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/tailwindcss-solid-standard.svg" alt="Tailwind" width="24"/></td>
-    <td align="center"><img src="./public/graphics/tech-stack/mongodb.svg" alt="MongoDB" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/javascript.svg" alt="JavaScript" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/typescript.svg" alt="TypeScript" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/icons8-dart.svg" alt="Dart" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/html-5-solid-sharp.svg" alt="HTML" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/css-3-solid-rounded.svg" alt="CSS" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/react-stroke-rounded.svg" alt="React" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/icons8-nextjs.svg" alt="NextJS" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/nestjs.svg" alt="NestJS" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/icons8-flutter.svg" alt="Flutter" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/tailwindcss-solid-standard.svg" alt="Tailwind" width="24"/></td>
+    <td align="center"><img src="./apps/portfolio/public/graphics/tech-stack/mongodb.svg" alt="MongoDB" width="24"/></td>
     <!-- <td align="center"><img src="./public/graphics/tech-stack/icons8-docker.svg" alt="Docker" width="24"/></td>
     <td align="center"><img src="./public/graphics/tech-stack/postman-logo-icon-orange.svg" alt="Postman" width="24"/></td>
     <td align="center"><img src="./public/graphics/tech-stack/icons8-jira.svg" alt="Jira" width="24"/></td>

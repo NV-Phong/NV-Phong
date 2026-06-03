@@ -1,0 +1,528 @@
+[
+	{
+		"id": "tam-phuc",
+		"slug": "tam-phuc",
+		"title": "TamPhuc Website",
+		"description": "A corporate website that showcases furniture products such as lockers and storage cabinets while introducing the company and its business.",
+		"role": [
+			"Full Stack Developer",
+			"Designer"
+		],
+		"year": "2024",
+		"month": "Oct",
+		"techStack": [
+			"NextJS",
+			"Supabase"
+		],
+		"overview": {
+			"company": "Freelance",
+			"duration": "2024",
+			"objective": "Showcase furniture products and company services",
+			"keyFeatures": [
+				"Product catalog",
+				"Company information and news",
+				"Admin dashboard for managing products and website content"
+			]
+		},
+		"links": {
+			"github": [],
+			"live": "",
+			"production": "https://tamphuc.biz",
+			"figma": ""
+		},
+		"gallery": [
+			{
+				"url": "/projects/tam-phuc/landing-page.png",
+				"alt": "Landing Page"
+			},
+			{
+				"url": "/projects/tam-phuc/landing-page-light.jpg",
+				"alt": "Landing Page"
+			},
+			{
+				"url": "/projects/tam-phuc/landing-page-dark.jpg",
+				"alt": "Landing Page"
+			},
+			{
+				"url": "/projects/tam-phuc/news.jpg",
+				"alt": "News"
+			},
+			{
+				"url": "/projects/tam-phuc/about-us.png",
+				"alt": "About Us"
+			},
+			{
+				"url": "/projects/tam-phuc/admin-1.png",
+				"alt": "Admin"
+			},
+			{
+				"url": "/projects/tam-phuc/admin-2.png",
+				"alt": "Admin"
+			},
+			{
+				"url": "/projects/tam-phuc/admin-3.png",
+				"alt": "Admin"
+			}
+		]
+	},
+	{
+		"id": "memorymud",
+		"slug": "memorymud",
+		"title": "Memorymud",
+		"description": "A showcase website for ceramic products and memory-preservation services, where personal memories can be stored and revisited through NFC chips and fortune cookies.",
+		"role": [
+			"Frontend Developer",
+			"Designer"
+		],
+		"year": "2026",
+		"month": "Jan",
+		"techStack": [
+			"NextJS",
+			"Shadcn UI"
+		],
+		"overview": {
+			"company": "VieMind Tech Consulting",
+			"duration": "2026",
+			"objective": "Create a unique platform for memory preservation through ceramic and NFC technology",
+			"keyFeatures": [
+				"Designed and developed user interfaces for websites"
+			],
+			"showAsContributions": true
+		},
+		"links": {
+			"github": [],
+			"live": "",
+			"production": "",
+			"figma": [
+				{
+					"url": "https://www.figma.com/design/4f6jvpffCiJ9MyaAL9dWY7/UI---UX?node-id=1-9&t=WmmVSXCTcqQXcfyo-1",
+					"label": "UI/UX Design"
+				}
+			]
+		},
+		"gallery": [
+			{
+				"url": "/projects/memorymud/video.mkv",
+				"alt": "Video"
+			},
+			{
+				"url": "/projects/memorymud/landing-page-1.jpg",
+				"alt": "Landing Page"
+			},
+			{
+				"url": "/projects/memorymud/landing-page-2.jpg",
+				"alt": "Landing Page"
+			},
+			{
+				"url": "/projects/memorymud/contact.jpg",
+				"alt": "Contact"
+			},
+			{
+				"url": "/projects/memorymud/products.jpg",
+				"alt": "Products"
+			},
+			{
+				"url": "/projects/memorymud/product-detail.jpg",
+				"alt": "Product Detail"
+			},
+			{
+				"url": "/projects/memorymud/about-us.jpg",
+				"alt": "About Us"
+			}
+		]
+	},
+	{
+		"id": "phu-vinh-phi",
+		"slug": "phu-vinh-phi",
+		"title": "PhuVinhPhi Website & Zalo Mini App",
+		"description": "A corporate website that showcases products and machine repair services while introducing the company and its expertise.",
+		"role": [
+			"Full Stack Developer",
+			"Designer"
+		],
+		"year": "2025",
+		"month": "Dec",
+		"techStack": [
+			"NextJS",
+			"PayloadCMS",
+			"Supabase"
+		],
+		"overview": {
+			"company": "VieMind Tech Consulting",
+			"duration": "2025",
+			"objective": "Establish online presence for machinery products and repair services",
+			"keyFeatures": [
+				"Designed and developed user interfaces for websites and Zalo Mini Apps",
+				"Built an admin content management system using Payload CMS",
+				"Multilingual support ( English, Vietnamese, Chinese )",
+				"Light and dark modes"
+			],
+			"showAsContributions": true
+		},
+		"links": {
+			"github": [],
+			"live": "",
+			"production": "https://phuvinhphi.com.vn",
+			"figma": ""
+		},
+		"gallery": [
+			{
+				"url": "/projects/phuvinhphi/video.mkv",
+				"alt": "Video"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (1).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (2).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (3).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (4).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (5).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (6).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (7).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (8).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (9).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/zma (10).png",
+				"alt": "Zalo Mini App"
+			},
+			{
+				"url": "/projects/phuvinhphi/footer.png",
+				"alt": "Footer"
+			}
+		]
+	},
+	{
+		"id": "gom-thu-duc",
+		"slug": "gom-thu-duc",
+		"title": "GomThuDuc Website",
+		"description": "A website template designed to showcase ceramic products, pottery courses, and hands-on workshops.",
+		"role": [
+			"Frontend Developer"
+		],
+		"year": "2025",
+		"month": "Nov",
+		"techStack": [
+			"NextJS",
+			"Shadcn UI"
+		],
+		"overview": {
+			"company": "VieMind Tech Consulting",
+			"duration": "2025",
+			"objective": "Promote ceramic products and pottery education",
+			"keyFeatures": [
+				"Develop user interface",
+				"English–Vietnamese multilingual feature"
+			],
+			"showAsContributions": true
+		},
+		"links": {
+			"github": [],
+			"preview": "https://gomthuducx.vercel.app",
+			"production": "",
+			"figma": ""
+		},
+		"gallery": [
+			{
+				"url": "/projects/gomthuduc/gomthuduc (1).jpg",
+				"alt": "GomThuDuc"
+			},
+			{
+				"url": "/projects/gomthuduc/gomthuduc (2).jpg",
+				"alt": "GomThuDuc"
+			},
+			{
+				"url": "/projects/gomthuduc/gomthuduc (3).jpg",
+				"alt": "GomThuDuc"
+			},
+			{
+				"url": "/projects/gomthuduc/gomthuduc (4).jpg",
+				"alt": "GomThuDuc"
+			},
+			{
+				"url": "/projects/gomthuduc/gomthuduc (5).jpg",
+				"alt": "GomThuDuc"
+			},
+			{
+				"url": "/projects/gomthuduc/gomthuduc (6).jpg",
+				"alt": "GomThuDuc"
+			},
+			{
+				"url": "/projects/gomthuduc/gomthuduc (7).jpg",
+				"alt": "GomThuDuc"
+			}
+		]
+	},
+	{
+		"id": "viemind",
+		"slug": "viemind",
+		"title": "VieMind Website",
+		"description": "A corporate website designed to present the company's vision, services, and expertise, helping businesses showcase their capabilities, build credibility, and connect with potential clients and partners.",
+		"role": [
+			"Frontend Developer",
+			"Designer"
+		],
+		"year": "2025",
+		"month": "Oct",
+		"techStack": [
+			"NextJS",
+			"Shadcn UI",
+			"TailwindCSS"
+		],
+		"overview": {
+			"company": "VieMind Tech Consulting",
+			"duration": "2025",
+			"objective": "Build corporate credibility and connect with clients",
+			"keyFeatures": [
+				"Design and develop user interface",
+				"English–Vietnamese multilingual feature",
+				"Light and dark modes"
+			],
+			"showAsContributions": true
+		},
+		"links": {
+			"github": [],
+			"live": "",
+			"production": "https://www.viemind.ai",
+			"figma": ""
+		},
+		"gallery": []
+	},
+	{
+		"id": "cg-editor",
+		"slug": "cg-editor",
+		"title": "CG-Editor",
+		"description": "A GitHub Contribution Graph Editor that provides an intuitive interface with auto-commit functionality to create fake commits and customize your GitHub contribution history.",
+		"role": [
+			"Full Stack Developer"
+		],
+		"year": "2025",
+		"month": "May",
+		"techStack": [
+			"NextJS"
+		],
+		"overview": {
+			"company": "Personal Project",
+			"duration": "May 2025",
+			"objective": "Build a visual editor for GitHub contribution graphs with auto-commit functionality",
+			"keyFeatures": [
+				"Auto-commit functionality",
+				"Customizable commit dates"
+			]
+		},
+		"links": {
+			"github": [
+				{
+					"url": "https://github.com/NV-Phong/CG-Editor",
+					"label": "GitHub"
+				}
+			],
+			"live": "",
+			"production": "",
+			"figma": ""
+		},
+		"gallery": [
+			{
+				"url": "/graphics/project/cg-editor/377shots_so.png",
+				"alt": "CG-Editor interface"
+			},
+			{
+				"url": "/graphics/project/cg-editor/935shots_so.png",
+				"alt": "CG-Editor interface"
+			},
+			{
+				"url": "/graphics/project/cg-editor/Ảnh chụp màn hình (334).png",
+				"alt": "CG-Editor interface"
+			},
+			{
+				"url": "/graphics/project/cg-editor/Ảnh chụp màn hình (335).png",
+				"alt": "CG-Editor interface"
+			},
+			{
+				"url": "/graphics/project/cg-editor/Ảnh chụp màn hình (336).png",
+				"alt": "CG-Editor interface"
+			},
+			{
+				"url": "/graphics/project/cg-editor/Ảnh chụp màn hình (337).png",
+				"alt": "CG-Editor interface"
+			}
+		]
+	},
+	{
+		"id": "workspacex",
+		"slug": "workspacex",
+		"title": "Workspacex",
+		"description": "A comprehensive workspace management platform that combines note-taking, idea management, and task tracking to help individuals and teams organize their work efficiently.",
+		"role": [
+			"Full Stack Developer"
+		],
+		"year": "2025",
+		"month": "Mar",
+		"techStack": [
+			"NextJS",
+			"NestJS",
+			"MongoDB"
+		],
+		"overview": {
+			"company": "Personal Project",
+			"duration": "Mar 2025",
+			"objective": "Create a unified workspace for note-taking, ideas, and task management",
+			"keyFeatures": [
+				"Note-taking",
+				"Idea management and organization",
+				"Task tracking and management"
+			]
+		},
+		"links": {
+			"github": [
+				{
+					"url": "https://github.com/NV-Phong/Workspacex",
+					"label": "Client"
+				},
+				{
+					"url": "https://github.com/NV-Phong/WS-CoreServer",
+					"label": "Server"
+				}
+			],
+			"live": "",
+			"production": "",
+			"figma": [
+				{
+					"url": "https://www.figma.com/board/fCejx1ykXQ0Hmrl7xvU6GI/System-Design?node-id=0-1&t=rOWhrYzM8c8pe7oD-1",
+					"label": "System Design"
+				}
+			]
+		},
+		"gallery": [
+			{
+				"url": "/projects/workspacex/workspacex (1).png",
+				"alt": "Workspacex"
+			},
+			{
+				"url": "/projects/workspacex/workspacex (2).png",
+				"alt": "Workspacex"
+			},
+			{
+				"url": "/projects/workspacex/workspacex (3).png",
+				"alt": "Workspacex"
+			}
+		]
+	},
+	{
+		"id": "ui-engineer",
+		"slug": "ui-engineer",
+		"title": "UI Engineer",
+		"description": "An online platform for front-end developers to store, share, and showcase HTML and CSS code snippets. Supports embedding Figma prototypes for creating visual documentation.",
+		"role": [
+			"Full Stack Developer"
+		],
+		"year": "2024",
+		"month": "Dec",
+		"techStack": [
+			"NextJS",
+			"NestJS",
+			"MongoDB"
+		],
+		"overview": {
+			"company": "Personal Project",
+			"duration": "Dec 2024",
+			"objective": "Build a platform for developers to share and manage UI code snippets with Figma integration",
+			"keyFeatures": [
+				"Code snippet storage and organization",
+				"Figma prototype embedding",
+				"Syntax highlighting and code preview",
+				"Search and filtering capabilities"
+			]
+		},
+		"links": {
+			"github": [
+				{
+					"url": "https://github.com/NV-Phong/UI-Engineer",
+					"label": "Client"
+				},
+				{
+					"url": "https://github.com/NV-Phong/UIE-Server",
+					"label": "Server"
+				}
+			],
+			"live": "",
+			"production": "",
+			"figma": [
+				{
+					"url": "https://www.figma.com/board/EclK9sza1WAQuYoos7FPLv/Database?t=CGilsdxZD3WmMbAp-1",
+					"label": "System Design"
+				}
+			]
+		},
+		"gallery": [
+		]
+	},
+	{
+		"id": "pingme",
+		"slug": "pingme",
+		"title": "PingMe",
+		"description": "A simple yet powerful chat application that enables seamless, real-time communication between users with an intuitive interface and instant messaging capabilities.",
+		"role": [
+			"Full Stack Developer",
+			"Leader"
+		],
+		"year": "2024",
+		"month": "Nov",
+		"techStack": [
+			"Flutter",
+			"NestJS",
+			"MongoDB"
+		],
+		"overview": {
+			"company": "Team Project",
+			"duration": "Nov 2024",
+			"objective": "Develop a real-time chat application with smooth user experience",
+			"keyFeatures": [
+				"Real-time instant messaging",
+				"User authentication and profiles",
+				"User-friendly interface",
+				"Cross-platform support (Mobile and Web)"
+			]
+		},
+		"links": {
+			"github": [
+				{
+					"url": "https://github.com/NV-Phong/PingMe",
+					"label": "Client"
+				},
+				{
+					"url": "https://github.com/NV-Phong/PM-Server",
+					"label": "Server"
+				}
+			],
+			"live": "",
+			"production": "",
+			"figma": ""
+		},
+		"gallery": []
+	}
+]
