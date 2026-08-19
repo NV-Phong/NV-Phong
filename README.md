@@ -22,18 +22,6 @@ I'm on a journey to become a software engineer who builds thoughtful, scalable d
 
 <div align="center">
 
-<!-- <picture>
-  <source
-    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true"
-    media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-  />
-  <source
-    srcset="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Number-Loops.gif?raw=true"
-    media="(prefers-color-scheme: dark)"
-  />
-  <img src="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true" width="300"/>
-</picture> -->
-
 <img
   src="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true#gh-light-mode-only"
   width="300"
@@ -41,32 +29,11 @@ I'm on a journey to become a software engineer who builds thoughtful, scalable d
 
 </div>
 
-### ACTIVITY
+<!-- ### ACTIVITY -->
 
-<!-- <div align="center">
-  <a href="https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only">
-    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api?username=NV-Phong&show_icons=true&theme=default#gh-light-mode-only" />
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=NV-Phong&layout=compact&langs_count=8&&theme=default#gh-light-mode-only" />
-  </a>
-  <a href="https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only">
-    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api?username=NV-Phong&border_color=4F4F4F&show_icons=true&theme=onedark#gh-dark-mode-only" />
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <img height="200" align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=NV-Phong&border_color=4F4F4F&layout=compact&langs_count=8&theme=onedark#gh-dark-mode-only" />
-  </a>
-</div>
-&nbsp; -->
-<p align="center">
+<!-- <p align="center">
   <img src="https://repobeats.axiom.co/api/embed/2d2be1ee3543a8bbe4bdcac153c6eee61e5a62c0.svg" />
-</p>
+</p> -->
 
 ### TECH • STACK
 
