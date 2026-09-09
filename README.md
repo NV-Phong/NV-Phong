@@ -14,28 +14,18 @@
 
 </div>
 
-## HI THERE 👋
-
-### I'M NV-PHONG
-
-I'm on a journey to become a software engineer who builds thoughtful, scalable digital experiences. I’m drawn to both the elegance of user interfaces and the logic behind backend systems and I find joy in connecting the two. Beyond the stack, I’m also exploring how AI and automation can streamline development and enhance the way we build and use software.
-
 <div align="center">
 
-<img
+<!-- <img
   src="https://github.com/NV-Phong/NV-Phong/blob/master/apps/portfolio/public/graphics/Patreon.gif?raw=true#gh-light-mode-only"
   width="300"
-/>
+/> -->
 
 </div>
-
-<!-- ### ACTIVITY -->
 
 <!-- <p align="center">
   <img src="https://repobeats.axiom.co/api/embed/2d2be1ee3543a8bbe4bdcac153c6eee61e5a62c0.svg" />
 </p> -->
-
-### TECH • STACK
 
 <table cellpadding="10" cellspacing="0" align="center">
   <tr>
